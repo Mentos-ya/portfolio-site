@@ -1,6 +1,10 @@
+'use client'
+
 import Image from 'next/image'
 import homeData from '@/data/home.json'
 import projectsData from '@/data/projects.json'
+import ProjectCard from '@/components/ProjectCard'
+import { useState } from 'react'
 
 const skillCategories = [
   {
@@ -22,6 +26,8 @@ const skillCategories = [
 ]
 
 export default function Home() {
+  const [selectedCard, setSelectedCard] = useState<number | null>(null)
+
   return (
     <div>
       {/* Hero Section */}
@@ -91,6 +97,20 @@ export default function Home() {
         <p className="text-xl text-gray-600 mb-12">
           {projectsData.pageDescription}
         </p>
+
+        {/* Project Cards Grid */}
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          <ProjectCard
+            id={0}
+            isSelected={selectedCard === 0}
+            onClick={() => setSelectedCard(selectedCard === 0 ? null : 0)}
+          />
+          <ProjectCard
+            id={1}
+            isSelected={selectedCard === 1}
+            onClick={() => setSelectedCard(selectedCard === 1 ? null : 1)}
+          />
+        </div>
 
         <div className="space-y-12">
           {/* LetoPlace */}
