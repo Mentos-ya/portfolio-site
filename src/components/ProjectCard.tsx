@@ -26,38 +26,38 @@ export default function ProjectCard({
   return (
     <div
       onClick={onClick}
-      className={`border-2 border-gray-300 rounded-lg p-8 min-h-[640px] cursor-pointer transition-all duration-300 flex flex-col items-center justify-center ${
+      className={`border-2 border-gray-300 rounded-lg p-6 min-h-[640px] cursor-pointer transition-all duration-300 flex flex-col overflow-y-auto ${
         isSelected ? 'border-blue-600 bg-blue-50 shadow-lg' : 'hover:border-blue-400 hover:shadow-md bg-white'
       }`}
     >
-      <div className="text-center flex-1 flex flex-col justify-center">
-        <div className="text-6xl mb-4">{emoji}</div>
-        <h3 className="text-2xl font-bold text-gray-800 mb-2">{title || `Объект ${id + 1}`}</h3>
-        {role && <p className="text-sm text-gray-500 mb-4">{role}</p>}
-        <p className="text-gray-600 text-sm">
-          {hasData && isSelected
-            ? 'Нажмите еще раз чтобы скрыть детали'
-            : hasData
-              ? 'Нажмите чтобы узнать больше'
-              : isSelected
-                ? 'Нажмите еще раз чтобы скрыть'
-                : 'Нажмите чтобы узнать больше'}
-        </p>
+      {/* Title and Role */}
+      <div className="mb-4">
+        {title && <h3 className="text-2xl font-bold text-gray-800">{title}</h3>}
+        {role && <p className="text-sm text-gray-500 mt-1">{role}</p>}
       </div>
 
-      {isSelected && hasData && (
-        <div className="mt-6 pt-6 border-t border-gray-300 w-full text-sm text-gray-700 space-y-3">
-          {description && <p className="text-center text-sm leading-relaxed">{description}</p>}
+      {/* Description */}
+      {description && (
+        <div className="mb-4 text-sm text-gray-700 leading-relaxed">
+          <p>{description}</p>
+        </div>
+      )}
 
-          {metrics.length > 0 && (
-            <div className="space-y-2">
-              {metrics.map((metric, idx) => (
-                <div key={idx} className="text-center text-xs bg-gray-100 rounded py-1 px-2">
-                  {metric}
-                </div>
-              ))}
+      {/* Metrics */}
+      {metrics.length > 0 && (
+        <div className="space-y-2">
+          {metrics.map((metric, idx) => (
+            <div key={idx} className="text-xs text-gray-700 leading-relaxed">
+              • {metric}
             </div>
-          )}
+          ))}
+        </div>
+      )}
+
+      {/* Empty state */}
+      {!hasData && (
+        <div className="text-center text-gray-500 flex items-center justify-center h-full">
+          <p>Нажмите чтобы узнать больше</p>
         </div>
       )}
     </div>
