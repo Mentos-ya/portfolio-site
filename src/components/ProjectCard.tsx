@@ -9,6 +9,7 @@ interface ProjectCardProps {
   emoji?: string
   metrics?: string[]
   description?: string
+  logo?: string
 }
 
 export default function ProjectCard({
@@ -20,6 +21,7 @@ export default function ProjectCard({
   emoji = '📦',
   metrics = [],
   description,
+  logo,
 }: ProjectCardProps) {
   const hasData = title || role || metrics.length > 0
 
@@ -30,6 +32,13 @@ export default function ProjectCard({
         isSelected ? 'border-blue-600 bg-blue-50 shadow-lg' : 'hover:border-blue-400 hover:shadow-md bg-white'
       }`}
     >
+      {/* Logo */}
+      {logo && (
+        <div className="mb-4">
+          <img src={logo} alt={title || 'Company logo'} className="h-12 object-contain" />
+        </div>
+      )}
+
       {/* Title and Role */}
       <div className="mb-4">
         {title && <h3 className="text-2xl font-bold text-gray-800">{title}</h3>}
