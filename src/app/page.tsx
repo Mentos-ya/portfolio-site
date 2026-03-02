@@ -24,19 +24,33 @@ export default function Home() {
               href="https://drive.google.com/file/d/1V5T1eL9UcOuFwWGZegu2HZKgeDoPdsxW/view"
               target="_blank"
               rel="noopener noreferrer"
-              className="group transition-all duration-300 hover:shadow-lg w-full max-w-sm"
+              className="group transition-all duration-300 hover:shadow-lg"
             >
-              <div className="bg-white border-2 border-gray-300 rounded-lg p-4 min-h-full flex flex-col items-center justify-center group-hover:border-blue-600 transition-all duration-300">
-                <div className="bg-gray-200 w-full h-full rounded flex flex-col items-center justify-center group-hover:bg-gray-100 transition-colors">
-                  <svg className="w-16 h-16 text-gray-600 mb-4 group-hover:text-blue-600 transition-colors" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M8 16.5a1 1 0 11-2 0 1 1 0 012 0zM15 7a2 2 0 11-4 0 2 2 0 014 0zM12.5 5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
-                  </svg>
-                  <p className="text-center text-gray-700 font-bold text-lg group-hover:text-blue-600 transition-colors">
-                    Резюме
-                  </p>
-                  <p className="text-sm text-gray-500 mt-2 group-hover:text-blue-500 transition-colors">
-                    Нажмите для открытия
-                  </p>
+              <div className="bg-white border-2 border-gray-300 rounded-lg overflow-hidden w-40 aspect-[8.5/11] flex flex-col group-hover:border-blue-600 transition-all duration-300 shadow-md group-hover:shadow-xl">
+                {/* Resume Header */}
+                <div className="bg-gradient-to-b from-gray-100 to-gray-50 px-3 py-2 border-b border-gray-200">
+                  <p className="text-xs font-bold text-gray-800 text-center leading-tight">РЕЗЮМЕ</p>
+                  <p className="text-[0.5rem] text-gray-600 text-center">Илья Якупов</p>
+                </div>
+
+                {/* Resume Content */}
+                <div className="flex-1 px-2 py-2 overflow-hidden flex flex-col">
+                  <div className="space-y-1">
+                    <div className="text-[0.4rem] font-bold text-gray-800">PM & Growth</div>
+                    <div className="text-[0.35rem] text-gray-600 space-y-0.5">
+                      <div>• 7+ лет опыта</div>
+                      <div>• HotelTech/TravelTech</div>
+                      <div>• Product Strategy</div>
+                      <div>• Growth & Scaling</div>
+                    </div>
+                  </div>
+
+                  {/* Bottom overlay hint */}
+                  <div className="mt-auto pt-2 border-t border-gray-200 text-center">
+                    <p className="text-[0.35rem] text-gray-500 group-hover:text-blue-600 transition-colors">
+                      Открыть
+                    </p>
+                  </div>
                 </div>
               </div>
             </a>
