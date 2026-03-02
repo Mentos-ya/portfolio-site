@@ -1,0 +1,34 @@
+{
+  "version": "0.0.1",
+  "permissions": {
+    "allowAllTools": true,
+    "trustLevel": "full",
+    "allowedScripts": [
+      "claude-commit.sh"
+    ]
+  },
+  "tools": {
+    "Bash": {
+      "allowed": true,
+      "description": "Allow Claude to run git commands and shell operations",
+      "allowedCommands": [
+        "git add",
+        "git commit",
+        "git push",
+        "git pull",
+        "git status",
+        "git log",
+        "./claude-commit.sh"
+      ]
+    },
+    "Edit": {
+      "allowed": true
+    },
+    "Write": {
+      "allowed": true
+    },
+    "Read": {
+      "allowed": true
+    }
+  }
+}
