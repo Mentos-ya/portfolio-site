@@ -50,7 +50,7 @@ export default function Contact() {
 
             <div>
               <h3 className="font-bold text-lg mb-2">Локация</h3>
-              <p className="text-gray-700 text-lg">Белград, Сербия</p>
+              <p className="text-gray-700 text-lg">Москва, Россия</p>
             </div>
           </div>
         </div>
