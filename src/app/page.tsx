@@ -104,6 +104,17 @@ export default function Home() {
             id={0}
             isSelected={selectedCard === 0}
             onClick={() => setSelectedCard(selectedCard === 0 ? null : 0)}
+            title="LetoPlace"
+            role="Product Manager & Growth PM"
+            emoji="🏢"
+            description="Digital-сервис для аренды имущества. Создал двустороннюю платформу (B2C + B2B) с 50+ объектами в портфеле."
+            metrics={[
+              "💰 5M RUB/месяц revenue",
+              "📈 LTV ↑23% (через программу лояльности)",
+              "🔄 Повторные бронирования ↑8% → 12%",
+              "📊 Загрузка объектов: 75% → 91%",
+              "⏱️ Время ответа клиенту: 15 мин → 5 мин"
+            ]}
           />
           <ProjectCard
             id={1}
