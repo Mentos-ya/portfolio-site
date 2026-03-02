@@ -10,7 +10,7 @@ export default function ProjectCard({ id, isSelected, onClick }: ProjectCardProp
   return (
     <div
       onClick={onClick}
-      className={`border-2 border-gray-300 rounded-lg p-8 min-h-80 cursor-pointer transition-all duration-300 flex flex-col items-center justify-center ${
+      className={`border-2 border-gray-300 rounded-lg p-8 min-h-[640px] cursor-pointer transition-all duration-300 flex flex-col items-center justify-center ${
         isSelected ? 'border-blue-600 bg-blue-50 shadow-lg' : 'hover:border-blue-400 hover:shadow-md bg-white'
       }`}
     >
