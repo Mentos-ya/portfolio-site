@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "name": "Илья Якупов",
+    "descriptionPart1": "Product Manager с 5 годами опыта в PropTech и TravelTech. С нуля создал digital-сервис аренды в 3 городах: 50 объектов в Санкт-Петербурге, 5 млн/мес revenue, 31% маржинальность (vs ~25% по рынку).",
+    "descriptionPart2": "Развивал двустороннюю платформу: B2C сегмент для путешественников и B2B для собственников недвижимости с управлением «под ключ». Отвечал за автоматизацию процессов, кросс-функциональную команду разработки, масштабирование. Активно применяю LLM и AI-агентов для рабочих процессов."
+  },
+  "achievement": {
+    "title": "Ключевое достижение",
+    "project": "LetoPlace",
+    "description": "С нуля создал digital-сервис аренды в 3 городах: 50 объектов в Санкт-Петербурге, 5 млн/мес revenue, 31% маржинальность (vs ~25% по рынку)",
+    "metrics": [
+      {
+        "value": "5M",
+        "label": "Ежемесячный доход"
+      },
+      {
+        "value": "50+",
+        "label": "Объектов"
+      },
+      {
+        "value": "31%",
+        "label": "Маржа"
+      }
+    ],
+    "improvements": [
+      "Вырос LTV на 23% через программу лояльности и персонализированные предложения",
+      "Увеличился North Star Metric (повторные бронирования) с 8% до 12%"
+    ]
+  },
+  "services": [
+    {
+      "title": "Product Strategy",
+      "description": "Разработка product vision и roadmap через Discovery-процесс. Lean Canvas, GTM-стратегия, financial modeling, бизнес-кейсы для обоснования решений и получения ресурсов."
+    },
+    {
+      "title": "User Research & Analytics",
+      "description": "Customer development интервью, user research, построение Customer Journey Map. Когортный анализ, funnel analysis, channel performance analysis с визуализацией в дашбордах."
+    },
+    {
+      "title": "Data-Driven Growth",
+      "description": "Установка North Star Metric, оптимизация AARRR, A/B testing. Unit-экономика (LTV, CAC, ARPU, payback period). ROI анализ маркетинговых каналов и pricing strategy."
+    },
+    {
+      "title": "Team & Process Management",
+      "description": "Управление кросс-функциональной командой разработки, Agile-спринты, декомпозиция требований. Автоматизация процессов через Asana, Notion, amoCRM, Telegram-боты и AI-агенты."
+    }
+  ]
+}

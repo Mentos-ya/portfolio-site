@@ -1,0 +1,97 @@
+{
+  "pageTitle": "Навыки & Экспертиза",
+  "pageDescription": "Полный набор компетенций Product Manager с 5 годами опыта в PropTech и TravelTech",
+  "skillCategories": [
+    {
+      "name": "Product Strategy & Management",
+      "skills": [
+        "Product Strategy",
+        "Roadmap Planning",
+        "Product Vision & Discovery",
+        "Lean Canvas",
+        "Go-To-Market Strategy",
+        "Product/Market Fit",
+        "Hypothesis Testing",
+        "Lifecycle Mapping",
+        "Customer Journey Mapping"
+      ]
+    },
+    {
+      "name": "Analytics & Data",
+      "skills": [
+        "A/B Testing & Experimentation",
+        "Funnel Analysis",
+        "Cohort Analysis",
+        "Channel Performance Analysis",
+        "Amplitude",
+        "Google Analytics",
+        "User Research & Customer Development",
+        "Unit Economics (LTV, CAC, ARPU)",
+        "Financial Modeling & Pricing Strategy"
+      ]
+    },
+    {
+      "name": "Tools & Automation",
+      "skills": [
+        "Asana",
+        "Notion",
+        "API Integration & Webhooks",
+        "CRM Automation (amoCRM)",
+        "IoT Integration",
+        "Telegram Bots",
+        "Process Automation",
+        "AI Integration",
+        "Data Dashboarding"
+      ]
+    },
+    {
+      "name": "Leadership & Operations",
+      "skills": [
+        "Team Leadership",
+        "Remote Team Management",
+        "Agile / Scrum",
+        "Stakeholder Management",
+        "Cross-functional Collaboration",
+        "Kpi/OKR Setting",
+        "Backlog Prioritization",
+        "Delegation & Decision Making"
+      ]
+    }
+  ],
+  "industries": [
+    {
+      "name": "PropTech & Real Estate",
+      "description": "Digital-сервисы для аренды, property management системы, динамичное ценообразование, двусторонние платформы (B2C + B2B)"
+    },
+    {
+      "name": "TravelTech",
+      "description": "Booking платформы, travel distribution каналы, guest experience optimization"
+    },
+    {
+      "name": "Marketplace Платформы",
+      "description": "Двусторонние сети, баланс supply & demand, привлечение и удержание sellers, unit-экономика"
+    },
+    {
+      "name": "Growth & Scaling",
+      "description": "Разработка с 0-1, масштабирование до миллионов в revenue, оптимизация юнит-экономики"
+    }
+  ],
+  "methodologies": [
+    {
+      "name": "Data-Driven Decision Making",
+      "description": "Metrics-driven стратегия, A/B testing культура, когортный анализ, ROI оптимизация маркетинговых каналов"
+    },
+    {
+      "name": "Discovery & User Research",
+      "description": "Customer development интервью, User Research, Customer Journey Mapping, выявление pain points и growth opportunities"
+    },
+    {
+      "name": "Lean Startup & Experimentation",
+      "description": "Hypothesis-driven разработка, rapid experimentation, итеративное совершенствование, Lean Canvas"
+    },
+    {
+      "name": "Unit Economics & Growth",
+      "description": "LTV, CAC, ARPU, payback period анализ, AARRR оптимизация, pricing strategy, financial modeling"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import FloatingResumeButton from '@/components/FloatingResumeButton'
 
 export const metadata: Metadata = {
   title: 'Илья Якупов - Product Manager',
@@ -21,6 +22,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <FloatingResumeButton />
       </body>
     </html>
   )

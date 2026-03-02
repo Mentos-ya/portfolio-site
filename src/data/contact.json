@@ -1,0 +1,46 @@
+{
+  "pageTitle": "Связаться со мной",
+  "pageDescription": "Я всегда заинтересован в обсуждении новых идей продукта, возможностях сотрудничества или инсайтах по product management.",
+  "contactInfo": {
+    "email": {
+      "label": "Email",
+      "value": "iak.ilia.main@gmail.com",
+      "href": "mailto:iak.ilia.main@gmail.com"
+    },
+    "telegram": {
+      "label": "Telegram",
+      "value": "@iak_ilia",
+      "href": "https://t.me/iak_ilia",
+      "note": "Быстрая связь по срочным вопросам"
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "value": "linkedin.com/in/iakupov-ilia",
+      "href": "https://linkedin.com/in/iakupov-ilia",
+      "note": "Professional networking и обновления"
+    },
+    "location": {
+      "label": "Локация",
+      "value": "Москва, Россия"
+    }
+  },
+  "services": [
+    {
+      "title": "Product Strategy Консультации",
+      "description": "Рекомендации по product roadmaps, go-to-market стратегиям и marketplace dynamics"
+    },
+    {
+      "title": "PM Менторство",
+      "description": "Помощь product managers любого уровня в развитии своих навыков"
+    },
+    {
+      "title": "Product Сотрудничество",
+      "description": "Возможности партнерства в HotelTech, TravelTech или Marketplace платформах"
+    },
+    {
+      "title": "Выступления & Статьи",
+      "description": "Интересуюсь обсуждением тенденций product management и best practices"
+    }
+  ],
+  "responseTime": "Обычно отвечаю на сообщения в течение 24-48 часов. По срочным вопросам можно написать в Telegram."
+}

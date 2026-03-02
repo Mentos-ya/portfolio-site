@@ -1,9 +1,11 @@
+import projectsData from '@/data/projects.json'
+
 export default function Projects() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-20">
-      <h1 className="text-5xl font-bold mb-4">Проекты</h1>
+      <h1 className="text-5xl font-bold mb-4">{projectsData.pageTitle}</h1>
       <p className="text-xl text-gray-600 mb-12">
-        Избранные ключевые проекты, над которыми я работал как Product Manager
+        {projectsData.pageDescription}
       </p>
 
       <div className="space-y-12">
