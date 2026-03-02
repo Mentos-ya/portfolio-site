@@ -1,0 +1,28 @@
+import type { Metadata } from 'next'
+import './globals.css'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+
+export const metadata: Metadata = {
+  title: 'Илья Якупов - Product Manager',
+  description: 'Portfolio of Ilya Yakupov, Product Manager with 7+ years of experience in HotelTech and TravelTech',
+  keywords: 'Product Manager, PM, Product Strategy, User Research, Growth',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="ru">
+      <body className="bg-white">
+        <Header />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Footer />
+      </body>
+    </html>
+  )
+}
