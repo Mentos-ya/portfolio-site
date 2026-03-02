@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section className="max-w-4xl mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-2 gap-12 mb-12 items-start">
+        <div className="grid md:grid-cols-2 gap-12 mb-12 items-stretch">
           <div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
               Илья Якупов
@@ -24,17 +24,17 @@ export default function Home() {
               href="https://drive.google.com/file/d/1V5T1eL9UcOuFwWGZegu2HZKgeDoPdsxW/view"
               target="_blank"
               rel="noopener noreferrer"
-              className="group transition-all duration-300 hover:shadow-lg"
+              className="group transition-all duration-300 hover:shadow-lg w-full max-w-sm"
             >
-              <div className="bg-white border-2 border-gray-300 rounded-lg p-4 w-48 h-64 flex flex-col items-center justify-center group-hover:border-blue-600 transition-all duration-300">
+              <div className="bg-white border-2 border-gray-300 rounded-lg p-4 min-h-full flex flex-col items-center justify-center group-hover:border-blue-600 transition-all duration-300">
                 <div className="bg-gray-200 w-full h-full rounded flex flex-col items-center justify-center group-hover:bg-gray-100 transition-colors">
-                  <svg className="w-12 h-12 text-gray-600 mb-3 group-hover:text-blue-600 transition-colors" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-16 h-16 text-gray-600 mb-4 group-hover:text-blue-600 transition-colors" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M8 16.5a1 1 0 11-2 0 1 1 0 012 0zM15 7a2 2 0 11-4 0 2 2 0 014 0zM12.5 5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
                   </svg>
-                  <p className="text-center text-gray-700 font-semibold group-hover:text-blue-600 transition-colors">
+                  <p className="text-center text-gray-700 font-bold text-lg group-hover:text-blue-600 transition-colors">
                     Резюме
                   </p>
-                  <p className="text-xs text-gray-500 mt-1 group-hover:text-blue-500 transition-colors">
+                  <p className="text-sm text-gray-500 mt-2 group-hover:text-blue-500 transition-colors">
                     Нажмите для открытия
                   </p>
                 </div>
