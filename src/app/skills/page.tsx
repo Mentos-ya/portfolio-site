@@ -20,9 +20,9 @@ export default function Skills() {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-20">
-      <h1 className="text-5xl font-bold mb-4">Skills & Expertise</h1>
+      <h1 className="text-5xl font-bold mb-4">Навыки & Экспертиза</h1>
       <p className="text-xl text-gray-600 mb-12">
-        A comprehensive overview of my core competencies as a Product Manager
+        Всесторонний обзор моих основных компетенций как Product Manager
       </p>
 
       <div className="grid md:grid-cols-2 gap-12">
@@ -43,30 +43,30 @@ export default function Skills() {
 
       {/* Industries */}
       <div className="mt-16 pt-12 border-t border-gray-200">
-        <h2 className="text-2xl font-bold mb-6">Industries & Domains</h2>
+        <h2 className="text-2xl font-bold mb-6">Индустрии & Домены</h2>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="p-4 bg-gray-50 rounded">
             <p className="font-bold text-black mb-2">HotelTech</p>
             <p className="text-gray-600 text-sm">
-              Marketplace dynamics, property management systems, guest experience optimization
+              Marketplace dynamics, property management системы, оптимизация guest experience
             </p>
           </div>
           <div className="p-4 bg-gray-50 rounded">
             <p className="font-bold text-black mb-2">TravelTech</p>
             <p className="text-gray-600 text-sm">
-              Booking platforms, itinerary planning, travel distribution channels
+              Booking платформы, планирование маршрутов, travel distribution каналы
             </p>
           </div>
           <div className="p-4 bg-gray-50 rounded">
-            <p className="font-bold text-black mb-2">Marketplace Platforms</p>
+            <p className="font-bold text-black mb-2">Marketplace Платформы</p>
             <p className="text-gray-600 text-sm">
-              Two-sided networks, supply & demand balance, merchant acquisition
+              Two-sided сети, баланс supply & demand, привлечение merchants
             </p>
           </div>
           <div className="p-4 bg-gray-50 rounded">
             <p className="font-bold text-black mb-2">Growth & Scaling</p>
             <p className="text-gray-600 text-sm">
-              From 0-1 product development to multi-million revenue operations
+              От разработки 0-1 до операций с выручкой в миллионы
             </p>
           </div>
         </div>
@@ -74,34 +74,34 @@ export default function Skills() {
 
       {/* Methodologies */}
       <div className="mt-16 pt-12 border-t border-gray-200">
-        <h2 className="text-2xl font-bold mb-6">Methodologies & Frameworks</h2>
+        <h2 className="text-2xl font-bold mb-6">Методологии & Frameworks</h2>
         <div className="space-y-3">
           <div className="flex items-start">
             <span className="text-black mr-3 mt-1">✓</span>
             <div>
               <p className="font-bold text-black">Lean Startup</p>
-              <p className="text-gray-600 text-sm">Hypothesis-driven product development and rapid experimentation</p>
+              <p className="text-gray-600 text-sm">Hypothesis-driven разработка продукта и rapid experimentation</p>
             </div>
           </div>
           <div className="flex items-start">
             <span className="text-black mr-3 mt-1">✓</span>
             <div>
               <p className="font-bold text-black">Jobs to be Done (JTBD)</p>
-              <p className="text-gray-600 text-sm">Understanding customer motivations and pain points</p>
+              <p className="text-gray-600 text-sm">Понимание customer motivations и pain points</p>
             </div>
           </div>
           <div className="flex items-start">
             <span className="text-black mr-3 mt-1">✓</span>
             <div>
               <p className="font-bold text-black">User-Centered Design</p>
-              <p className="text-gray-600 text-sm">Continuous user research and iterative product refinement</p>
+              <p className="text-gray-600 text-sm">Continuous user research и iterative совершенствование продукта</p>
             </div>
           </div>
           <div className="flex items-start">
             <span className="text-black mr-3 mt-1">✓</span>
             <div>
               <p className="font-bold text-black">Data-Driven Decision Making</p>
-              <p className="text-gray-600 text-sm">Metrics-driven strategy and A/B testing culture</p>
+              <p className="text-gray-600 text-sm">Metrics-driven стратегия и A/B testing культура</p>
             </div>
           </div>
         </div>

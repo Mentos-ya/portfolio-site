@@ -11,22 +11,22 @@ export default function Header() {
         <ul className="flex gap-8">
           <li>
             <Link href="/" className="text-gray-700 hover:text-black transition">
-              About
+              Обо мне
             </Link>
           </li>
           <li>
             <Link href="/projects" className="text-gray-700 hover:text-black transition">
-              Projects
+              Проекты
             </Link>
           </li>
           <li>
             <Link href="/skills" className="text-gray-700 hover:text-black transition">
-              Skills
+              Навыки
             </Link>
           </li>
           <li>
             <Link href="/contact" className="text-gray-700 hover:text-black transition">
-              Contact
+              Контакты
             </Link>
           </li>
         </ul>
