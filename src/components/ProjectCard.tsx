@@ -76,10 +76,14 @@ export default function ProjectCard({
         </div>
       )}
 
-      {/* Video Thumbnail */}
+      {/* Video Thumbnail — прижат к низу карточки, чтобы превью были на одном уровне */}
       {videoPoster && (
-        <div className="mt-4 rounded-lg overflow-hidden relative">
-          <img src={videoPoster} alt="Video preview" className="w-full rounded-lg" />
+        <div className="mt-auto pt-4 rounded-lg overflow-hidden relative aspect-video w-full bg-gray-100">
+          <img
+            src={videoPoster}
+            alt="Video preview"
+            className="absolute inset-0 w-full h-full object-cover rounded-lg"
+          />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center backdrop-blur-sm">
               <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">

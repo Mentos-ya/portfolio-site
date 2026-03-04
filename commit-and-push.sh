@@ -14,13 +14,21 @@ fi
 echo "Fetch с origin..."
 git fetch origin --prune 2>/dev/null || true
 
-# Переключиться на main (локальную или от origin)
+# Показать отличия от origin/main (если есть)
 if git show-ref --verify refs/remotes/origin/main &>/dev/null; then
-  echo "Переключение на origin/main..."
-  git checkout -B main origin/main 2>/dev/null || git checkout main
-else
-  echo "Ветка main на origin не найдена, используем текущую..."
-  git checkout -B main 2>/dev/null || true
+  echo "--- Изменённые файлы в сравнении с origin/main ---"
+  git diff --stat origin/main -- . 2>/dev/null || true
+  git diff --stat --cached origin/main -- . 2>/dev/null || true
+  echo "---"
+fi
+
+# Переключиться на main (синхронно с origin), не затирая локальные файлы
+HAS_LOCAL_COMMITS=$(git rev-parse HEAD 2>/dev/null || true)
+if [ -n "$HAS_LOCAL_COMMITS" ] && git show-ref --verify refs/remotes/origin/main &>/dev/null; then
+  git checkout -B main origin/main
+fi
+if ! git rev-parse main &>/dev/null; then
+  git checkout -b main 2>/dev/null || true
 fi
 
 echo "Добавление всех изменений..."
@@ -31,18 +39,13 @@ if git diff --staged --quiet 2>/dev/null; then
   exit 0
 fi
 
-COMMIT_MSG="Обновления портфолио: главная, контакты, подвал, навыки
+COMMIT_MSG="Пасхалка сундук, образование, стек Понятно, навигация с проектов
 
-- Hero: жирный Product Manager, превью резюме по высоте и справа, оверлей «Открыть резюме →»
-- Навигация: Портфолио ведёт на главную, убраны «Обо мне» и «Редактировать»
-- Опыт: карточка LetoPlace без списка достижений, пропорциональная высота; карточка Понятно (Indie Maker, лого)
-- Текст: «Проекты, которые я вёл…», «(vs ~25% по рынку)» без переноса, проверка текста
-- Блок Навыки после Опыта (Tech Stack & Tools, теги)
-- Контакты: только Telegram, LinkedIn, Email; убраны подписи и Локация
-- Чем я могу помочь: 2 блока (Product Manager в команду, Нетворкинг), выравнивание по уровню и по низу
-- Убраны: время ответа, PM Менторство, подписи под контактами
-- Подвал: только копирайт, чёрный фон
-- Footer: bg-black"
+- Пасхалка: блок «Добавить кейс» под кейсами, модалка с картинкой/гифкой сундука (public/images/chest-open.png или .gif), fallback на эмодзи при ошибке загрузки
+- Образование: блок над навыками — GoPractice (ссылка на сертификат, тултип «Открыть сертификат»), ТГУ Высшая школа бизнеса, ТГАСУ Архитектура
+- Понятно: дата Февраль 2026, раздел «Стек проекта» на всю ширину, риски под приоритизацией, выравнивание отступов
+- Проекты: левая полоса BackToPortfolioStrip (ссылка на /#projects), layout для страниц проектов
+- public/images: README-chest.txt с подсказкой по файлу сундука"
 
 git commit -m "$COMMIT_MSG"
 echo "Пуш в origin main..."

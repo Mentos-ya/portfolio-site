@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "copy:ponyatno-poster": "node scripts/copy-ponyatno-poster.js",
     "dev": "next dev",
     "dev:3001": "next dev -p 3001",
     "dev:lan": "next dev -H 0.0.0.0",

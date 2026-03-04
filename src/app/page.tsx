@@ -2,6 +2,7 @@ import Image from 'next/image'
 import homeData from '@/data/home.json'
 import projectsData from '@/data/projects.json'
 import ProjectCard from '@/components/ProjectCard'
+import AddCaseBlock from '@/components/AddCaseBlock'
 
 export default function Home() {
 
@@ -100,11 +101,43 @@ export default function Home() {
           />
           <ProjectCard
             id={1}
+            href="/projects/ponyatno"
             title="Понятно"
-            role="Indie Maker | Январь 2026 — По наст. время"
+            role="Indie Maker | Февраль 2026 — По наст. время"
             logo="/logos/ponyatno-logo.png"
+            description="Запустил Telegram Mini App для сканирования меню иностранных ресторанов — с переводом текста, калорийностью, составом и ценами в одном экране. Весь продукт построен через вайбкодинг (AI-инструменты без классической разработки). Стадия MVP, приложение уже приносит первый revenue."
+            videoPoster="/videos/ponyatno-poster.png?v=2"
           />
         </div>
+
+        <AddCaseBlock />
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="max-w-4xl mx-auto px-6 py-20">
+        <h1 className="text-5xl font-bold mb-4">Образование</h1>
+        <p className="text-xl text-gray-600 mb-8">
+          Учебные заведения и курсы
+        </p>
+        <ul className="space-y-4 text-gray-700">
+          <li className="flex gap-3 items-start">
+            <span className="text-gray-400 shrink-0">•</span>
+            <span><a href="https://gopractice.ru/course/pm/certificate/rryphyzv" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-900 underline decoration-gray-400 hover:decoration-gray-900 relative group/link">
+                GoPractice
+                <span className="absolute left-0 top-full mt-1 px-2.5 py-1.5 bg-gray-800 text-white text-sm rounded-md opacity-0 pointer-events-none transition-opacity duration-150 group-hover/link:opacity-100 whitespace-nowrap z-10">
+                  Открыть сертификат
+                </span>
+              </a> — Симулятор управления продуктом на основе данных</span>
+          </li>
+          <li className="flex gap-3 items-start">
+            <span className="text-gray-400 shrink-0">•</span>
+            <span><strong>Томский государственный университет</strong> — Высшая школа бизнеса, 2015–2018</span>
+          </li>
+          <li className="flex gap-3 items-start">
+            <span className="text-gray-400 shrink-0">•</span>
+            <span><strong>Томский государственный архитектурно-строительный университет</strong> — Архитектура, 2011–2015</span>
+          </li>
+        </ul>
       </section>
 
       {/* Skills Section */}
