@@ -17,6 +17,8 @@ interface ProjectCardProps {
   logo?: string
   video?: string
   videoPoster?: string
+  /** Вертикальная градиентная полоска справа (розовый → фиолетовый → синий) */
+  gradientStripe?: boolean
 }
 
 export default function ProjectCard({
@@ -33,6 +35,7 @@ export default function ProjectCard({
   logo,
   video: _video,
   videoPoster,
+  gradientStripe,
 }: ProjectCardProps) {
   const hasData = title || role || metrics.length > 0
 
@@ -110,14 +113,23 @@ export default function ProjectCard({
     </>
   )
 
-  const cardClassName = `group relative border-2 border-gray-300 rounded-lg p-6 cursor-pointer transition-all duration-300 flex flex-col ${
+  const cardClassName = `group relative border-2 border-gray-300 rounded-lg p-6 cursor-pointer transition-all duration-300 flex flex-col overflow-hidden ${
     isSelected ? 'border-blue-600 bg-blue-50 shadow-lg' : 'hover:border-blue-400 hover:shadow-md bg-white'
   }`
+
+  const stripe = gradientStripe ? (
+    <div
+      className="absolute right-0 top-0 bottom-0 w-2 rounded-r-lg shrink-0"
+      style={{ background: 'linear-gradient(to bottom, #ec4899, #a855f7, #6366f1)' }}
+      aria-hidden
+    />
+  ) : null
 
   // Если есть href — рендерим как Link
   if (href) {
     return (
       <Link href={href} className={cardClassName}>
+        {stripe}
         {cardContent}
       </Link>
     )
@@ -126,6 +138,7 @@ export default function ProjectCard({
   // Иначе — обычный div с onClick
   return (
     <div onClick={onClick} className={cardClassName}>
+      {stripe}
       {cardContent}
     </div>
   )

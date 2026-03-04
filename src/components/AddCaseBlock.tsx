@@ -1,14 +1,17 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 
 export default function AddCaseBlock() {
   const [modalOpen, setModalOpen] = useState(false)
   const [chestImgError, setChestImgError] = useState(false)
+  const [chestKey, setChestKey] = useState(0)
 
   useEffect(() => {
-    if (modalOpen) setChestImgError(false)
+    if (modalOpen) {
+      setChestImgError(false)
+      setChestKey((k) => k + 1)
+    }
   }, [modalOpen])
 
   return (
@@ -18,7 +21,31 @@ export default function AddCaseBlock() {
         onClick={() => setModalOpen(true)}
         className="group relative w-full border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center py-8 mt-6 mb-6 bg-white transition-[border-color,box-shadow] duration-300 hover:border-sky-400 hover:ring-1 hover:ring-sky-400/50 cursor-pointer text-left"
       >
-        <div className="absolute inset-0 bg-black/60 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" aria-hidden />
+        {/* При наведении: тёмный фон как у карточек + одна диагональная полоска с градиентом */}
+        <div
+          className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none bg-black/60"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 rounded-lg overflow-hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+          aria-hidden
+        >
+          {Array.from({ length: 25 }, (_, i) => (i - 12) * 60).map((offset) => (
+            <div
+              key={offset}
+              style={{
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                width: '200%',
+                height: '8px',
+                transform: `translate(calc(-50% + ${offset}px), -50%) rotate(45deg)`,
+                background: 'linear-gradient(to right, #ec4899, #a855f7, #6366f1)',
+                borderRadius: '4px',
+              }}
+            />
+          ))}
+        </div>
         <span className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-400 text-gray-500 group-hover:text-white group-hover:border-white/80 transition-colors duration-300 text-2xl font-light min-w-[3rem] min-h-[3rem]" style={{ lineHeight: 1 }}>
           <span className="inline-flex items-center justify-center w-full h-full" style={{ paddingBottom: '0.08em' }}>+</span>
         </span>
@@ -26,49 +53,27 @@ export default function AddCaseBlock() {
 
       {modalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" aria-modal="true" role="dialog">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setModalOpen(false)} aria-hidden />
-          <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full p-6 border border-gray-200 text-center">
-            {/* Анимация: положи гифку/картинку в public/images/chest-open.gif или chest-open.png */}
-            <div className="flex justify-center mb-5 min-h-[8rem] items-center">
+          <div className="absolute inset-0 z-0 bg-black/85" onClick={() => setModalOpen(false)} aria-hidden />
+          <div className="relative z-10 flex flex-col items-center text-center max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-center mb-0 min-h-[24rem] items-center">
               {chestImgError ? (
                 <span className="text-5xl" aria-hidden>📦</span>
               ) : (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
-                  src="/images/chest-open.png"
+                  key={chestKey}
+                  src={`/images/chest-open.gif?t=${chestKey}`}
                   alt="Сундук открывается"
-                  className="w-32 h-auto object-contain"
-                  onError={(e) => {
-                    const el = e.currentTarget
-                    if (el.src.endsWith('.png')) {
-                      el.src = '/images/chest-open.gif'
-                    } else {
-                      setChestImgError(true)
-                    }
-                  }}
+                  className="w-[36rem] max-w-full h-auto object-contain"
+                  onError={() => setChestImgError(true)}
                 />
               )}
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Ура, это матч!</h3>
-            <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-              Илья будет полезен вам для работы — свяжитесь с ним и обсудите ваше предложение.
+            <p className="text-2xl font-normal text-white leading-snug text-center -mt-32">
+              Ура, это мэтч! Напишите мне в Telegram,<br />
+              готов подробно обсудить детали<br />
+              вашего предложения о работе.
             </p>
-            <div className="flex gap-3">
-              <Link
-                href="/#contact"
-                onClick={() => setModalOpen(false)}
-                className="flex-1 py-2.5 px-4 bg-gray-800 text-white text-sm font-medium rounded hover:bg-gray-700 transition text-center"
-              >
-                Связаться
-              </Link>
-              <button
-                type="button"
-                onClick={() => setModalOpen(false)}
-                className="py-2.5 px-4 border border-gray-300 text-gray-600 text-sm font-medium rounded hover:bg-gray-50 transition"
-              >
-                Закрыть
-              </button>
-            </div>
           </div>
         </div>
       )}

@@ -51,3 +51,11 @@ body {
   animation: vibrate 3s infinite, glow 4s infinite;
 }
 
+/* Градиент текста (розовый → фиолетовый → синий) */
+.text-gradient-hero {
+  background: linear-gradient(90deg, #ec4899, #a855f7, #6366f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+

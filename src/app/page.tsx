@@ -9,19 +9,32 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section id="home" className="max-w-4xl mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-2 gap-12 mb-12 items-stretch">
+      <section id="home" className="max-w-4xl mx-auto px-6 py-14">
+        <div className="grid md:grid-cols-2 gap-10 mb-8 items-stretch">
           <div className="flex flex-col">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
+            <h1 className="text-5xl md:text-6xl font-bold mb-5 text-black">
               {homeData.hero.name}
             </h1>
-            <p className="text-lg text-gray-500 mb-4">
+            <p className="text-lg text-gray-500 mb-3">
               <strong className="font-semibold text-gray-700">Product Manager</strong>
               {homeData.hero.descriptionPart1.slice('Product Manager'.length)}
             </p>
-            <p className="text-lg text-gray-500 mb-8">
-              {homeData.hero.descriptionPart2}
-            </p>
+            {(() => {
+              const text = homeData.hero.descriptionPart2
+              const gradientStart = 'Активно применяю'
+              const i = text.indexOf(gradientStart)
+              if (i === -1) return <p className="text-lg text-gray-500 mb-6">{text}</p>
+              return (
+                <>
+                  <p className="text-lg text-gray-500 mb-3">
+                    {text.slice(0, i)}
+                  </p>
+                  <p className="text-lg text-gray-500 mb-6">
+                    <span className="text-gradient-hero">{text.slice(i)}</span>
+                  </p>
+                </>
+              )
+            })()}
 
             <div className="flex gap-4 mt-auto">
               <a
@@ -39,13 +52,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="min-h-0 flex items-center justify-end md:h-full">
+          <div className="min-h-0 flex items-start justify-end md:h-full">
             <a
               href="https://drive.google.com/file/d/1V5T1eL9UcOuFwWGZegu2HZKgeDoPdsxW/view"
               target="_blank"
               rel="noopener noreferrer"
               title="Открыть резюме"
-              className="group transition-all duration-300 hover:shadow-lg relative h-full w-full max-w-[360px] flex items-center justify-center ml-auto"
+              className="group transition-all duration-300 hover:shadow-lg relative h-full w-full max-w-[360px] flex items-center justify-center ml-auto origin-top mt-4"
+              style={{ transform: 'scale(0.97)' }}
             >
               <div className="relative w-full h-full min-h-[280px] max-h-full">
                 <Image
@@ -80,9 +94,9 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="max-w-4xl mx-auto px-6 py-20">
-        <h1 className="text-5xl font-bold mb-4">{projectsData.pageTitle}</h1>
-        <p className="text-xl text-gray-600 mb-12">
+      <section id="projects" className="max-w-4xl mx-auto px-6 py-14">
+        <h1 className="text-5xl font-bold mb-3">{projectsData.pageTitle}</h1>
+        <p className="text-xl text-gray-600 mb-8">
           {projectsData.pageDescription}
         </p>
 
@@ -107,6 +121,7 @@ export default function Home() {
             logo="/logos/ponyatno-logo.png"
             description="Запустил Telegram Mini App для сканирования меню иностранных ресторанов — с переводом текста, калорийностью, составом и ценами в одном экране. Весь продукт построен через вайбкодинг (AI-инструменты без классической разработки). Стадия MVP, приложение уже приносит первый revenue."
             videoPoster="/videos/ponyatno-poster.png?v=2"
+            gradientStripe
           />
         </div>
 
@@ -114,9 +129,9 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="max-w-4xl mx-auto px-6 py-20">
-        <h1 className="text-5xl font-bold mb-4">Образование</h1>
-        <p className="text-xl text-gray-600 mb-8">
+      <section id="education" className="max-w-4xl mx-auto px-6 py-14">
+        <h1 className="text-5xl font-bold mb-3">Образование</h1>
+        <p className="text-xl text-gray-600 mb-6">
           Учебные заведения и курсы
         </p>
         <ul className="space-y-4 text-gray-700">
@@ -141,13 +156,15 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="max-w-4xl mx-auto px-6 py-20">
-        <h1 className="text-5xl font-bold mb-4">Навыки</h1>
-        <p className="text-xl text-gray-600 mb-12">
+      <section id="skills" className="max-w-4xl mx-auto px-6 py-14">
+        <h1 className="text-5xl font-bold mb-3">Навыки</h1>
+        <p className="text-xl text-gray-600 mb-8">
           Tech Stack & Tools
         </p>
         <div className="flex flex-wrap gap-3">
-          {[
+          {(() => {
+            const gradientSkills = new Set(['Vibe Coding', 'Cursor', 'Claude', 'Prompt Engineering', 'No-code / Low-code'])
+            return [
             'Strategy',
             'Roadmap',
             'Lifecycle',
@@ -180,25 +197,38 @@ export default function Home() {
             'Pricing Strategy',
             'Unit Economics',
             'B2C/B2B',
-          ].map((skill) => (
-            <span
-              key={skill}
-              className="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-800 border border-gray-200"
-            >
-              {skill}
-            </span>
-          ))}
+            'Vibe Coding',
+            'Cursor',
+            'Claude',
+            'Prompt Engineering',
+            'No-code / Low-code',
+          ].map((skill) => {
+            const useGradient = gradientSkills.has(skill)
+            return (
+              <span
+                key={skill}
+                className="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 border border-gray-200"
+              >
+                {useGradient ? (
+                  <span className="text-gradient-hero">{skill}</span>
+                ) : (
+                  <span className="text-gray-800">{skill}</span>
+                )}
+              </span>
+            )
+          })
+          })()}
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="max-w-4xl mx-auto px-6 py-20">
-        <h1 className="text-5xl font-bold mb-4">Связаться со мной</h1>
-        <p className="text-xl text-gray-600 mb-12">
+      <section id="contact" className="max-w-4xl mx-auto px-6 py-14">
+        <h1 className="text-5xl font-bold mb-3">Связаться со мной</h1>
+        <p className="text-xl text-gray-600 mb-8">
           Я всегда заинтересован в обсуждении новых идей продукта, возможностях сотрудничества или инсайтах по product management.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-10">
           {/* Contact Options */}
           <div>
             <h2 className="text-2xl font-bold mb-6">Контактная информация</h2>
