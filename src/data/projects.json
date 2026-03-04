@@ -1,14 +1,14 @@
 {
   "pageTitle": "Опыт",
-  "pageDescription": "Ключевые проекты, которые я вел как Product Manager и Growth PM",
+  "pageDescription": "Проекты, которые я вел как Product Manager и Growth PM",
   "projects": [
     {
       "name": "LetoPlace",
       "period": "Growth Product Manager / Product Manager | 2020 – Ноябрь 2025",
-      "description": "Digital-сервис для аренды имущества. С нуля создал двустороннюю платформу (B2C для путешественников и B2B для собственников). В портфеле 50+ объектов в Санкт-Петербурге, 5M RUB revenue в месяц, 31% маржинальность (выше среднерыночного показателя 25%).",
+      "description": "С нуля создал digital-сервис аренды в 3 городах. В портфеле 50+ объектов в Санкт-Петербурге. Развивал двустороннюю платформу: B2C сегмент для путешественников и B2B для собственников недвижимости с управлением «под ключ». Отвечал за автоматизацию процессов, кросс-функциональную команду разработки, масштабирование.",
       "metrics": [
         {
-          "label": "ежемесячный доход",
+          "label": "ежемесячный revenue",
           "value": "5M RUB"
         },
         {
@@ -16,7 +16,7 @@
           "value": "50+"
         },
         {
-          "label": "маржа",
+          "label": "маржинальность",
           "value": "31%"
         },
         {
@@ -25,15 +25,15 @@
         }
       ],
       "achievements": [
-        "Вырастил LTV на 23% через программу лояльности, персонализированные предложения и контроль качества",
+        "Увеличил портфель объектов в 3 раза через выстраивание sales-команды и реферальной программы",
+        "Достиг 80% retention B2B-клиентов (vs 50% по рынку) через прозрачную аналитику доходности",
+        "Снизил CAC B2С клиентов на 15% и увеличил трафик сайта на 30% через редизайн и booking-систему",
         "Увеличил North Star Metric (повторные бронирования) с 8% до 12%",
+        "Вырастил LTV в B2С на 23% через программу лояльности и контроль качества",
         "Поднял загрузку объектов с 75% до 91% за счет динамичного ценообразования",
         "Оптимизировал юнит-экономику B2B клиентов: +30% дохода к долгосрочной аренде",
-        "Уменьшил расходы на персонал на 15% через автоматизацию с электронными замками и amoCRM",
         "Сократил время ответа клиенту с 15 до 5 минут через автоматизацию и Telegram-бота",
-        "Снизил CAC на 15% и увеличил трафик сайта на 30% через редизайн и интеграцию booking-системы",
-        "Достиг 80% retention B2B-клиентов (vs 50% по рынку) через прозрачную аналитику доходности",
-        "Увеличил портфель объектов в 3 раза через выстраивание sales-команды и реферальной программы"
+        "Уменьшил расходы на персонал на 15% через автоматизацию с электронными замками и amoCRM"
       ],
       "responsibilities": [
         "Разработка product vision и roadmap через Discovery-процесс и конкурентный анализ",
@@ -48,16 +48,38 @@
         "Автоматизация процессов через Asana, Notion, amoCRM, API интеграции и Telegram-боты"
       ],
       "tools": [
-        "Product Strategy & Lean Canvas",
-        "User Research & Customer Development",
-        "A/B Testing & Experimentation",
-        "Amplitude & Google Analytics",
-        "Asana & Notion",
-        "amoCRM & API Integration",
-        "Telegram Bot & Webhooks",
+        "Strategy",
+        "Roadmap",
+        "Lifecycle",
+        "Customer Lifecycle Mapping",
+        "Lean Canvas",
+        "Go-To-Market",
+        "Hypothesis Testing",
+        "User Research",
+        "Product/Market Fit",
+        "Amplitude",
+        "Asana",
+        "Notion",
+        "Google Analytics",
+        "Funnel Analysis",
+        "Cohort Analysis",
+        "Channel Performance Analysis",
+        "API Integration",
+        "Webhooks",
+        "CRM Automation (amoCRM)",
         "IoT Integration",
-        "Funnel & Cohort Analysis",
-        "Financial Modeling"
+        "Telegram Bots",
+        "AI Integration",
+        "Process Automation",
+        "Team Leadership",
+        "Remote Team Management",
+        "Stakeholder Management",
+        "Data-Driven Decisions",
+        "KPI/OKR",
+        "Financial Model",
+        "Pricing Strategy",
+        "Unit Economics",
+        "B2C/B2B"
       ]
     }
   ],

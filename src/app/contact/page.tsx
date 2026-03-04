@@ -13,16 +13,6 @@ export default function Contact() {
 
           <div className="space-y-6">
             <div>
-              <h3 className="font-bold text-lg mb-2">Email</h3>
-              <a
-                href="mailto:iak.ilia.main@gmail.com"
-                className="text-blue-600 hover:text-blue-800 text-lg"
-              >
-                iak.ilia.main@gmail.com
-              </a>
-            </div>
-
-            <div>
               <h3 className="font-bold text-lg mb-2">Telegram</h3>
               <a
                 href="https://t.me/iak_ilia"
@@ -30,9 +20,8 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 text-lg"
               >
-                @iak_ilia
+                https://t.me/iak_ilia
               </a>
-              <p className="text-gray-600 text-sm mt-1">Быстрая связь по срочным вопросам</p>
             </div>
 
             <div>
@@ -45,12 +34,16 @@ export default function Contact() {
               >
                 linkedin.com/in/iakupov-ilia
               </a>
-              <p className="text-gray-600 text-sm mt-1">Professional networking и обновления</p>
             </div>
 
             <div>
-              <h3 className="font-bold text-lg mb-2">Локация</h3>
-              <p className="text-gray-700 text-lg">Москва, Россия</p>
+              <h3 className="font-bold text-lg mb-2">Email</h3>
+              <a
+                href="mailto:iak.ilia.main@gmail.com"
+                className="text-blue-600 hover:text-blue-800 text-lg"
+              >
+                iak.ilia.main@gmail.com
+              </a>
             </div>
           </div>
         </div>
@@ -58,33 +51,18 @@ export default function Contact() {
         {/* Additional Info */}
         <div>
           <h2 className="text-2xl font-bold mb-6">Чем я могу помочь</h2>
-
           <div className="space-y-4">
             <div className="p-4 bg-gray-50 rounded">
-              <h3 className="font-bold mb-2">Product Strategy Консультации</h3>
+              <h3 className="font-bold mb-2">Product Manager в команду</h3>
               <p className="text-gray-600 text-sm">
-                Рекомендации по product roadmaps, go-to-market стратегиям и marketplace dynamics
+                Ищу позицию, где смогу применить свой опыт работы — от discovery до масштабирования
               </p>
             </div>
 
             <div className="p-4 bg-gray-50 rounded">
-              <h3 className="font-bold mb-2">PM Менторство</h3>
+              <h3 className="font-bold mb-2">Нетворкинг</h3>
               <p className="text-gray-600 text-sm">
-                Помощь product managers любого уровня в развитии своих навыков
-              </p>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded">
-              <h3 className="font-bold mb-2">Product Сотрудничество</h3>
-              <p className="text-gray-600 text-sm">
-                Возможности партнерства в HotelTech, TravelTech или Marketplace платформах
-              </p>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded">
-              <h3 className="font-bold mb-2">Выступления & Статьи</h3>
-              <p className="text-gray-600 text-sm">
-                Интересуюсь обсуждением тенденций product management и best practices
+                Открыт к общению. Пишите — обсудим идеи, обменяемся опытом или просто познакомимся
               </p>
             </div>
           </div>

@@ -26,9 +26,9 @@ export default function Projects() {
             <div>
               <h3 className="font-bold mb-2">Ключевые метрики</h3>
               <ul className="text-gray-700 space-y-1">
-                <li>• <strong>5M RUB</strong> ежемесячный доход</li>
+                <li>• <strong>5M RUB</strong> ежемесячный revenue</li>
                 <li>• <strong>50+</strong> активных объектов</li>
-                <li>• <strong>31%</strong> маржа</li>
+                <li>• <strong>31%</strong> маржинальность</li>
                 <li>• <strong>+23%</strong> рост LTV</li>
               </ul>
             </div>
