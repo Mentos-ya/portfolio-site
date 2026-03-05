@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,6 +12,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  html {
+    overflow-x: visible;
+  }
 }
 
 body {
@@ -49,6 +58,11 @@ body {
 
 .floating-resume-btn {
   animation: vibrate 3s infinite, glow 4s infinite;
+}
+
+/* Пиксельный олдскульный шрифт для пасхалки */
+.font-pixel {
+  font-family: 'Press Start 2P', cursive;
 }
 
 /* Градиент текста (розовый → фиолетовый → синий) */

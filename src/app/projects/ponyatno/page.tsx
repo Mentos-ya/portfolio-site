@@ -26,9 +26,9 @@ export default function PonyatnoPage() {
           <h1 className="text-4xl md:text-5xl font-bold">Понятно</h1>
         </div>
       </div>
-      <div className="flex flex-nowrap items-center justify-between gap-4 w-full mb-10 text-lg text-gray-500">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-0 w-full mb-10 text-lg text-gray-500">
         <span className="shrink-0">Indie Maker</span>
-        <span className="shrink-0">Февраль 2026 — По наст. время</span>
+        <span className="shrink-0 w-full md:w-auto basis-full md:basis-auto">Февраль 2026 — По наст. время</span>
       </div>
 
       {/* Описание из превью карточки */}
@@ -88,8 +88,8 @@ export default function PonyatnoPage() {
       </div>
         </div>
 
-        {/* Превью видео */}
-        <div className="group relative w-full max-w-[294px] mx-auto md:ml-auto md:mr-0 aspect-[9/16] min-h-[336px] rounded-lg border border-gray-200 shadow-md overflow-hidden bg-black order-first md:order-none">
+        {/* Превью видео — на мобильной на всю ширину и по центру */}
+        <div className="group relative w-full max-w-full md:max-w-[294px] mx-auto md:ml-auto md:mr-0 aspect-[9/16] min-h-[336px] rounded-lg border border-gray-200 shadow-md overflow-hidden bg-black order-first md:order-none">
             <video
               controls
               className="w-full h-full object-contain"

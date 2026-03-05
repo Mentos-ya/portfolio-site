@@ -8,7 +8,7 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
   const [current, setCurrent] = useState(0)
   const [imgError, setImgError] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
-  const maxWidth = maxWidthProp ?? 265
+  const mdMaxWidthClass = maxWidthProp === 300 ? 'md:max-w-[300px]' : 'md:max-w-[265px]'
 
   useEffect(() => {
     if (!modalOpen) return
@@ -25,7 +25,7 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
   if (!slides.length) return null
 
   return (
-    <div style={{ width: '100%', maxWidth, flexShrink: 0, display: 'flex', flexDirection: 'column' }}>
+    <div className={`w-full max-w-full ${mdMaxWidthClass} flex flex-col shrink-0 mx-auto md:mx-0`}>
       <div style={{
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12,

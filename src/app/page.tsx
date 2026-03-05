@@ -12,10 +12,22 @@ export default function Home() {
       <section id="home" className="max-w-4xl mx-auto px-6 py-14">
         <div className="grid md:grid-cols-2 gap-10 mb-8 items-stretch">
           <div className="flex flex-col">
-            <h1 className="text-5xl md:text-6xl font-bold mb-5 text-black">
-              {homeData.hero.name}
-            </h1>
-            <p className="text-lg text-gray-500 mb-3">
+            <div className="overflow-hidden">
+              {/* Фото слева в абзаце только на мобильной, текст обтекает */}
+              <div className="float-left mr-5 mb-2 w-24 h-24 shrink-0 block md:hidden rounded-full border-[4px] border-blue-600 overflow-hidden shadow-lg bg-white">
+                <Image
+                  src="/images/profile.jpg"
+                  alt=""
+                  width={96}
+                  height={96}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-5 text-black">
+                {homeData.hero.name}
+              </h1>
+              <p className="text-lg text-gray-500 mb-3">
               <strong className="font-semibold text-gray-700">Product Manager</strong>
               {homeData.hero.descriptionPart1.slice('Product Manager'.length)}
             </p>
@@ -35,19 +47,20 @@ export default function Home() {
                 </>
               )
             })()}
+            </div>
 
-            <div className="flex gap-4 mt-auto">
+            <div className="flex gap-4 mt-auto w-full">
               <a
                 href="#projects"
-                className="px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition"
+                className="flex-1 min-w-0 px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition text-center"
               >
-                Смотреть проекты
+                Смотреть <br className="sm:hidden" />проекты
               </a>
               <a
                 href="#contact"
-                className="px-6 py-3 border border-black text-black rounded hover:bg-black hover:text-white transition"
+                className="flex-1 min-w-0 px-6 py-3 border border-black text-black rounded hover:bg-black hover:text-white transition text-center"
               >
-                Связаться со мной
+                Связаться <br className="sm:hidden" />со мной
               </a>
             </div>
           </div>
@@ -76,8 +89,8 @@ export default function Home() {
                     Открыть резюме →
                   </span>
                 </div>
-                {/* Profile Photo in Top-Right Corner */}
-                <div className="absolute top-0 right-0 w-[105px] h-[105px] rounded-full border-[5px] border-blue-600 overflow-hidden shadow-lg bg-white transform -translate-y-1/2 translate-x-1/2">
+                {/* Profile Photo in Top-Right Corner — только на десктопе; на мобильной фото в блоке текста */}
+                <div className="hidden md:block absolute top-0 right-0 w-[105px] h-[105px] rounded-full border-[5px] border-blue-600 overflow-hidden shadow-lg bg-white transform -translate-y-1/2 translate-x-1/2">
                   <Image
                     src="/images/profile.jpg"
                     alt="Profile"
@@ -155,8 +168,8 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="max-w-4xl mx-auto px-6 py-14">
+      {/* Skills Section — скрыт на мобильной */}
+      <section id="skills" className="max-w-4xl mx-auto px-6 py-14 hidden md:block">
         <h1 className="text-5xl font-bold mb-3">Навыки</h1>
         <p className="text-xl text-gray-600 mb-8">
           Tech Stack & Tools

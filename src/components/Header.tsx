@@ -6,19 +6,19 @@ export default function Header() {
           Портфолио
         </a>
 
-        <ul className="flex gap-8">
+        <ul className="hidden md:flex gap-8">
           <li>
-            <a href="#projects" className="text-gray-700 hover:text-black transition">
+            <a href="/#projects" className="text-gray-700 hover:text-black transition">
               Опыт
             </a>
           </li>
           <li>
-            <a href="#skills" className="text-gray-700 hover:text-black transition">
+            <a href="/#skills" className="text-gray-700 hover:text-black transition">
               Навыки
             </a>
           </li>
           <li>
-            <a href="#contact" className="text-gray-700 hover:text-black transition">
+            <a href="/#contact" className="text-gray-700 hover:text-black transition">
               Контакты
             </a>
           </li>

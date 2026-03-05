@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className="bg-white">
+      <body className="bg-white overflow-x-hidden md:overflow-x-visible">
         <Header />
         <main className="min-h-screen">
           {children}

@@ -48,10 +48,28 @@ export default function ProjectCard({
         </div>
       )}
 
-      {/* Title and Role */}
+      {/* Title and Role — на мобильной время работы (после " | ") с новой строки */}
       <div className="mb-4">
         {title && <h3 className="text-2xl font-bold text-gray-800">{title}</h3>}
-        {role && <p className="text-sm text-gray-500 mt-1">{role}</p>}
+        {role && (
+          <p className="text-sm text-gray-500 mt-1">
+            {role.includes('|') ? (() => {
+              const parts = role.split(/\s*\|\s*/).map((s) => s.trim()).filter(Boolean)
+              const [first, ...rest] = parts
+              return (
+                <>
+                  <span className="block md:inline">{first}</span>
+                  {rest.length > 0 && (
+                    <>
+                      <span className="hidden md:inline"> | </span>
+                      <span className="block md:inline">{rest.join(' | ')}</span>
+                    </>
+                  )}
+                </>
+              )
+            })() : role}
+          </p>
+        )}
       </div>
 
       {/* Description */}

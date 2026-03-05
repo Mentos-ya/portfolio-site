@@ -69,8 +69,9 @@ export default function AddCaseBlock() {
                 />
               )}
             </div>
-            <p className="text-2xl font-normal text-white leading-snug text-center -mt-32">
-              Ура, это мэтч! Напишите мне в Telegram,<br />
+            <p className="font-pixel text-2xl font-normal text-white leading-snug text-center -mt-20 md:-mt-32 text-[1.05em]">
+              Ура, это мэтч!<br />
+              Напишите мне в Telegram,<br />
               готов подробно обсудить детали<br />
               вашего предложения о работе.
             </p>

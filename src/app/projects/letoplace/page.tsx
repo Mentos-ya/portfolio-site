@@ -30,9 +30,9 @@ export default function LetoPlacePage() {
           <h1 className="text-4xl md:text-5xl font-bold">{project.name}</h1>
         </div>
       </div>
-      <div className="flex flex-nowrap items-center justify-between gap-4 w-full mb-10 text-lg text-gray-500">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-0 w-full mb-10 text-lg text-gray-500">
         <span className="shrink-0">{project.period.split(/\s*\|\s*/)[0]?.trim() ?? project.period}</span>
-        <span className="shrink-0">{project.period.split(/\s*\|\s*/)[1]?.trim() ?? ''}</span>
+        <span className="shrink-0 w-full md:w-auto basis-full md:basis-auto">{project.period.split(/\s*\|\s*/)[1]?.trim() ?? ''}</span>
       </div>
 
       {/* Описание */}
@@ -138,7 +138,7 @@ export default function LetoPlacePage() {
             href="https://drive.google.com/file/d/1dCSAhc8Yd9RQJZmSFxgB_Sa_EJMH3Etk/view"
             target="_blank"
             rel="noopener noreferrer"
-            className="group shrink-0 relative flex w-[190px] h-full min-h-0 rounded-xl border-2 border-gray-200 hover:border-black overflow-hidden shadow-md hover:shadow-lg transition"
+            className="group shrink-0 relative flex w-full md:w-[190px] h-full min-h-0 rounded-xl border-2 border-gray-200 hover:border-black overflow-hidden shadow-md hover:shadow-lg transition mx-auto md:mx-0"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -263,8 +263,8 @@ export default function LetoPlacePage() {
         </div>
       </div>
 
-      {/* Tech Stack & Tools */}
-      <div className="mb-14">
+      {/* Tech Stack & Tools — скрыто на мобильной */}
+      <div className="mb-14 hidden md:block">
         <h2 className="text-2xl font-bold mb-6">Tech Stack & Tools</h2>
         <div className="flex flex-wrap gap-2">
           {project.tools.map((tool) => (
