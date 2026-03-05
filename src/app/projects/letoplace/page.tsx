@@ -30,9 +30,24 @@ export default function LetoPlacePage() {
           <h1 className="text-4xl md:text-5xl font-bold">{project.name}</h1>
         </div>
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-0 w-full mb-10 text-lg text-gray-500">
-        <span className="shrink-0">{project.period.split(/\s*\|\s*/)[0]?.trim() ?? project.period}</span>
-        <span className="shrink-0 w-full md:w-auto basis-full md:basis-auto">{project.period.split(/\s*\|\s*/)[1]?.trim() ?? ''}</span>
+      <div className="flex flex-col md:flex-row md:flex-nowrap items-start md:items-center justify-between gap-y-0 gap-x-4 w-full mb-10 text-lg text-gray-500">
+        <span className="shrink-0">
+          {(() => {
+            const titlePart = project.period.split(/\s*\|\s*/)[0]?.trim() ?? project.period
+            const slashParts = titlePart.split(/\s*\/\s*/).map((s) => s.trim()).filter(Boolean)
+            if (slashParts.length >= 2) {
+              return (
+                <>
+                  <span className="block md:hidden">{slashParts[1]} /</span>
+                  <span className="block md:hidden">{slashParts[0]}</span>
+                  <span className="hidden md:inline">{titlePart}</span>
+                </>
+              )
+            }
+            return titlePart
+          })()}
+        </span>
+        <span className="shrink-0">{project.period.split(/\s*\|\s*/)[1]?.trim() ?? ''}</span>
       </div>
 
       {/* Описание */}

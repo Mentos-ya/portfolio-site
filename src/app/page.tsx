@@ -71,8 +71,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               title="Открыть резюме"
-              className="group transition-all duration-300 hover:shadow-lg relative h-full w-full max-w-[360px] flex items-center justify-center ml-auto origin-top mt-4"
-              style={{ transform: 'scale(0.97)' }}
+              className="group transition-all duration-300 hover:shadow-lg relative h-full w-full max-w-[360px] flex items-center justify-center ml-auto origin-top mt-4 scale-[0.97] md:translate-x-3"
             >
               <div className="relative w-full h-full min-h-[280px] max-h-full">
                 <Image
@@ -110,7 +109,18 @@ export default function Home() {
       <section id="projects" className="max-w-4xl mx-auto px-6 py-14">
         <h1 className="text-5xl font-bold mb-3">{projectsData.pageTitle}</h1>
         <p className="text-xl text-gray-600 mb-8">
-          {projectsData.pageDescription}
+          {(() => {
+            const d = projectsData.pageDescription
+            const i = d.indexOf('Product Manager и Growth PM')
+            if (i === -1) return d
+            return (
+              <>
+                {d.slice(0, i)}
+                <br className="md:hidden" />
+                {d.slice(i)}
+              </>
+            )
+          })()}
         </p>
 
         {/* Project Cards Grid */}
@@ -236,7 +246,7 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className="max-w-4xl mx-auto px-6 py-14">
-        <h1 className="text-5xl font-bold mb-3">Связаться со мной</h1>
+        <h1 className="text-5xl font-bold mb-3">Связаться<br className="md:hidden" /> со мной</h1>
         <p className="text-xl text-gray-600 mb-8">
           Я всегда заинтересован в обсуждении новых идей продукта, возможностях сотрудничества или инсайтах по product management.
         </p>

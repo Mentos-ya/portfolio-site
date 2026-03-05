@@ -1,7 +1,7 @@
 export default function Contact() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-20">
-      <h1 className="text-5xl font-bold mb-4">Связаться со мной</h1>
+      <h1 className="text-5xl font-bold mb-4">Связаться<br className="md:hidden" /> со мной</h1>
       <p className="text-xl text-gray-600 mb-12">
         Я всегда заинтересован в обсуждении новых идей продукта, возможностях сотрудничества или инсайтах по product management.
       </p>

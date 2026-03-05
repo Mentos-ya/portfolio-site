@@ -26,9 +26,9 @@ export default function PonyatnoPage() {
           <h1 className="text-4xl md:text-5xl font-bold">Понятно</h1>
         </div>
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-0 w-full mb-10 text-lg text-gray-500">
+      <div className="flex flex-col md:flex-row md:flex-nowrap items-start md:items-center justify-between gap-y-0 gap-x-4 w-full mb-10 text-lg text-gray-500">
         <span className="shrink-0">Indie Maker</span>
-        <span className="shrink-0 w-full md:w-auto basis-full md:basis-auto">Февраль 2026 — По наст. время</span>
+        <span className="shrink-0">Февраль 2026 — По наст. время</span>
       </div>
 
       {/* Описание из превью карточки */}
