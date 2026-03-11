@@ -89,7 +89,7 @@ export default function PonyatnoPage() {
         </div>
 
         {/* Превью видео — на мобильной на всю ширину и по центру */}
-        <div className="group relative w-full max-w-full md:max-w-[294px] mx-auto md:ml-auto md:mr-0 aspect-[9/16] min-h-[336px] rounded-lg border border-gray-200 shadow-md overflow-hidden bg-black order-first md:order-none">
+        <div className="relative w-full max-w-full md:max-w-[294px] mx-auto md:ml-auto md:mr-0 aspect-[9/16] min-h-[336px] rounded-lg border border-gray-200 shadow-md overflow-hidden bg-black order-first md:order-none">
             <video
               controls
               className="w-full h-full object-contain"
@@ -100,9 +100,6 @@ export default function PonyatnoPage() {
               <source src="/videos/korotkoe.mp4" type="video/mp4" />
               Ваш браузер не поддерживает воспроизведение видео.
             </video>
-            <span className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white font-medium text-sm pointer-events-none rounded-lg">
-              Воспроизвести демо-видео
-            </span>
         </div>
       </div>
 

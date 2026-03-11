@@ -83,7 +83,7 @@ export default function Home() {
                   priority
                 />
                 {/* Оверлей при наведении: "Открыть резюме →" */}
-                <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 hidden md:flex items-center justify-center rounded-lg bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <span className="text-xl font-bold text-white">
                     Открыть резюме →
                   </span>

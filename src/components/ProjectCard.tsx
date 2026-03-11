@@ -117,7 +117,7 @@ export default function ProjectCard({
 
       {/* Hover overlay for linked cards */}
       {href && hasData && (
-        <div className="absolute inset-0 bg-black/60 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 hidden md:flex bg-black/60 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center pointer-events-none">
           <span className="text-white text-lg font-semibold">Узнать подробнее →</span>
         </div>
       )}

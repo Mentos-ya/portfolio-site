@@ -23,11 +23,11 @@ export default function AddCaseBlock() {
       >
         {/* При наведении: тёмный фон как у карточек + одна диагональная полоска с градиентом */}
         <div
-          className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none bg-black/60"
+          className="absolute inset-0 hidden md:block rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none bg-black/60"
           aria-hidden
         />
         <div
-          className="absolute inset-0 rounded-lg overflow-hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+          className="absolute inset-0 hidden md:block rounded-lg overflow-hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
           aria-hidden
         >
           {Array.from({ length: 25 }, (_, i) => (i - 12) * 60).map((offset) => (

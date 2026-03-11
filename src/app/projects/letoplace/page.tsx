@@ -117,7 +117,7 @@ export default function LetoPlacePage() {
             </span>: долгосрочная аренда «под ключ», управление объектами, прозрачная отчётность по доходам и автоматизация процессов для масштабирования портфеля.
           </p>
         </div>
-        <div className="group relative rounded-xl overflow-hidden shadow-lg mb-6">
+        <div className="relative rounded-xl overflow-hidden shadow-lg mb-6">
           <video
             controls
             preload="metadata"
@@ -126,9 +126,6 @@ export default function LetoPlacePage() {
           >
             <source src="/videos/letoplace.mp4" type="video/mp4" />
           </video>
-          <span className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white font-medium text-sm pointer-events-none">
-            Воспроизвести моушн-видео
-          </span>
         </div>
         <div className="grid md:grid-cols-[1fr_auto] gap-8 items-stretch">
           <ul className="space-y-3 text-gray-700">
@@ -163,7 +160,7 @@ export default function LetoPlacePage() {
               height="auto"
               className="block w-full h-full object-cover object-top"
             />
-            <span className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white font-medium text-sm rounded-xl pointer-events-none">
+            <span className="absolute inset-0 hidden md:flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-white font-medium text-sm rounded-xl pointer-events-none">
               Открыть оффер
             </span>
           </a>
