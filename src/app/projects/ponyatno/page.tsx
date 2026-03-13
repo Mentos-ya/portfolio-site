@@ -95,9 +95,10 @@ export default function PonyatnoPage() {
               className="w-full h-full object-contain"
               poster="/videos/ponyatno-video-poster.png?v=2"
               preload="metadata"
+              playsInline
             >
-              <source src="/videos/korotkoe.mov" type="video/quicktime" />
               <source src="/videos/korotkoe.mp4" type="video/mp4" />
+              <source src="/videos/korotkoe.mov" type="video/quicktime" />
               Ваш браузер не поддерживает воспроизведение видео.
             </video>
         </div>
