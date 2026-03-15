@@ -123,6 +123,7 @@ export default function LetoPlacePage() {
             preload="metadata"
             poster="/videos/letoplace-poster.png"
             className="w-full"
+            playsInline
           >
             <source src="/videos/letoplace.mp4" type="video/mp4" />
           </video>
