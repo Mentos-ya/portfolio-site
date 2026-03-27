@@ -14,36 +14,51 @@ export default function Contact() {
           <div className="space-y-6">
             <div>
               <h3 className="font-bold text-lg mb-2">Telegram</h3>
-              <a
-                href="https://t.me/iak_ilia"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800 text-lg"
-              >
-                https://t.me/iak_ilia
-              </a>
+              <div className="relative inline-block group">
+                <a
+                  href="https://t.me/iak_ilia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black underline hover:underline text-lg"
+                >
+                  https://t.me/iak_ilia
+                </a>
+                <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  Открыть Telegram
+                </span>
+              </div>
             </div>
 
             <div>
               <h3 className="font-bold text-lg mb-2">LinkedIn</h3>
-              <a
-                href="https://linkedin.com/in/iakupov-ilia"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800 text-lg"
-              >
-                linkedin.com/in/iakupov-ilia
-              </a>
+              <div className="relative inline-block group">
+                <a
+                  href="https://linkedin.com/in/iakupov-ilia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black underline hover:underline text-lg"
+                >
+                  linkedin.com/in/iakupov-ilia
+                </a>
+                <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  Открыть LinkedIn
+                </span>
+              </div>
             </div>
 
             <div>
               <h3 className="font-bold text-lg mb-2">Email</h3>
-              <a
-                href="mailto:iak.ilia.main@gmail.com"
-                className="text-blue-600 hover:text-blue-800 text-lg"
-              >
-                iak.ilia.main@gmail.com
-              </a>
+              <div className="relative inline-block group">
+                <a
+                  href="mailto:iak.ilia.main@gmail.com"
+                  className="text-black underline hover:underline text-lg"
+                >
+                  iak.ilia.main@gmail.com
+                </a>
+                <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  Написать письмо
+                </span>
+              </div>
             </div>
           </div>
         </div>

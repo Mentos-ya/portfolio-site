@@ -55,6 +55,15 @@ export default function AddCaseBlock() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" aria-modal="true" role="dialog">
           <div className="absolute inset-0 z-0 bg-black/85" onClick={() => setModalOpen(false)} aria-hidden />
           <div className="relative z-10 flex flex-col items-center text-center max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setModalOpen(false)}
+              className="absolute -top-3 -right-3 w-14 h-14 rounded-full border-2 border-white/40 hover:border-white/70 flex items-center justify-center text-white/70 hover:text-white transition-all font-light"
+              aria-label="Закрыть"
+              style={{ lineHeight: '1', padding: 0, fontSize: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              ✕
+            </button>
             <div className="flex justify-center mb-0 min-h-[24rem] items-center">
               {chestImgError ? (
                 <span className="text-5xl" aria-hidden>📦</span>

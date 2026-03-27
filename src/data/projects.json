@@ -4,8 +4,8 @@
   "projects": [
     {
       "name": "LetoPlace",
-      "period": "Growth Product Manager / Product Manager | 2020 – Ноябрь 2025",
-      "description": "Являлся кофаундером и с нуля создал digital-сервис аренды https://letoplace.ru в 3 городах. В портфеле 50+ объектов в Санкт-Петербурге. Развивал двустороннюю платформу: B2C сегмент для путешественников и B2B для собственников недвижимости с управлением «под ключ». Отвечал за автоматизацию процессов, кросс-функциональную команду разработки, масштабирование.",
+      "period": "Founder / Product Owner | 02.2018 – 09.2025",
+      "description": "Являлся фаундером и с нуля создал digital-сервис аренды в 3 городах. В портфеле 50+ объектов в Санкт-Петербурге. Развивал двустороннюю платформу: B2C сегмент для путешественников и B2B для собственников недвижимости с управлением «под ключ». Отвечал за автоматизацию процессов, кросс-функциональную команду разработки, масштабирование.",
       "metrics": [
         {
           "label": "ежемесячный revenue",
@@ -48,6 +48,17 @@
         "Автоматизация процессов через Asana, Notion, amoCRM, API интеграции и Telegram-боты"
       ],
       "tools": [
+        "Tilda",
+        "Custom JS Widgets",
+        "Python API",
+        "API Integration",
+        "Webhooks",
+        "AmoCRM",
+        "CRM Automation (amoCRM)",
+        "IoT Integration",
+        "Telegram Bots",
+        "AI Integration",
+        "Process Automation",
         "Strategy",
         "Roadmap",
         "Lifecycle",
@@ -64,13 +75,6 @@
         "Funnel Analysis",
         "Cohort Analysis",
         "Channel Performance Analysis",
-        "API Integration",
-        "Webhooks",
-        "CRM Automation (amoCRM)",
-        "IoT Integration",
-        "Telegram Bots",
-        "AI Integration",
-        "Process Automation",
         "Team Leadership",
         "Remote Team Management",
         "Stakeholder Management",

@@ -28,25 +28,34 @@ export default function Home() {
                 {homeData.hero.name}
               </h1>
               <p className="text-lg text-gray-500 mb-3">
-              <strong className="font-semibold text-gray-700">Product Manager</strong>
-              {homeData.hero.descriptionPart1.slice('Product Manager'.length)}
-            </p>
-            {(() => {
-              const text = homeData.hero.descriptionPart2
-              const gradientStart = 'Активно применяю'
-              const i = text.indexOf(gradientStart)
-              if (i === -1) return <p className="text-lg text-gray-500 mb-6">{text}</p>
-              return (
-                <>
-                  <p className="text-lg text-gray-500 mb-3">
-                    {text.slice(0, i)}
-                  </p>
-                  <p className="text-lg text-gray-500 mb-6">
-                    <span className="text-gradient-hero">{text.slice(i)}</span>
-                  </p>
-                </>
-              )
-            })()}
+                <strong className="text-black">Product Manager с предпринимательским бэкграундом</strong> с 7 годами опыта в HotelTech и TravelTech. С нуля создал{' '}
+                <span className="relative inline-block group/link">
+                  <a
+                    href="https://letoplace.ru"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black underline"
+                  >
+                    digital-сервис
+                  </a>
+                  <span className="absolute left-0 top-full mt-1 px-2.5 py-1.5 bg-gray-800 text-white text-xs rounded-md opacity-0 pointer-events-none transition-opacity duration-150 group-hover/link:opacity-100 whitespace-nowrap z-10">
+                    Открыть сайт LetoPlace
+                  </span>
+                </span>{' '}
+                аренды в 3 городах (50 объектов в СПб, 7К MAU сайта, 5 м/мес revenue, 31% marg).
+              </p>
+              <p className="text-lg text-gray-500 mb-3">
+                Развивал двустороннюю платформу: B2C сегмент для путешественников и B2B для собственников жилья с управлением «под ключ». Отвечал за кросс-функциональную команду разработки, масштабирование, P&amp;L.
+              </p>
+              <p className="text-lg text-gray-500 mb-6">
+                {(() => {
+                  const text = homeData.hero.descriptionPart2
+                  const gradientStart = 'Активно применяю'
+                  const i = text.indexOf(gradientStart)
+                  const onlyGradient = i === -1 ? text : text.slice(i)
+                  return <span className="text-gradient-hero">{onlyGradient}</span>
+                })()}
+              </p>
             </div>
 
             <div className="flex gap-4 mt-auto w-full">
@@ -65,9 +74,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="min-h-0 flex items-start justify-end md:h-full">
+          <div className="min-h-0 flex flex-col items-start justify-end md:h-full">
+            <div className="block md:hidden text-center w-full mb-3 text-gray-600">
+              Открыть резюме ↓
+            </div>
             <a
-              href="https://drive.google.com/file/d/1V5T1eL9UcOuFwWGZegu2HZKgeDoPdsxW/view"
+              href="https://drive.google.com/file/d/1V7jEQQH0xdIrrB1YcVwKtXHadfmwcY3g/view"
               target="_blank"
               rel="noopener noreferrer"
               title="Открыть резюме"
@@ -129,18 +141,17 @@ export default function Home() {
             id={0}
             href="/projects/letoplace"
             title="LetoPlace"
-            role="Product Manager & Growth PM | 2020 – Ноябрь 2025"
+            role="Founder / Product Owner | 02.2018 – 09.2025"
             emoji=""
             logo="/logos/letoplace-logo.png"
             videoPoster="/videos/letoplace-poster.png"
-            description="С нуля создал digital-сервис для аренды имущества. Разработал двустороннюю платформу (B2C для путешественников и B2B для собственников недвижимости с управлением «под ключ»). В портфеле 50+ объектов в Санкт-Петербурге, 5M RUB revenue в месяц, 31% маржинальность "
-            descriptionNoWrapSuffix="(vs ~25% по рынку)."
+            description="С нуля создал digital-сервис для аренды имущества. Разработал двустороннюю платформу (B2C для путешественников и B2B для собственников недвижимости с управлением «под ключ»). В портфеле 50+ объектов в Санкт-Петербурге, 5M RUB revenue в месяц, 31% маржинальность."
           />
           <ProjectCard
             id={1}
             href="/projects/ponyatno"
             title="Понятно"
-            role="Indie Maker | Февраль 2026 — По наст. время"
+            role="Indie Maker | 02.2026 — По наст. время"
             logo="/logos/ponyatno-logo.png"
             description="Запустил Telegram Mini App для сканирования меню иностранных ресторанов — с переводом текста, калорийностью, составом и ценами в одном экране. Весь продукт построен через вайбкодинг (AI-инструменты без классической разработки). Стадия MVP, приложение уже приносит первый revenue."
             videoPoster="/videos/ponyatno-poster.png?v=2"
@@ -188,6 +199,17 @@ export default function Home() {
           {(() => {
             const gradientSkills = new Set(['Vibe Coding', 'Cursor', 'Claude', 'Prompt Engineering', 'No-code / Low-code'])
             return [
+            'Tilda',
+            'Custom JS Widgets',
+            'Python API',
+            'API Integration',
+            'Webhooks',
+            'AmoCRM',
+            'CRM Automation (amoCRM)',
+            'IoT Integration',
+            'Telegram Bots',
+            'AI Integration',
+            'Process Automation',
             'Strategy',
             'Roadmap',
             'Lifecycle',
@@ -204,13 +226,6 @@ export default function Home() {
             'Funnel Analysis',
             'Cohort Analysis',
             'Channel Performance Analysis',
-            'API Integration',
-            'Webhooks',
-            'CRM Automation (amoCRM)',
-            'IoT Integration',
-            'Telegram Bots',
-            'AI Integration',
-            'Process Automation',
             'Team Leadership',
             'Remote Team Management',
             'Stakeholder Management',
@@ -259,36 +274,51 @@ export default function Home() {
             <div className="space-y-6">
               <div>
                 <h3 className="font-bold text-lg mb-2">Telegram</h3>
-                <a
-                  href="https://t.me/iak_ilia"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 text-lg"
-                >
-                  https://t.me/iak_ilia
-                </a>
+                <div className="relative inline-block group">
+                  <a
+                    href="https://t.me/iak_ilia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black underline hover:underline text-lg"
+                  >
+                    https://t.me/iak_ilia
+                  </a>
+                  <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Открыть Telegram
+                  </span>
+                </div>
               </div>
 
               <div>
                 <h3 className="font-bold text-lg mb-2">LinkedIn</h3>
-                <a
-                  href="https://linkedin.com/in/iakupov-ilia"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 text-lg"
-                >
-                  linkedin.com/in/iakupov-ilia
-                </a>
+                <div className="relative inline-block group">
+                  <a
+                    href="https://linkedin.com/in/iakupov-ilia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black underline hover:underline text-lg"
+                  >
+                    linkedin.com/in/iakupov-ilia
+                  </a>
+                  <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Открыть LinkedIn
+                  </span>
+                </div>
               </div>
 
               <div>
                 <h3 className="font-bold text-lg mb-2">Email</h3>
-                <a
-                  href="mailto:iak.ilia.main@gmail.com"
-                  className="text-blue-600 hover:text-blue-800 text-lg"
-                >
-                  iak.ilia.main@gmail.com
-                </a>
+                <div className="relative inline-block group">
+                  <a
+                    href="mailto:iak.ilia.main@gmail.com"
+                    className="text-black underline hover:underline text-lg"
+                  >
+                    iak.ilia.main@gmail.com
+                  </a>
+                  <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Написать письмо
+                  </span>
+                </div>
               </div>
             </div>
           </div>
