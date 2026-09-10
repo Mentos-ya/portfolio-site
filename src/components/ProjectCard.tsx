@@ -43,7 +43,7 @@ export default function ProjectCard({
   const cardContent = (
     <>
       {now && (
-        <span className="self-start inline-flex items-center gap-1.5 text-xs font-bold text-green-500 border border-[#1f3d2b] bg-[#0f1f16] px-2.5 py-1 rounded-full mb-3">
+        <span className="self-start inline-flex items-center gap-1.5 text-xs font-bold text-green-700 border border-green-700/25 bg-green-50 px-2.5 py-1 rounded-full mb-3">
           ● Сейчас
         </span>
       )}
@@ -57,9 +57,9 @@ export default function ProjectCard({
 
       {/* Title and Role — на мобильной время работы (после " | ") с новой строки */}
       <div className="mb-3">
-        {title && <h3 className="text-2xl font-bold tracking-[-0.01em] text-white">{title}</h3>}
+        {title && <h3 className="text-2xl font-bold tracking-[-0.01em] text-ink">{title}</h3>}
         {role && (
-          <p className="text-[13px] text-zinc-400 mt-1">
+          <p className="text-[13px] text-ink/60 mt-1">
             {role.includes('|') ? (() => {
               const parts = role.split(/\s*\|\s*/).map((s) => s.trim()).filter(Boolean)
               const [first, ...rest] = parts
@@ -81,7 +81,7 @@ export default function ProjectCard({
 
       {/* Description */}
       {description && (
-        <div className="mb-4 text-sm text-zinc-300 leading-relaxed">
+        <div className="mb-4 text-sm text-ink/75 leading-relaxed">
           <p>
             {descriptionNoWrapSuffix != null
               ? <>
@@ -97,7 +97,7 @@ export default function ProjectCard({
       {metrics.length > 0 && (
         <div className="space-y-2">
           {metrics.map((metric, idx) => (
-            <div key={idx} className="text-xs text-zinc-300 leading-relaxed">
+            <div key={idx} className="text-xs text-ink/75 leading-relaxed">
               • {metric}
             </div>
           ))}
@@ -106,7 +106,7 @@ export default function ProjectCard({
 
       {/* Video Thumbnail — прижат к низу карточки, чтобы превью были на одном уровне */}
       {videoPoster && (
-        <div className="mt-auto pt-4 rounded-xl overflow-hidden relative aspect-video w-full bg-night-card">
+        <div className="mt-auto pt-4 rounded-xl overflow-hidden relative aspect-video w-full bg-paper-card">
           <img
             src={videoPoster}
             alt="Video preview"
@@ -114,7 +114,7 @@ export default function ProjectCard({
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center backdrop-blur-sm">
-              <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-[#fff] ml-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
@@ -124,14 +124,14 @@ export default function ProjectCard({
 
       {/* Hover overlay for linked cards */}
       {href && hasData && (
-        <div className="absolute inset-0 hidden md:flex bg-black/60 rounded-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center pointer-events-none">
-          <span className="text-white text-lg font-semibold">Узнать подробнее →</span>
+        <div className="absolute inset-0 hidden md:flex bg-electric/90 rounded-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center pointer-events-none">
+          <span className="text-[#fff] text-lg font-semibold">Узнать подробнее →</span>
         </div>
       )}
 
       {/* Empty state */}
       {!hasData && (
-        <div className="text-center text-zinc-400 flex items-center justify-center h-full">
+        <div className="text-center text-ink/60 flex items-center justify-center h-full">
           <p>Нажмите чтобы узнать больше</p>
         </div>
       )}
@@ -139,8 +139,8 @@ export default function ProjectCard({
   )
 
   const cardClassName = `group relative card-glow rounded-[18px] p-6 md:p-[26px] flex flex-col overflow-hidden transition-[transform,box-shadow] duration-300 ${
-    clickable ? 'cursor-pointer md:hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(168,85,247,0.18)]' : ''
-  } ${isSelected ? 'ring-2 ring-purple-500' : ''}`
+    clickable ? 'cursor-pointer md:hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(31,51,255,0.15)]' : ''
+  } ${isSelected ? 'ring-2 ring-electric' : ''}`
 
   // Если есть href — рендерим как Link
   if (href) {

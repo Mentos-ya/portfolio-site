@@ -1,14 +1,25 @@
 import type { Metadata, Viewport } from 'next'
+import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import FloatingResumeButton from '@/components/FloatingResumeButton'
 import YandexMetrika from '@/components/YandexMetrika'
+import DitherBackground from '@/components/DitherBackground'
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
 }
+
+// Шрифт сайта — «терминальный» JetBrains Mono, только жирные начертания.
+// Next кладёт файлы шрифта на сам сайт, запросов к Google нет
+const mono = JetBrains_Mono({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['700', '800'],
+  variable: '--font-mono',
+  display: 'swap',
+})
 
 const title = 'Илья Якупов — Product Manager'
 const description =
@@ -42,15 +53,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ru">
-      <body className="relative bg-night text-zinc-100 overflow-x-hidden md:overflow-x-visible">
-        {/* Цветные пятна света вверху страницы — фон «ночной» темы */}
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[1000px] overflow-hidden">
-          <div className="absolute w-[340px] h-[340px] md:w-[480px] md:h-[480px] rounded-full bg-[#ec4899] opacity-[0.55] blur-[90px] -top-40 -right-20" />
-          <div className="absolute w-[380px] h-[380px] md:w-[520px] md:h-[520px] rounded-full bg-[#6366f1] opacity-40 blur-[90px] top-[260px] -left-[220px]" />
-        </div>
+    <html lang="ru" className={mono.variable}>
+      <body className="relative bg-paper text-ink overflow-x-hidden md:overflow-x-visible">
+        {/* Фон всего сайта: пиксельный растр, стоит на месте, страница прокручивается поверх */}
+        <DitherBackground />
         <Header />
-        {/* relative — чтобы содержимое лежало поверх пятен света */}
+        {/* relative — чтобы содержимое лежало поверх растра */}
         <main className="relative min-h-screen">
           {children}
         </main>

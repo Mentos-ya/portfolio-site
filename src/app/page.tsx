@@ -67,24 +67,25 @@ export default function Home() {
   return (
     <div>
       {/* Первый экран */}
-      <section id="home" className="max-w-5xl mx-auto px-6 pt-8 md:pt-14 pb-14">
+      <section id="home" className="sheet">
         <div className="grid md:grid-cols-[1.4fr_1fr] gap-7 md:gap-12 items-center">
           <div>
-            <span className="inline-flex items-center gap-2 text-[13px] text-zinc-300 border border-night-edge bg-night-card px-3.5 py-[7px] rounded-full">
+            {/* Моноширинный шрифт шире — на телефоне плашка мельче, чтобы остаться в одну строку */}
+            <span className="inline-flex items-center gap-2 text-[11px] md:text-[13px] whitespace-nowrap text-ink/75 border border-ink/15 bg-paper-card px-3.5 py-[7px] rounded-full">
               <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" aria-hidden />
               Сейчас · Product Manager в Домклике
             </span>
-            <h1 className="text-[46px] md:text-[68px] leading-none tracking-[-0.035em] font-bold my-5 text-white">
+            <h1 className="text-[46px] md:text-[68px] leading-none tracking-[-0.035em] font-bold my-5 text-ink">
               {homeData.hero.name}
             </h1>
-            <p className="text-base md:text-lg leading-[1.55] text-soft">
-              <strong className="text-white font-semibold">Product Manager с предпринимательским бэкграундом</strong> с&nbsp;7&nbsp;годами опыта в HotelTech и TravelTech. С нуля создал{' '}
+            <p className="text-base md:text-lg leading-[1.55] text-ink/70">
+              <strong className="text-ink font-semibold">Product Manager с предпринимательским бэкграундом</strong> с&nbsp;7&nbsp;годами опыта в HotelTech и TravelTech. С нуля создал{' '}
               {/* Сайт letoplace.ru больше не работает — ведём на кейс внутри портфолио */}
               <a
                 href="/projects/letoplace"
                 data-goal="open_project"
                 title="Открыть кейс LetoPlace"
-                className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white transition-colors"
+                className="text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink transition-colors"
               >
                 {/* Не разрываем «digital-сервис» по дефису */}
                 <span className="whitespace-nowrap">digital-сервис</span> аренды
@@ -115,7 +116,7 @@ export default function Home() {
               alt="Илья Якупов"
               width={290}
               height={290}
-              className="w-full h-full object-cover rounded-full border-[5px] border-night"
+              className="w-full h-full object-cover rounded-full border-[5px] border-paper-card"
               priority
             />
           </div>
@@ -123,23 +124,23 @@ export default function Home() {
 
         {/* Мой путь */}
         <div className="mt-10 md:mt-14">
-          <p className="text-[13px] uppercase tracking-[0.1em] text-zinc-400 mb-4">Мой путь</p>
+          <p className="text-[13px] uppercase tracking-[0.1em] text-ink/60 mb-4">Мой путь</p>
           <ol className="path">
             {path.map((step) => {
               const body = (
                 <>
-                  <p className={`text-[13px] ${step.now ? 'text-green-500 font-semibold' : 'text-zinc-400'}`}>
+                  <p className={`text-[13px] ${step.now ? 'text-green-700 font-semibold' : 'text-ink/60'}`}>
                     {step.years}
                   </p>
-                  <p className="text-[22px] font-bold tracking-[-0.01em] mt-1.5 text-white">
+                  <p className="text-[22px] font-bold tracking-[-0.01em] mt-1.5 text-ink">
                     {step.title}
                     {step.href && (
-                      <span className="inline-block ml-1.5 text-lg text-zinc-600 group-hover:text-white group-hover:translate-x-0.5 transition" aria-hidden>
+                      <span className="inline-block ml-1.5 text-lg text-ink/40 group-hover:text-electric group-hover:translate-x-0.5 transition" aria-hidden>
                         →
                       </span>
                     )}
                   </p>
-                  <p className="text-sm text-soft mt-2 leading-[1.45]">{step.text}</p>
+                  <p className="text-sm text-ink/70 mt-2 leading-[1.45]">{step.text}</p>
                 </>
               )
               return (
@@ -159,7 +160,7 @@ export default function Home() {
       </section>
 
       {/* Опыт */}
-      <section id="projects" className="max-w-5xl mx-auto px-6 py-14 scroll-mt-16">
+      <section id="projects" className="sheet scroll-mt-20">
         <h2 className="section-title">{projectsData.pageTitle}</h2>
         <p className="section-lead">
           {(() => {
@@ -214,21 +215,21 @@ export default function Home() {
       <AiProjects />
 
       {/* Образование */}
-      <section id="education" className="max-w-5xl mx-auto px-6 py-14 scroll-mt-16">
+      <section id="education" className="sheet scroll-mt-20">
         <h2 className="section-title">Образование</h2>
         <p className="section-lead">Учебные заведения и курсы</p>
-        <ul className="space-y-4 text-zinc-300">
+        <ul className="space-y-4 text-ink/75">
           <li className="flex gap-3 items-start">
-            <span className="text-purple-400 shrink-0">•</span>
+            <span className="text-electric shrink-0">•</span>
             <span>
               <a
                 href="https://gopractice.ru/course/pm/certificate/rryphyzv"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-white underline decoration-white/30 underline-offset-4 hover:decoration-white relative group/link"
+                className="font-semibold text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink relative group/link"
               >
                 GoPractice
-                <span className="absolute left-0 top-full mt-1 px-2.5 py-1.5 bg-zinc-800 text-white text-sm rounded-md opacity-0 pointer-events-none transition-opacity duration-150 group-hover/link:opacity-100 whitespace-nowrap z-10">
+                <span className="absolute left-0 top-full mt-1 px-2.5 py-1.5 bg-ink text-paper text-sm rounded-md opacity-0 pointer-events-none transition-opacity duration-150 group-hover/link:opacity-100 whitespace-nowrap z-10">
                   Открыть сертификат
                 </span>
               </a>{' '}
@@ -236,53 +237,53 @@ export default function Home() {
             </span>
           </li>
           <li className="flex gap-3 items-start">
-            <span className="text-purple-400 shrink-0">•</span>
-            <span><strong className="text-white">Томский государственный университет</strong> — Высшая школа бизнеса, 2015–2018</span>
+            <span className="text-electric shrink-0">•</span>
+            <span><strong className="text-ink">Томский государственный университет</strong> — Высшая школа бизнеса, 2015–2018</span>
           </li>
           <li className="flex gap-3 items-start">
-            <span className="text-purple-400 shrink-0">•</span>
-            <span><strong className="text-white">Томский государственный архитектурно-строительный университет</strong> — Архитектура, 2011–2015</span>
+            <span className="text-electric shrink-0">•</span>
+            <span><strong className="text-ink">Томский государственный архитектурно-строительный университет</strong> — Архитектура, 2011–2015</span>
           </li>
         </ul>
       </section>
 
       {/* Навыки: видны и на телефоне */}
-      <section id="skills" className="max-w-5xl mx-auto px-6 py-14 scroll-mt-16">
+      <section id="skills" className="sheet scroll-mt-20">
         <h2 className="section-title">Навыки</h2>
         <p className="section-lead">Tech Stack & Tools</p>
         <div className="flex flex-wrap gap-3">
           {skills.map((skill) => (
             <span
               key={skill.name}
-              className="px-4 py-2 rounded-full text-sm font-medium bg-night-card border border-night-edge"
+              className="px-4 py-2 rounded-full text-sm font-medium bg-paper-card border border-ink/15"
             >
-              <span className={skill.ai ? 'text-gradient-hero' : 'text-zinc-200'}>{skill.name}</span>
+              <span className={skill.ai ? 'text-gradient-hero' : 'text-ink/85'}>{skill.name}</span>
             </span>
           ))}
         </div>
       </section>
 
       {/* Контакты */}
-      <section id="contact" className="max-w-5xl mx-auto px-6 py-14 scroll-mt-16">
+      <section id="contact" className="sheet scroll-mt-20">
         <h2 className="section-title">Связаться<br className="md:hidden" /> со мной</h2>
         <p className="section-lead">Ищу позицию продакта — пишите в Telegram.</p>
 
         <div className="grid md:grid-cols-2 gap-10">
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-white">Контактная информация</h3>
+            <h3 className="text-2xl font-bold mb-6 text-ink">Контактная информация</h3>
             <div className="space-y-6">
               {contacts.map((c) => (
                 <div key={c.label}>
-                  <h4 className="font-bold text-lg mb-2 text-white">{c.label}</h4>
+                  <h4 className="font-bold text-lg mb-2 text-ink">{c.label}</h4>
                   <div className="relative inline-block group">
                     <a
                       href={c.href}
                       {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      className="text-zinc-200 underline decoration-white/30 underline-offset-4 hover:decoration-white hover:text-white text-lg transition-colors"
+                      className="text-ink/85 underline decoration-ink/30 underline-offset-4 hover:decoration-ink hover:text-electric text-lg transition-colors"
                     >
                       {c.text}
                     </a>
-                    <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-zinc-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                    <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-ink text-paper text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                       {c.hint}
                     </span>
                   </div>
@@ -292,18 +293,18 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col md:h-full">
-            <h3 className="text-2xl font-bold mb-6 text-white">Чем я могу помочь</h3>
+            <h3 className="text-2xl font-bold mb-6 text-ink">Чем я могу помочь</h3>
             <div className="flex-1 min-h-0" aria-hidden />
             <div className="space-y-4">
-              <div className="p-5 rounded-2xl bg-night-card border border-night-line">
-                <h4 className="font-bold mb-2 text-white">Product Manager в команду</h4>
-                <p className="text-zinc-400 text-sm">
+              <div className="p-5 rounded-2xl bg-paper-card border border-ink/10">
+                <h4 className="font-bold mb-2 text-ink">Product Manager в команду</h4>
+                <p className="text-ink/60 text-sm">
                   Ищу позицию, где смогу применить свой опыт работы — от discovery до масштабирования
                 </p>
               </div>
-              <div className="p-5 rounded-2xl bg-night-card border border-night-line">
-                <h4 className="font-bold mb-2 text-white">Нетворкинг</h4>
-                <p className="text-zinc-400 text-sm">
+              <div className="p-5 rounded-2xl bg-paper-card border border-ink/10">
+                <h4 className="font-bold mb-2 text-ink">Нетворкинг</h4>
+                <p className="text-ink/60 text-sm">
                   Открыт к общению. Пишите — обсудим идеи, обменяемся опытом или просто познакомимся
                 </p>
               </div>

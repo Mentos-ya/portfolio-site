@@ -6,10 +6,10 @@ export default function BackToPortfolioStrip() {
   return (
     <Link
       href="/#projects"
-      className="fixed left-0 top-0 bottom-0 z-30 w-[max(5rem,calc(50vw-28rem))] flex items-center justify-center bg-transparent hover:bg-white/[0.04] transition-colors duration-200 group"
+      className="fixed left-0 top-0 bottom-0 z-30 w-[max(5rem,calc(50vw-28rem))] flex items-center justify-center bg-transparent hover:bg-ink/[0.04] transition-colors duration-200 group"
       aria-label="На главную страницу портфолио"
     >
-      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-zinc-500 group-hover:text-white text-3xl font-light">
+      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-ink/50 group-hover:text-electric text-3xl font-light">
         ←
       </span>
     </Link>

@@ -29,10 +29,10 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
       <div style={{
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12,
-        border: '1px solid #2a2a3a',
+        border: '1px solid rgba(15,20,64,.15)',
         borderBottom: 'none',
         overflow: 'hidden',
-        background: '#12121c',
+        background: '#fffaf0',
       }}>
         <div
           style={{ aspectRatio: '4/3', width: '100%', cursor: 'pointer' }}
@@ -68,9 +68,9 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
           padding: '12px 8px',
           borderBottomLeftRadius: 12,
           borderBottomRightRadius: 12,
-          border: '1px solid #2a2a3a',
+          border: '1px solid rgba(15,20,64,.15)',
           borderTop: 'none',
-          background: '#12121c',
+          background: '#fffaf0',
         }}>
           <button
             type="button"
@@ -83,8 +83,8 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
               height: 40,
               borderRadius: '50%',
               border: 'none',
-              background: '#2e2e44',
-              color: '#e4e4e7',
+              background: '#e8e1cc',
+              color: '#0f1440',
               fontSize: 20,
               fontWeight: 500,
               cursor: 'pointer',
@@ -110,7 +110,7 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
                   border: 'none',
                   padding: 0,
                   cursor: 'pointer',
-                  background: i === current ? '#f5f5f7' : '#2e2e44',
+                  background: i === current ? '#1f33ff' : '#e8e1cc',
                 }}
                 aria-label={`Слайд ${i + 1}`}
               />
@@ -128,8 +128,8 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
               height: 40,
               borderRadius: '50%',
               border: 'none',
-              background: '#2e2e44',
-              color: '#e4e4e7',
+              background: '#e8e1cc',
+              color: '#0f1440',
               fontSize: 20,
               fontWeight: 500,
               cursor: 'pointer',
