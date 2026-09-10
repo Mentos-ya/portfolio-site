@@ -29,10 +29,10 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
       <div style={{
         borderTopLeftRadius: 12,
         borderTopRightRadius: 12,
-        border: '2px solid #e5e7eb',
+        border: '1px solid #2a2a3a',
         borderBottom: 'none',
         overflow: 'hidden',
-        background: '#f3f4f6',
+        background: '#12121c',
       }}>
         <div
           style={{ aspectRatio: '4/3', width: '100%', cursor: 'pointer' }}
@@ -52,7 +52,7 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
               onError={() => setImgError(true)}
             />
           ) : (
-            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#9ca3af', fontSize: 14, padding: 16, textAlign: 'center' }}>
+            <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#71717a', fontSize: 14, padding: 16, textAlign: 'center' }}>
               Изображение не найдено
             </div>
           )}
@@ -68,9 +68,9 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
           padding: '12px 8px',
           borderBottomLeftRadius: 12,
           borderBottomRightRadius: 12,
-          border: '2px solid #e5e7eb',
+          border: '1px solid #2a2a3a',
           borderTop: 'none',
-          background: '#f9fafb',
+          background: '#12121c',
         }}>
           <button
             type="button"
@@ -83,8 +83,8 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
               height: 40,
               borderRadius: '50%',
               border: 'none',
-              background: '#d1d5db',
-              color: '#374151',
+              background: '#2e2e44',
+              color: '#e4e4e7',
               fontSize: 20,
               fontWeight: 500,
               cursor: 'pointer',
@@ -110,7 +110,7 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
                   border: 'none',
                   padding: 0,
                   cursor: 'pointer',
-                  background: i === current ? '#1f2937' : '#d1d5db',
+                  background: i === current ? '#f5f5f7' : '#2e2e44',
                 }}
                 aria-label={`Слайд ${i + 1}`}
               />
@@ -128,8 +128,8 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
               height: 40,
               borderRadius: '50%',
               border: 'none',
-              background: '#d1d5db',
-              color: '#374151',
+              background: '#2e2e44',
+              color: '#e4e4e7',
               fontSize: 20,
               fontWeight: 500,
               cursor: 'pointer',

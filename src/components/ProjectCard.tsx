@@ -17,8 +17,8 @@ interface ProjectCardProps {
   logo?: string
   video?: string
   videoPoster?: string
-  /** Вертикальная градиентная полоска справа (розовый → фиолетовый → синий) */
-  gradientStripe?: boolean
+  /** Зелёная метка «● Сейчас» над заголовком — для текущего места работы */
+  now?: boolean
 }
 
 export default function ProjectCard({
@@ -35,24 +35,31 @@ export default function ProjectCard({
   logo,
   video: _video,
   videoPoster,
-  gradientStripe,
+  now,
 }: ProjectCardProps) {
   const hasData = title || role || metrics.length > 0
+  const clickable = Boolean(href || onClick)
 
   const cardContent = (
     <>
-      {/* Logo */}
+      {now && (
+        <span className="self-start inline-flex items-center gap-1.5 text-xs font-bold text-green-500 border border-[#1f3d2b] bg-[#0f1f16] px-2.5 py-1 rounded-full mb-3">
+          ● Сейчас
+        </span>
+      )}
+
+      {/* Logo — на белой подложке, чтобы тёмные логотипы читались на тёмном фоне */}
       {logo && (
         <div className="mb-4">
-          <img src={logo} alt={title || 'Company logo'} className="h-12 object-contain" />
+          <img src={logo} alt={title || 'Company logo'} className="h-10 w-auto object-contain rounded-md bg-white" />
         </div>
       )}
 
       {/* Title and Role — на мобильной время работы (после " | ") с новой строки */}
-      <div className="mb-4">
-        {title && <h3 className="text-2xl font-bold text-gray-800">{title}</h3>}
+      <div className="mb-3">
+        {title && <h3 className="text-2xl font-bold tracking-[-0.01em] text-white">{title}</h3>}
         {role && (
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-[13px] text-zinc-400 mt-1">
             {role.includes('|') ? (() => {
               const parts = role.split(/\s*\|\s*/).map((s) => s.trim()).filter(Boolean)
               const [first, ...rest] = parts
@@ -61,8 +68,8 @@ export default function ProjectCard({
                   <span className="block md:inline">{first}</span>
                   {rest.length > 0 && (
                     <>
-                      <span className="hidden md:inline"> | </span>
-                      <span className="block md:inline">{rest.join(' | ')}</span>
+                      <span className="hidden md:inline"> · </span>
+                      <span className="block md:inline">{rest.join(' · ')}</span>
                     </>
                   )}
                 </>
@@ -74,7 +81,7 @@ export default function ProjectCard({
 
       {/* Description */}
       {description && (
-        <div className="mb-4 text-sm text-gray-700 leading-relaxed">
+        <div className="mb-4 text-sm text-zinc-300 leading-relaxed">
           <p>
             {descriptionNoWrapSuffix != null
               ? <>
@@ -90,7 +97,7 @@ export default function ProjectCard({
       {metrics.length > 0 && (
         <div className="space-y-2">
           {metrics.map((metric, idx) => (
-            <div key={idx} className="text-xs text-gray-700 leading-relaxed">
+            <div key={idx} className="text-xs text-zinc-300 leading-relaxed">
               • {metric}
             </div>
           ))}
@@ -99,11 +106,11 @@ export default function ProjectCard({
 
       {/* Video Thumbnail — прижат к низу карточки, чтобы превью были на одном уровне */}
       {videoPoster && (
-        <div className="mt-auto pt-4 rounded-lg overflow-hidden relative aspect-video w-full bg-gray-100">
+        <div className="mt-auto pt-4 rounded-xl overflow-hidden relative aspect-video w-full bg-night-card">
           <img
             src={videoPoster}
             alt="Video preview"
-            className="absolute inset-0 w-full h-full object-cover rounded-lg"
+            className="absolute inset-0 w-full h-full object-cover rounded-xl"
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center backdrop-blur-sm">
@@ -117,37 +124,28 @@ export default function ProjectCard({
 
       {/* Hover overlay for linked cards */}
       {href && hasData && (
-        <div className="absolute inset-0 hidden md:flex bg-black/60 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 hidden md:flex bg-black/60 rounded-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center pointer-events-none">
           <span className="text-white text-lg font-semibold">Узнать подробнее →</span>
         </div>
       )}
 
       {/* Empty state */}
       {!hasData && (
-        <div className="text-center text-gray-500 flex items-center justify-center h-full">
+        <div className="text-center text-zinc-400 flex items-center justify-center h-full">
           <p>Нажмите чтобы узнать больше</p>
         </div>
       )}
     </>
   )
 
-  const cardClassName = `group relative border-2 border-gray-300 rounded-lg p-6 cursor-pointer transition-all duration-300 flex flex-col overflow-hidden ${
-    isSelected ? 'border-blue-600 bg-blue-50 shadow-lg' : 'hover:border-blue-400 hover:shadow-md bg-white'
-  }`
-
-  const stripe = gradientStripe ? (
-    <div
-      className="absolute right-0 top-0 bottom-0 w-2 rounded-r-lg shrink-0"
-      style={{ background: 'linear-gradient(to bottom, #ec4899, #a855f7, #6366f1)' }}
-      aria-hidden
-    />
-  ) : null
+  const cardClassName = `group relative card-glow rounded-[18px] p-6 md:p-[26px] flex flex-col overflow-hidden transition-[transform,box-shadow] duration-300 ${
+    clickable ? 'cursor-pointer md:hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(168,85,247,0.18)]' : ''
+  } ${isSelected ? 'ring-2 ring-purple-500' : ''}`
 
   // Если есть href — рендерим как Link
   if (href) {
     return (
       <Link href={href} className={cardClassName}>
-        {stripe}
         {cardContent}
       </Link>
     )
@@ -156,7 +154,6 @@ export default function ProjectCard({
   // Иначе — обычный div с onClick
   return (
     <div onClick={onClick} className={cardClassName}>
-      {stripe}
       {cardContent}
     </div>
   )

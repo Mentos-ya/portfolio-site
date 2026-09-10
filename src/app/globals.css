@@ -13,6 +13,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  color-scheme: dark;
 }
 
 @media (min-width: 768px) {
@@ -27,15 +28,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #ffffff;
-  color: #1a1a1a;
+  background: #0b0b14;
+  color: #f5f5f7;
 }
 
-/* Все серые тексты делаем черными */
-.text-gray-500,
-.text-gray-600,
-.text-gray-700 {
-  color: #000000 !important;
+::selection {
+  background: rgba(168, 85, 247, 0.45);
+  color: #fff;
 }
 
 /* Floating Resume Button Animations */
@@ -80,3 +79,131 @@ body {
   color: transparent;
 }
 
+@layer components {
+  /* Заголовок и подзаголовок раздела */
+  .section-title {
+    font-size: 36px;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    color: #fff;
+  }
+  .section-lead {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #a1a1aa;
+    margin-bottom: 32px;
+  }
+  @media (min-width: 768px) {
+    .section-title {
+      font-size: 44px;
+    }
+    .section-lead {
+      font-size: 20px;
+    }
+  }
+
+  /* Кнопки-«таблетки» первого экрана */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap;
+    transition: filter 0.2s, border-color 0.2s;
+  }
+  .btn-primary {
+    color: #fff;
+    background: linear-gradient(90deg, #ec4899, #a855f7, #6366f1);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.35);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.1);
+  }
+  .btn-secondary {
+    color: #fff;
+    background: #12121c;
+    border: 1px solid #3a3a4d;
+  }
+  .btn-secondary:hover {
+    border-color: #71717a;
+  }
+
+  /* Карточка: тёмная заливка и градиентная рамка */
+  .card-glow {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(#12121c, #12121c) padding-box,
+      linear-gradient(135deg, #ec4899, #a855f7 45%, #2a2a3a 75%) border-box;
+  }
+
+  /* Фото в градиентном кольце со свечением */
+  .photo-ring {
+    padding: 5px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #ec4899, #a855f7, #6366f1);
+    box-shadow: 0 0 70px rgba(168, 85, 247, 0.45);
+  }
+
+  /* Линия «Мой путь»: на узком экране вертикальная слева, на широком — горизонтальная */
+  .path {
+    position: relative;
+    display: grid;
+    gap: 22px;
+    padding-left: 30px;
+  }
+  .path::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, #3a3a4d, #ec4899 40%, #a855f7 70%, #22c55e);
+  }
+  .path-step {
+    position: relative;
+  }
+  .path-step::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: -30px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #0b0b14;
+    border: 3px solid #a855f7;
+  }
+  .path-step.is-now::before {
+    border-color: #22c55e;
+    background: #22c55e;
+    box-shadow: 0 0 14px #22c55e;
+  }
+  @media (min-width: 1024px) {
+    .path {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      padding-left: 0;
+      padding-top: 34px;
+    }
+    .path::before {
+      left: 8px;
+      right: 8px;
+      top: 8px;
+      bottom: auto;
+      width: auto;
+      height: 2px;
+      background: linear-gradient(90deg, #3a3a4d, #ec4899 40%, #a855f7 70%, #22c55e);
+    }
+    .path-step::before {
+      top: -33px;
+      left: 0;
+    }
+  }
+}

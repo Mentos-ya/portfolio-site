@@ -1,6 +1,6 @@
 {
   "pageTitle": "Связаться со мной",
-  "pageDescription": "Я всегда заинтересован в обсуждении новых идей продукта, возможностях сотрудничества или инсайтах по product management.",
+  "pageDescription": "Ищу позицию продакта — пишите в Telegram.",
   "contactInfo": {
     "email": {
       "label": "Email",
@@ -15,8 +15,8 @@
     },
     "linkedin": {
       "label": "LinkedIn",
-      "value": "linkedin.com/in/iakupov-ilia",
-      "href": "https://linkedin.com/in/iakupov-ilia",
+      "value": "linkedin.com/in/ilia-iakupov",
+      "href": "https://linkedin.com/in/ilia-iakupov",
       "note": "Professional networking и обновления"
     },
     "location": {

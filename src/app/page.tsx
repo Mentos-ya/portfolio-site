@@ -3,124 +3,165 @@ import homeData from '@/data/home.json'
 import projectsData from '@/data/projects.json'
 import ProjectCard from '@/components/ProjectCard'
 import AddCaseBlock from '@/components/AddCaseBlock'
+import AiProjects from '@/components/AiProjects'
+
+const RESUME_URL = 'https://drive.google.com/file/d/1V7jEQQH0xdIrrB1YcVwKtXHadfmwcY3g/view'
+
+// «Мой путь»: по порядку, последняя точка — где работаю сейчас
+const path: { years: string; title: string; text: string; href?: string; now?: boolean }[] = [
+  {
+    years: '2018 – 2020',
+    title: 'ЦУМ',
+    text: 'Продажи и работа с корпоративными клиентами в премиум-сегменте',
+  },
+  {
+    years: '2018 – 2025',
+    title: 'LetoPlace',
+    text: 'Основал сервис аренды и вырастил до 5 млн ₽ выручки в месяц',
+    href: '/projects/letoplace',
+  },
+  {
+    years: '2026',
+    title: 'Понятно',
+    text: 'Сам собрал Telegram-приложение с помощью ИИ, первые продажи',
+    href: '/projects/ponyatno',
+  },
+  {
+    years: '2026',
+    title: 'ИИ-проекты',
+    text: 'Сам собрал задачник Mentask, приложение для Mac и бота-дайджест новостей',
+    href: '#ai',
+  },
+  {
+    years: '2026 — сейчас',
+    title: 'Домклик',
+    text: 'Product Manager в сервисе недвижимости Сбера',
+    now: true,
+  },
+]
+
+// Навыки: 12 главных, сначала работа с ИИ (градиентом)
+const skills = [
+  { name: 'Vibe Coding', ai: true },
+  { name: 'Claude Code', ai: true },
+  { name: 'Cursor', ai: true },
+  { name: 'AI Agents', ai: true },
+  { name: 'Prompt Engineering', ai: true },
+  { name: 'Product Strategy & Roadmap', ai: false },
+  { name: 'Customer Development', ai: false },
+  { name: 'Unit Economics', ai: false },
+  { name: 'A/B Testing', ai: false },
+  { name: 'Funnel & Cohort Analysis', ai: false },
+  { name: 'Go-To-Market', ai: false },
+  { name: 'Team Leadership', ai: false },
+]
+
+// Контакты; цель для Метрики определяется по адресу ссылки
+const contacts = [
+  { label: 'Telegram', href: 'https://t.me/iak_ilia', text: 't.me/iak_ilia', hint: 'Открыть Telegram', external: true },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/ilia-iakupov', text: 'linkedin.com/in/ilia-iakupov', hint: 'Открыть LinkedIn', external: true },
+  { label: 'Email', href: 'mailto:iak.ilia.main@gmail.com', text: 'iak.ilia.main@gmail.com', hint: 'Написать письмо', external: false },
+]
 
 export default function Home() {
-
   return (
     <div>
-      {/* Hero Section */}
-      <section id="home" className="max-w-4xl mx-auto px-6 py-14">
-        <div className="grid md:grid-cols-2 gap-10 mb-8 items-stretch">
-          <div className="flex flex-col">
-            <div className="overflow-hidden">
-              {/* Фото слева в абзаце только на мобильной, текст обтекает */}
-              <div className="float-left mr-5 mb-2 w-24 h-24 shrink-0 block md:hidden rounded-full border-[4px] border-blue-600 overflow-hidden shadow-lg bg-white">
-                <Image
-                  src="/images/profile.jpg"
-                  alt=""
-                  width={96}
-                  height={96}
-                  className="w-full h-full object-cover"
-                  priority
-                />
-              </div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-5 text-black">
-                {homeData.hero.name}
-              </h1>
-              <p className="text-lg text-gray-500 mb-3">
-                <strong className="text-black">Product Manager с предпринимательским бэкграундом</strong> с 7 годами опыта в HotelTech и TravelTech. С нуля создал{' '}
-                <span className="relative inline-block group/link">
-                  <a
-                    href="https://letoplace.ru"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-black underline"
-                  >
-                    digital-сервис
-                  </a>
-                  <span className="absolute left-0 top-full mt-1 px-2.5 py-1.5 bg-gray-800 text-white text-xs rounded-md opacity-0 pointer-events-none transition-opacity duration-150 group-hover/link:opacity-100 whitespace-nowrap z-10">
-                    Открыть сайт LetoPlace
-                  </span>
-                </span>{' '}
-                аренды в 3 городах (50 объектов в СПб, 7К MAU сайта, 5 м/мес revenue, 31% marg).
-              </p>
-              <p className="text-lg text-gray-500 mb-3">
-                Развивал двустороннюю платформу: B2C сегмент для путешественников и B2B для собственников жилья с управлением «под ключ». Отвечал за кросс-функциональную команду разработки, масштабирование, P&amp;L.
-              </p>
-              <p className="text-lg text-gray-500 mb-6">
-                {(() => {
-                  const text = homeData.hero.descriptionPart2
-                  const gradientStart = 'Активно применяю'
-                  const i = text.indexOf(gradientStart)
-                  const onlyGradient = i === -1 ? text : text.slice(i)
-                  return <span className="text-gradient-hero">{onlyGradient}</span>
-                })()}
-              </p>
-            </div>
-
-            <div className="flex gap-4 mt-auto w-full">
+      {/* Первый экран */}
+      <section id="home" className="max-w-5xl mx-auto px-6 pt-8 md:pt-14 pb-14">
+        <div className="grid md:grid-cols-[1.4fr_1fr] gap-7 md:gap-12 items-center">
+          <div>
+            <span className="inline-flex items-center gap-2 text-[13px] text-zinc-300 border border-night-edge bg-night-card px-3.5 py-[7px] rounded-full">
+              <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" aria-hidden />
+              Сейчас · Product Manager в Домклике
+            </span>
+            <h1 className="text-[46px] md:text-[68px] leading-none tracking-[-0.035em] font-bold my-5 text-white">
+              {homeData.hero.name}
+            </h1>
+            <p className="text-base md:text-lg leading-[1.55] text-soft">
+              <strong className="text-white font-semibold">Product Manager с предпринимательским бэкграундом</strong> с&nbsp;7&nbsp;годами опыта в HotelTech и TravelTech. С нуля создал{' '}
+              {/* Сайт letoplace.ru больше не работает — ведём на кейс внутри портфолио */}
               <a
-                href="#projects"
-                className="flex-1 min-w-0 px-6 py-3 bg-black text-white rounded hover:bg-gray-800 transition text-center"
+                href="/projects/letoplace"
+                data-goal="open_project"
+                title="Открыть кейс LetoPlace"
+                className="text-white underline decoration-white/30 underline-offset-4 hover:decoration-white transition-colors"
               >
-                Смотреть <br className="sm:hidden" />проекты
+                {/* Не разрываем «digital-сервис» по дефису */}
+                <span className="whitespace-nowrap">digital-сервис</span> аренды
+              </a>{' '}
+              в&nbsp;3&nbsp;городах.
+            </p>
+            <p className="text-base md:text-lg leading-normal font-semibold mt-3 text-gradient-hero">
+              Активно применяю LLM и AI-агентов. Этот сайт собран с помощью&nbsp;Claude&nbsp;Code.
+            </p>
+            <div className="flex flex-wrap gap-3 mt-8">
+              <a href="#projects" className="btn btn-primary flex-1 sm:flex-none">
+                Смотреть проекты
               </a>
               <a
-                href="#contact"
-                className="flex-1 min-w-0 px-6 py-3 border border-black text-black rounded hover:bg-black hover:text-white transition text-center"
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary flex-1 sm:flex-none"
               >
-                Связаться <br className="sm:hidden" />со мной
+                Открыть резюме
               </a>
             </div>
           </div>
 
-          <div className="min-h-0 flex flex-col items-start justify-end md:h-full">
-            <div className="block md:hidden text-center w-full mb-3 text-gray-600">
-              Открыть резюме ↓
-            </div>
-            <a
-              href="https://drive.google.com/file/d/1V7jEQQH0xdIrrB1YcVwKtXHadfmwcY3g/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Открыть резюме"
-              className="group transition-all duration-300 hover:shadow-lg relative h-full w-full max-w-[360px] flex items-center justify-center ml-auto origin-top mt-4 scale-[0.97] md:translate-x-3"
-            >
-              <div className="relative w-full h-full min-h-[280px] max-h-full">
-                <Image
-                  src="/images/resume.png"
-                  alt="Resume preview"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 360px"
-                  className="object-contain rounded-lg border-2 border-gray-300 group-hover:border-blue-600 transition-all duration-300 shadow-md group-hover:shadow-xl"
-                  priority
-                />
-                {/* Оверлей при наведении: "Открыть резюме →" */}
-                <div className="absolute inset-0 hidden md:flex items-center justify-center rounded-lg bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-xl font-bold text-white">
-                    Открыть резюме →
-                  </span>
-                </div>
-                {/* Profile Photo in Top-Right Corner — только на десктопе; на мобильной фото в блоке текста */}
-                <div className="hidden md:block absolute top-0 right-0 w-[105px] h-[105px] rounded-full border-[5px] border-blue-600 overflow-hidden shadow-lg bg-white transform -translate-y-1/2 translate-x-1/2">
-                  <Image
-                    src="/images/profile.jpg"
-                    alt="Profile"
-                    width={105}
-                    height={105}
-                    className="w-full h-full object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            </a>
+          <div className="photo-ring order-first md:order-none justify-self-start md:justify-self-center w-[180px] h-[180px] md:w-[290px] md:h-[290px]">
+            <Image
+              src="/images/profile.jpg"
+              alt="Илья Якупов"
+              width={290}
+              height={290}
+              className="w-full h-full object-cover rounded-full border-[5px] border-night"
+              priority
+            />
           </div>
+        </div>
+
+        {/* Мой путь */}
+        <div className="mt-10 md:mt-14">
+          <p className="text-[13px] uppercase tracking-[0.1em] text-zinc-400 mb-4">Мой путь</p>
+          <ol className="path">
+            {path.map((step) => {
+              const body = (
+                <>
+                  <p className={`text-[13px] ${step.now ? 'text-green-500 font-semibold' : 'text-zinc-400'}`}>
+                    {step.years}
+                  </p>
+                  <p className="text-[22px] font-bold tracking-[-0.01em] mt-1.5 text-white">
+                    {step.title}
+                    {step.href && (
+                      <span className="inline-block ml-1.5 text-lg text-zinc-600 group-hover:text-white group-hover:translate-x-0.5 transition" aria-hidden>
+                        →
+                      </span>
+                    )}
+                  </p>
+                  <p className="text-sm text-soft mt-2 leading-[1.45]">{step.text}</p>
+                </>
+              )
+              return (
+                <li key={step.title} className={`path-step ${step.now ? 'is-now' : ''}`}>
+                  {step.href ? (
+                    <a href={step.href} className="group block">
+                      {body}
+                    </a>
+                  ) : (
+                    body
+                  )}
+                </li>
+              )
+            })}
+          </ol>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="max-w-4xl mx-auto px-6 py-14">
-        <h1 className="text-5xl font-bold mb-3">{projectsData.pageTitle}</h1>
-        <p className="text-xl text-gray-600 mb-8">
+      {/* Опыт */}
+      <section id="projects" className="max-w-5xl mx-auto px-6 py-14 scroll-mt-16">
+        <h2 className="section-title">{projectsData.pageTitle}</h2>
+        <p className="section-lead">
           {(() => {
             const d = projectsData.pageDescription
             const i = d.indexOf('Product Manager и Growth PM')
@@ -135,8 +176,17 @@ export default function Home() {
           })()}
         </p>
 
-        {/* Project Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-5">
+          {/* Текущая работа — первой и на всю ширину; подробности пока не раскрываем, как в LinkedIn */}
+          <div className="md:col-span-2 flex flex-col">
+            <ProjectCard
+              id={2}
+              now
+              title="Домклик"
+              role="Product Manager | 04.2026 — По наст. время"
+              description="Продакт-менеджер в Домклике — сервисе недвижимости экосистемы Сбера. Москва, гибридный формат."
+            />
+          </div>
           <ProjectCard
             id={0}
             href="/projects/letoplace"
@@ -144,7 +194,7 @@ export default function Home() {
             role="Founder / Product Owner | 02.2018 – 09.2025"
             emoji=""
             logo="/logos/letoplace-logo.png"
-            videoPoster="/videos/letoplace-poster.png"
+            videoPoster="/videos/letoplace-poster.webp"
             description="С нуля создал digital-сервис для аренды имущества. Разработал двустороннюю платформу (B2C для путешественников и B2B для собственников недвижимости с управлением «под ключ»). В портфеле 50+ объектов в Санкт-Петербурге, 5M RUB revenue в месяц, 31% маржинальность."
           />
           <ProjectCard
@@ -155,189 +205,105 @@ export default function Home() {
             logo="/logos/ponyatno-logo.png"
             description="Запустил Telegram Mini App для сканирования меню иностранных ресторанов — с переводом текста, калорийностью, составом и ценами в одном экране. Весь продукт построен через вайбкодинг (AI-инструменты без классической разработки). Стадия MVP, приложение уже приносит первый revenue."
             videoPoster="/videos/ponyatno-poster.png?v=2"
-            gradientStripe
           />
         </div>
 
         <AddCaseBlock />
       </section>
 
-      {/* Education Section */}
-      <section id="education" className="max-w-4xl mx-auto px-6 py-14">
-        <h1 className="text-5xl font-bold mb-3">Образование</h1>
-        <p className="text-xl text-gray-600 mb-6">
-          Учебные заведения и курсы
-        </p>
-        <ul className="space-y-4 text-gray-700">
+      <AiProjects />
+
+      {/* Образование */}
+      <section id="education" className="max-w-5xl mx-auto px-6 py-14 scroll-mt-16">
+        <h2 className="section-title">Образование</h2>
+        <p className="section-lead">Учебные заведения и курсы</p>
+        <ul className="space-y-4 text-zinc-300">
           <li className="flex gap-3 items-start">
-            <span className="text-gray-400 shrink-0">•</span>
-            <span><a href="https://gopractice.ru/course/pm/certificate/rryphyzv" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-900 underline decoration-gray-400 hover:decoration-gray-900 relative group/link">
+            <span className="text-purple-400 shrink-0">•</span>
+            <span>
+              <a
+                href="https://gopractice.ru/course/pm/certificate/rryphyzv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-white underline decoration-white/30 underline-offset-4 hover:decoration-white relative group/link"
+              >
                 GoPractice
-                <span className="absolute left-0 top-full mt-1 px-2.5 py-1.5 bg-gray-800 text-white text-sm rounded-md opacity-0 pointer-events-none transition-opacity duration-150 group-hover/link:opacity-100 whitespace-nowrap z-10">
+                <span className="absolute left-0 top-full mt-1 px-2.5 py-1.5 bg-zinc-800 text-white text-sm rounded-md opacity-0 pointer-events-none transition-opacity duration-150 group-hover/link:opacity-100 whitespace-nowrap z-10">
                   Открыть сертификат
                 </span>
-              </a> — Симулятор управления продуктом на основе данных</span>
+              </a>{' '}
+              — Симулятор управления продуктом на основе данных
+            </span>
           </li>
           <li className="flex gap-3 items-start">
-            <span className="text-gray-400 shrink-0">•</span>
-            <span><strong>Томский государственный университет</strong> — Высшая школа бизнеса, 2015–2018</span>
+            <span className="text-purple-400 shrink-0">•</span>
+            <span><strong className="text-white">Томский государственный университет</strong> — Высшая школа бизнеса, 2015–2018</span>
           </li>
           <li className="flex gap-3 items-start">
-            <span className="text-gray-400 shrink-0">•</span>
-            <span><strong>Томский государственный архитектурно-строительный университет</strong> — Архитектура, 2011–2015</span>
+            <span className="text-purple-400 shrink-0">•</span>
+            <span><strong className="text-white">Томский государственный архитектурно-строительный университет</strong> — Архитектура, 2011–2015</span>
           </li>
         </ul>
       </section>
 
-      {/* Skills Section — скрыт на мобильной */}
-      <section id="skills" className="max-w-4xl mx-auto px-6 py-14 hidden md:block">
-        <h1 className="text-5xl font-bold mb-3">Навыки</h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Tech Stack & Tools
-        </p>
+      {/* Навыки: видны и на телефоне */}
+      <section id="skills" className="max-w-5xl mx-auto px-6 py-14 scroll-mt-16">
+        <h2 className="section-title">Навыки</h2>
+        <p className="section-lead">Tech Stack & Tools</p>
         <div className="flex flex-wrap gap-3">
-          {(() => {
-            const gradientSkills = new Set(['Vibe Coding', 'Cursor', 'Claude', 'Prompt Engineering', 'No-code / Low-code'])
-            return [
-            'Tilda',
-            'Custom JS Widgets',
-            'Python API',
-            'API Integration',
-            'Webhooks',
-            'AmoCRM',
-            'CRM Automation (amoCRM)',
-            'IoT Integration',
-            'Telegram Bots',
-            'AI Integration',
-            'Process Automation',
-            'Strategy',
-            'Roadmap',
-            'Lifecycle',
-            'Customer Lifecycle Mapping',
-            'Lean Canvas',
-            'Go-To-Market',
-            'Hypothesis Testing',
-            'User Research',
-            'Product/Market Fit',
-            'Amplitude',
-            'Asana',
-            'Notion',
-            'Google Analytics',
-            'Funnel Analysis',
-            'Cohort Analysis',
-            'Channel Performance Analysis',
-            'Team Leadership',
-            'Remote Team Management',
-            'Stakeholder Management',
-            'Data-Driven Decisions',
-            'KPI/OKR',
-            'Financial Model',
-            'Pricing Strategy',
-            'Unit Economics',
-            'B2C/B2B',
-            'Vibe Coding',
-            'Cursor',
-            'Claude',
-            'Prompt Engineering',
-            'No-code / Low-code',
-          ].map((skill) => {
-            const useGradient = gradientSkills.has(skill)
-            return (
-              <span
-                key={skill}
-                className="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 border border-gray-200"
-              >
-                {useGradient ? (
-                  <span className="text-gradient-hero">{skill}</span>
-                ) : (
-                  <span className="text-gray-800">{skill}</span>
-                )}
-              </span>
-            )
-          })
-          })()}
+          {skills.map((skill) => (
+            <span
+              key={skill.name}
+              className="px-4 py-2 rounded-full text-sm font-medium bg-night-card border border-night-edge"
+            >
+              <span className={skill.ai ? 'text-gradient-hero' : 'text-zinc-200'}>{skill.name}</span>
+            </span>
+          ))}
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="max-w-4xl mx-auto px-6 py-14">
-        <h1 className="text-5xl font-bold mb-3">Связаться<br className="md:hidden" /> со мной</h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Я всегда заинтересован в обсуждении новых идей продукта, возможностях сотрудничества или инсайтах по product management.
-        </p>
+      {/* Контакты */}
+      <section id="contact" className="max-w-5xl mx-auto px-6 py-14 scroll-mt-16">
+        <h2 className="section-title">Связаться<br className="md:hidden" /> со мной</h2>
+        <p className="section-lead">Ищу позицию продакта — пишите в Telegram.</p>
 
         <div className="grid md:grid-cols-2 gap-10">
-          {/* Contact Options */}
           <div>
-            <h2 className="text-2xl font-bold mb-6">Контактная информация</h2>
-
+            <h3 className="text-2xl font-bold mb-6 text-white">Контактная информация</h3>
             <div className="space-y-6">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Telegram</h3>
-                <div className="relative inline-block group">
-                  <a
-                    href="https://t.me/iak_ilia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-black underline hover:underline text-lg"
-                  >
-                    https://t.me/iak_ilia
-                  </a>
-                  <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                    Открыть Telegram
-                  </span>
+              {contacts.map((c) => (
+                <div key={c.label}>
+                  <h4 className="font-bold text-lg mb-2 text-white">{c.label}</h4>
+                  <div className="relative inline-block group">
+                    <a
+                      href={c.href}
+                      {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      className="text-zinc-200 underline decoration-white/30 underline-offset-4 hover:decoration-white hover:text-white text-lg transition-colors"
+                    >
+                      {c.text}
+                    </a>
+                    <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-zinc-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                      {c.hint}
+                    </span>
+                  </div>
                 </div>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-lg mb-2">LinkedIn</h3>
-                <div className="relative inline-block group">
-                  <a
-                    href="https://linkedin.com/in/iakupov-ilia"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-black underline hover:underline text-lg"
-                  >
-                    linkedin.com/in/iakupov-ilia
-                  </a>
-                  <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                    Открыть LinkedIn
-                  </span>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="font-bold text-lg mb-2">Email</h3>
-                <div className="relative inline-block group">
-                  <a
-                    href="mailto:iak.ilia.main@gmail.com"
-                    className="text-black underline hover:underline text-lg"
-                  >
-                    iak.ilia.main@gmail.com
-                  </a>
-                  <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                    Написать письмо
-                  </span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Additional Info */}
           <div className="flex flex-col md:h-full">
-            <h2 className="text-2xl font-bold mb-6">Чем я могу помочь</h2>
+            <h3 className="text-2xl font-bold mb-6 text-white">Чем я могу помочь</h3>
             <div className="flex-1 min-h-0" aria-hidden />
             <div className="space-y-4">
-              <div className="p-4 bg-gray-50 rounded">
-                <h3 className="font-bold mb-2">Product Manager в команду</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="p-5 rounded-2xl bg-night-card border border-night-line">
+                <h4 className="font-bold mb-2 text-white">Product Manager в команду</h4>
+                <p className="text-zinc-400 text-sm">
                   Ищу позицию, где смогу применить свой опыт работы — от discovery до масштабирования
                 </p>
               </div>
-
-              <div className="p-4 bg-gray-50 rounded">
-                <h3 className="font-bold mb-2">Нетворкинг</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="p-5 rounded-2xl bg-night-card border border-night-line">
+                <h4 className="font-bold mb-2 text-white">Нетворкинг</h4>
+                <p className="text-zinc-400 text-sm">
                   Открыт к общению. Пишите — обсудим идеи, обменяемся опытом или просто познакомимся
                 </p>
               </div>

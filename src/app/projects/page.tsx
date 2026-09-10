@@ -4,20 +4,20 @@ export default function Projects() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-20">
       <h1 className="text-5xl font-bold mb-4">{projectsData.pageTitle}</h1>
-      <p className="text-xl text-gray-600 mb-12">
+      <p className="text-xl text-zinc-400 mb-12">
         {projectsData.pageDescription}
       </p>
 
       <div className="space-y-12">
         {/* LetoPlace */}
-        <div className="border-b border-gray-200 pb-12 last:border-b-0">
+        <div className="border-b border-night-edge pb-12 last:border-b-0">
           <h2 className="text-3xl font-bold mb-2">LetoPlace</h2>
-          <p className="text-gray-500 mb-4">Product Manager & Growth PM | 2018 - Июнь 2025</p>
+          <p className="text-zinc-400 mb-4">Product Manager & Growth PM | 2018 - Июнь 2025</p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-6">
             <div>
               <h3 className="font-bold mb-2">Описание</h3>
-              <p className="text-gray-700">
+              <p className="text-zinc-300">
                 Построил и масштабировал digital marketplace для аренды, соединяющий владельцев объектов с путешественниками.
                 Запущен в 3 городах с 50+ активными объектами, генерирующими 5M RUB ежемесячного дохода.
               </p>
@@ -25,7 +25,7 @@ export default function Projects() {
 
             <div>
               <h3 className="font-bold mb-2">Ключевые метрики</h3>
-              <ul className="text-gray-700 space-y-1">
+              <ul className="text-zinc-300 space-y-1">
                 <li>• <strong>5M RUB</strong> ежемесячный revenue</li>
                 <li>• <strong>50+</strong> активных объектов</li>
                 <li>• <strong>31%</strong> маржинальность</li>
@@ -35,7 +35,7 @@ export default function Projects() {
           </div>
 
           <h3 className="font-bold mb-2">Ответственность</h3>
-          <ul className="text-gray-700 space-y-1 mb-6">
+          <ul className="text-zinc-300 space-y-1 mb-6">
             <li>✓ Определил product vision и стратегию развития marketplace</li>
             <li>✓ Провел customer development интервью с 50+ владельцами объектов и путешественниками</li>
             <li>✓ Спроектировал и реализовал A/B тесты, результатом которых стал рост LTV на 23%</li>
@@ -49,7 +49,7 @@ export default function Projects() {
           <h3 className="font-bold mb-2">Tech Stack & Tools</h3>
           <div className="flex flex-wrap gap-2">
             {['Lean Canvas', 'User Research', 'A/B Testing', 'Amplitude', 'Asana', 'Notion', 'amoCRM', 'API Integration', 'Telegram Bot', 'Funnel Analysis'].map((skill) => (
-              <span key={skill} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
+              <span key={skill} className="px-3 py-1 bg-night-card border border-night-edge text-zinc-300 rounded-full text-sm">
                 {skill}
               </span>
             ))}
@@ -58,14 +58,14 @@ export default function Projects() {
       </div>
 
       {/* Other Experience */}
-      <div className="mt-16 pt-12 border-t border-gray-200">
+      <div className="mt-16 pt-12 border-t border-night-edge">
         <h2 className="text-2xl font-bold mb-8">Другой опыт</h2>
 
         <div className="space-y-6">
           <div>
             <h3 className="font-bold">Product Manager - HotelTech & TravelTech</h3>
-            <p className="text-gray-500 text-sm">Различные проекты | 7+ лет опыта</p>
-            <p className="text-gray-700 mt-2">
+            <p className="text-zinc-400 text-sm">Различные проекты | 7+ лет опыта</p>
+            <p className="text-zinc-300 mt-2">
               Обширный опыт в отраслях hospitality и travel tech, разработка продуктов с 0-1 и масштабирование
               до миллионов в выручке. Экспертиза в marketplace dynamics, user onboarding и sustainable growth.
             </p>

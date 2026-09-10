@@ -19,7 +19,7 @@ export default function AddCaseBlock() {
       <button
         type="button"
         onClick={() => setModalOpen(true)}
-        className="group relative w-full border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center py-8 mt-6 mb-6 bg-white transition-[border-color,box-shadow] duration-300 hover:border-sky-400 hover:ring-1 hover:ring-sky-400/50 cursor-pointer text-left"
+        className="group relative w-full border-2 border-dashed border-night-ring rounded-[18px] flex items-center justify-center py-8 mt-5 mb-6 bg-transparent transition-[border-color,box-shadow] duration-300 hover:border-purple-400/70 hover:ring-1 hover:ring-purple-400/40 cursor-pointer text-left"
       >
         {/* При наведении: тёмный фон как у карточек + одна диагональная полоска с градиентом */}
         <div
@@ -46,7 +46,7 @@ export default function AddCaseBlock() {
             />
           ))}
         </div>
-        <span className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-400 text-gray-500 group-hover:text-white group-hover:border-white/80 transition-colors duration-300 text-2xl font-light min-w-[3rem] min-h-[3rem]" style={{ lineHeight: 1 }}>
+        <span className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-zinc-600 text-zinc-500 group-hover:text-white group-hover:border-white/80 transition-colors duration-300 text-2xl font-light min-w-[3rem] min-h-[3rem]" style={{ lineHeight: 1 }}>
           <span className="inline-flex items-center justify-center w-full h-full" style={{ paddingBottom: '0.08em' }}>+</span>
         </span>
       </button>
