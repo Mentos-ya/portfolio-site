@@ -8,7 +8,8 @@ import AiProjects from '@/components/AiProjects'
 const RESUME_URL = 'https://drive.google.com/file/d/1V7jEQQH0xdIrrB1YcVwKtXHadfmwcY3g/view'
 
 // «Мой путь»: по порядку, последняя точка — где работаю сейчас
-const path: { years: string; title: string; text: string; href?: string; now?: boolean }[] = [
+// note — уточнение после запятой («Домклик, Сбер»): мельче названия, чтобы пункт оставался в одну строку
+const path: { years: string; title: string; note?: string; text: string; href?: string; now?: boolean }[] = [
   {
     years: '2018 – 2020',
     title: 'ЦУМ',
@@ -35,6 +36,7 @@ const path: { years: string; title: string; text: string; href?: string; now?: b
   {
     years: '2026 — сейчас',
     title: 'Домклик',
+    note: 'Сбер',
     text: 'Product Manager в сервисе недвижимости Сбера',
     now: true,
   },
@@ -71,10 +73,10 @@ export default function Home() {
       <section id="home" className="sheet sheet-split">
         <div className="grid md:grid-cols-[1.4fr_1fr] gap-7 md:gap-12 items-center">
           <div className="halo">
-            {/* Моноширинный шрифт шире — на телефоне плашка мельче, чтобы остаться в одну строку */}
-            <span className="cli-badge inline-flex items-center gap-2 text-[11px] md:text-[13px] whitespace-nowrap text-ink/75 px-3.5 py-[7px]">
+            {/* Моноширинный шрифт шире — на телефоне плашка мельче, чтобы остаться в одну строку даже на экране 360px */}
+            <span className="cli-badge inline-flex items-center gap-2 text-[10px] md:text-[13px] whitespace-nowrap text-ink/75 px-3 md:px-3.5 py-[7px]">
               <span className="w-2 h-2 bg-green-500 shadow-[0_0_8px_#22c55e]" aria-hidden />
-              Сейчас · Product Manager в Домклике
+              Сейчас · Product Manager в Домклике, Сбер
             </span>
             {/* Имя — тем же начертанием, что основной текст: та же жирность, без сжатия букв и пробела */}
             <h1 className="text-[46px] md:text-[68px] leading-none font-normal [word-spacing:normal] my-5 text-ink">
@@ -139,6 +141,7 @@ export default function Home() {
                   </p>
                   <p className="text-[24px] font-bold tracking-[-0.01em] mt-1.5 text-ink">
                     {step.title}
+                    {step.note && <span className="text-lg text-ink/60">, {step.note}</span>}
                     {step.href && (
                       <span className="inline-block ml-1.5 text-lg text-ink/40 group-hover:text-electric group-hover:translate-x-0.5 transition" aria-hidden>
                         →
@@ -174,7 +177,7 @@ export default function Home() {
           {/* Текущая работа — первой */}
           <ProjectCard
             id={2}
-            title="Домклик"
+            title="Домклик, Сбер"
             logo="/logos/domclick-logo.svg"
             role="Product Manager | 04.2026 — По наст. время"
             description="Продакт-менеджер отельного направления в Домклике — сервисе недвижимости экосистемы Сбера. После собственного бизнеса — масштаб задач и данных большой экосистемы."
