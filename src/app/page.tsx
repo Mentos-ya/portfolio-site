@@ -22,12 +22,6 @@ const path: { years: string; title: string; note?: string; text: string; href?: 
     href: '/projects/letoplace',
   },
   {
-    years: '2025',
-    title: 'Понятно',
-    text: 'Собрал с помощью ИИ Telegram-приложение, первые продажи',
-    href: '/projects/ponyatno',
-  },
-  {
     years: '2026 — сейчас',
     title: 'ИИ-проекты',
     text: 'Задачник Mentask, приложение для Mac и бот-дайджест новостей',

@@ -332,8 +332,8 @@ h3 {
     top: 6px;
     bottom: 6px;
     width: 2px;
-    /* Линия зеленеет к четвёртой точке: два последних пункта — то, чем занимаюсь сейчас */
-    background: linear-gradient(180deg, rgba(15, 20, 64, 0.2), #1f33ff 40%, #1f33ff 55%, #16a34a 62%);
+    /* Линия зеленеет к третьей точке: два последних пункта (ИИ-проекты, Домклик) — то, чем занимаюсь сейчас */
+    background: linear-gradient(180deg, rgba(15, 20, 64, 0.2), #1f33ff 30%, #1f33ff 42%, #16a34a 50%);
   }
   .path-step {
     position: relative;
@@ -373,7 +373,7 @@ h3 {
   }
   @media (min-width: 1024px) {
     .path {
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       padding-left: 0;
       padding-top: 34px;
@@ -385,7 +385,7 @@ h3 {
       bottom: auto;
       width: auto;
       height: 2px;
-      background: linear-gradient(90deg, rgba(15, 20, 64, 0.2), #1f33ff 40%, #1f33ff 55%, #16a34a 62%);
+      background: linear-gradient(90deg, rgba(15, 20, 64, 0.2), #1f33ff 30%, #1f33ff 42%, #16a34a 50%);
     }
     .path-step::before {
       top: -33px;
