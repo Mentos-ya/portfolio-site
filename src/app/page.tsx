@@ -86,11 +86,14 @@ export default function Home() {
               <a
                 href="/projects/letoplace"
                 data-goal="open_project"
-                title="Открыть кейс LetoPlace"
-                className="text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink transition-colors"
+                className="relative group/leto whitespace-nowrap text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink transition-colors"
               >
-                {/* Не разрываем «digital-сервис» по дефису */}
-                <span className="whitespace-nowrap">digital-сервис</span> аренды
+                {/* Ссылка целиком в одну строку: дефис не рвётся, а подсказка встаёт ровно под ней */}
+                digital-сервис аренды
+                {/* Подсказка как у контактов: тёмная плашка «> Открыть кейс LetoPlace» под ссылкой */}
+                <span className="cli-tip absolute left-0 top-full mt-1 px-2 py-1 bg-ink text-paper text-xs opacity-0 group-hover/leto:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
+                  Открыть кейс LetoPlace
+                </span>
               </a>{' '}
               в&nbsp;3&nbsp;городах.
             </p>
