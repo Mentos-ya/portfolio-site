@@ -7,7 +7,7 @@ import AiProjects from '@/components/AiProjects'
 
 const RESUME_URL = 'https://drive.google.com/file/d/1V7jEQQH0xdIrrB1YcVwKtXHadfmwcY3g/view'
 
-// «Мой путь»: по порядку, последняя точка — где работаю сейчас
+// «Мой путь»: по порядку; пункты с now — то, чем занимаюсь сейчас (зелёная точка и «— сейчас»)
 // note — уточнение после запятой («Домклик, Сбер»): мельче названия, чтобы пункт оставался в одну строку
 const path: { years: string; title: string; note?: string; text: string; href?: string; now?: boolean }[] = [
   {
@@ -22,16 +22,17 @@ const path: { years: string; title: string; note?: string; text: string; href?: 
     href: '/projects/letoplace',
   },
   {
-    years: '2026',
+    years: '2025',
     title: 'Понятно',
     text: 'Собрал с помощью ИИ Telegram-приложение, первые продажи',
     href: '/projects/ponyatno',
   },
   {
-    years: '2026',
+    years: '2026 — сейчас',
     title: 'ИИ-проекты',
     text: 'Задачник Mentask, приложение для Mac и бот-дайджест новостей',
     href: '#ai',
+    now: true,
   },
   {
     years: '2026 — сейчас',
