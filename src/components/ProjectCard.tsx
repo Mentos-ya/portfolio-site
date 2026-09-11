@@ -21,6 +21,8 @@ interface ProjectCardProps {
   now?: boolean
   /** Широкая карточка: на компьютере текст слева, превью видео справа */
   wide?: boolean
+  /** Город и формат работы — мелкой подписью в правом нижнем углу карточки */
+  place?: string
 }
 
 export default function ProjectCard({
@@ -39,6 +41,7 @@ export default function ProjectCard({
   videoPoster,
   now,
   wide,
+  place,
 }: ProjectCardProps) {
   const hasData = title || role || metrics.length > 0
   const clickable = Boolean(href || onClick)
@@ -135,6 +138,17 @@ export default function ProjectCard({
     <>
       {wide ? <div className="flex flex-col">{info}</div> : info}
       {media}
+
+      {/* Город и формат — подписью в правом нижнем углу: в широкой карточке под превью на всю ширину, в обычной — прижата к низу */}
+      {place && (
+        <p
+          className={`self-end text-right text-[13px] text-ink/60 ${
+            wide ? 'mt-3 md:-mt-4 md:col-span-2 md:justify-self-end' : 'mt-auto'
+          }`}
+        >
+          {place}
+        </p>
+      )}
 
       {/* Hover overlay for linked cards */}
       {href && hasData && (
