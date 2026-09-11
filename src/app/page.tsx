@@ -13,7 +13,7 @@ const path: { years: string; title: string; note?: string; text: string; href?: 
   {
     years: '2018 – 2020',
     title: 'ЦУМ',
-    text: 'Продажи и работа с корпоративными клиентами в премиум-сегменте',
+    text: 'Продажи корпоративным клиентам в премиум-сегменте',
   },
   {
     years: '2018 – 2025',
