@@ -41,7 +41,7 @@ export default function AddCaseBlock() {
                 height: '8px',
                 transform: `translate(calc(-50% + ${offset}px), -50%) rotate(45deg)`,
                 background: 'linear-gradient(to right, #1f33ff, #6f7cff, #1f33ff)',
-                borderRadius: '4px',
+                borderRadius: 0,
               }}
             />
           ))}
