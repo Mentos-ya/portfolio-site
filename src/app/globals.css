@@ -285,6 +285,20 @@ h3 {
     border: 1px solid rgba(15, 20, 64, 0.12);
     background: #fffaf0;
   }
+  /* Отклик карточки на наведение — один на все карточки сайта: синяя тень и рамка,
+     на широком экране карточка ещё чуть приподнимается */
+  .card-lift {
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+  .card-lift:hover {
+    box-shadow: 0 10px 30px rgba(31, 51, 255, 0.15);
+    border-color: rgba(31, 51, 255, 0.4);
+  }
+  @media (min-width: 768px) {
+    .card-lift:hover {
+      transform: translateY(-2px);
+    }
+  }
 
   /* Фото в синем кольце */
   .photo-ring {

@@ -154,7 +154,7 @@ export default function ProjectCard({
 
   const cardClassName = `group relative card-glow rounded-none p-6 md:p-[26px] flex flex-col ${
     wide ? 'md:grid md:grid-cols-[1fr_minmax(0,420px)] md:gap-8 md:items-center' : ''
-  } overflow-hidden transition-[transform,box-shadow,border-color] duration-300 md:hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(31,51,255,0.15)] hover:border-electric/40 ${
+  } overflow-hidden card-lift ${
     // Приподнимаются при наведении все карточки; рука-указатель — только у тех, что ведут на страницу кейса
     clickable ? 'cursor-pointer' : ''
   } ${isSelected ? 'ring-2 ring-electric' : ''}`
