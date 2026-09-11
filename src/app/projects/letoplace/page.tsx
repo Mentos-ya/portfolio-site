@@ -75,16 +75,16 @@ export default function LetoPlacePage() {
       <div className="mb-14">
         <h2 className="text-2xl font-bold mb-6">Зоны ответственности</h2>
         <div className="grid grid-cols-2 gap-3">
-          <a href="#b2b-segment" className="px-4 py-3 rounded-lg border border-ink/15 bg-paper-card hover:border-electric/60 hover:bg-ink/5 text-center font-medium transition">
+          <a href="#b2b-segment" className="px-4 py-3 rounded-none border border-ink/40 bg-transparent hover:bg-ink hover:text-paper text-center font-medium transition">
             B2B-сегмент
           </a>
-          <a href="#b2c-segment" className="px-4 py-3 rounded-lg border border-ink/15 bg-paper-card hover:border-electric/60 hover:bg-ink/5 text-center font-medium transition">
+          <a href="#b2c-segment" className="px-4 py-3 rounded-none border border-ink/40 bg-transparent hover:bg-ink hover:text-paper text-center font-medium transition">
             B2C-сегмент
           </a>
-          <a href="#unit-economics" className="px-4 py-3 rounded-lg border border-ink/15 bg-paper-card hover:border-electric/60 hover:bg-ink/5 text-center font-medium transition">
+          <a href="#unit-economics" className="px-4 py-3 rounded-none border border-ink/40 bg-transparent hover:bg-ink hover:text-paper text-center font-medium transition">
             Юнит-экономика
           </a>
-          <a href="#automation" className="px-4 py-3 rounded-lg border border-ink/15 bg-paper-card hover:border-electric/60 hover:bg-ink/5 text-center font-medium transition">
+          <a href="#automation" className="px-4 py-3 rounded-none border border-ink/40 bg-transparent hover:bg-ink hover:text-paper text-center font-medium transition">
             Автоматизация процессов
           </a>
         </div>
@@ -259,7 +259,7 @@ export default function LetoPlacePage() {
           {project.tools.map((tool) => (
             <span
               key={tool}
-              className="px-4 py-2 bg-paper-card border border-ink/15 text-ink/75 rounded-full text-sm font-medium hover:bg-ink/5 transition"
+              className="tag px-4 py-2 text-ink/75 text-sm font-medium"
             >
               {tool}
             </span>

@@ -19,15 +19,15 @@ export default function AddCaseBlock() {
       <button
         type="button"
         onClick={() => setModalOpen(true)}
-        className="group relative w-full border-2 border-dashed border-ink/25 rounded-[18px] flex items-center justify-center py-8 mt-5 mb-6 bg-transparent transition-[border-color,box-shadow] duration-300 hover:border-electric/70 hover:ring-1 hover:ring-electric/40 cursor-pointer text-left"
+        className="group relative w-full border-2 border-dashed border-ink/25 rounded-none flex items-center justify-center py-8 mt-5 mb-6 bg-transparent transition-[border-color,box-shadow] duration-300 hover:border-electric/70 hover:ring-1 hover:ring-electric/40 cursor-pointer text-left"
       >
         {/* При наведении: тёмный фон как у карточек + одна диагональная полоска с градиентом */}
         <div
-          className="absolute inset-0 hidden md:block rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none bg-black/60"
+          className="absolute inset-0 hidden md:block rounded-none opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none bg-black/60"
           aria-hidden
         />
         <div
-          className="absolute inset-0 hidden md:block rounded-lg overflow-hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+          className="absolute inset-0 hidden md:block rounded-none overflow-hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
           aria-hidden
         >
           {Array.from({ length: 25 }, (_, i) => (i - 12) * 60).map((offset) => (
@@ -46,7 +46,7 @@ export default function AddCaseBlock() {
             />
           ))}
         </div>
-        <span className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-full border-2 border-ink/30 text-ink/50 group-hover:text-white group-hover:border-white/80 transition-colors duration-300 text-2xl font-light min-w-[3rem] min-h-[3rem]" style={{ lineHeight: 1 }}>
+        <span className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-none border-2 border-ink/30 text-ink/50 group-hover:text-white group-hover:border-white/80 transition-colors duration-300 text-2xl font-light min-w-[3rem] min-h-[3rem]" style={{ lineHeight: 1 }}>
           <span className="inline-flex items-center justify-center w-full h-full" style={{ paddingBottom: '0.08em' }}>+</span>
         </span>
       </button>
@@ -58,7 +58,7 @@ export default function AddCaseBlock() {
             <button
               type="button"
               onClick={() => setModalOpen(false)}
-              className="absolute -top-3 -right-3 w-14 h-14 rounded-full border-2 border-white/40 hover:border-white/70 flex items-center justify-center text-white/70 hover:text-white transition-all font-light"
+              className="absolute -top-3 -right-3 w-14 h-14 rounded-none border-2 border-white/40 hover:border-white/70 flex items-center justify-center text-white/70 hover:text-white transition-all font-light"
               aria-label="Закрыть"
               style={{ lineHeight: '1', padding: 0, fontSize: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >

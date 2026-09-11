@@ -145,7 +145,7 @@ export default function PonyatnoPage() {
             ].map((item) => (
               <span
                 key={item}
-                className="px-3 py-1.5 bg-paper-card border border-ink/15 text-ink/75 rounded-full text-xs font-medium"
+                className="tag px-3 py-1.5 text-ink/75 text-xs font-medium"
               >
                 {item}
               </span>

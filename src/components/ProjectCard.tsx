@@ -47,7 +47,7 @@ export default function ProjectCard({
   const info = (
     <>
       {now && (
-        <span className="self-start inline-flex items-center gap-1.5 text-xs font-bold text-green-700 border border-green-700/25 bg-green-50 px-2.5 py-1 rounded-full mb-3">
+        <span className="self-start inline-flex items-center gap-1.5 text-xs font-bold text-green-700 border border-green-700/25 bg-green-50 px-2.5 py-1 rounded-none mb-3">
           ● Сейчас
         </span>
       )}
@@ -122,7 +122,7 @@ export default function ProjectCard({
         className="absolute inset-0 w-full h-full object-cover rounded-xl"
       />
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center backdrop-blur-sm">
+        <div className="w-14 h-14 bg-black/60 rounded-none flex items-center justify-center backdrop-blur-sm">
           <svg className="w-6 h-6 text-[#fff] ml-1" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z" />
           </svg>

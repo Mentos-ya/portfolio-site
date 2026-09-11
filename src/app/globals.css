@@ -196,34 +196,90 @@ h3 {
     }
   }
 
-  /* Кнопки-«таблетки» первого экрана */
+  /* Кнопки в стиле командной строки: квадратные, с толстой рамкой.
+     Главная — «> Смотреть проекты», при наведении синеет и показывает блочный курсор;
+     второстепенная — «[ Открыть резюме ]», при наведении цвета меняются местами */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 48px;
-    padding: 0 22px;
-    border-radius: 9999px;
-    font-weight: 600;
+    padding: 0 20px;
+    border-radius: 0;
+    font-weight: 700;
     font-size: 15px;
     white-space: nowrap;
-    transition: background-color 0.2s, border-color 0.2s;
+    transition: background-color 0.12s, color 0.12s, border-color 0.12s;
   }
   .btn-primary {
-    color: #fff;
-    background: #1f33ff;
-    box-shadow: 0 8px 24px rgba(31, 51, 255, 0.25);
+    color: #f7f0db;
+    background: #0f1440;
+    border: 2px solid #0f1440;
+  }
+  .btn-primary::before {
+    content: '>\00a0';
+    color: #8f9bff;
+  }
+  .btn-primary::after {
+    content: '';
+    display: inline-block;
+    width: 0.55em;
+    height: 1.05em;
+    margin-left: 0.35em;
+    background: currentColor;
+    opacity: 0;
+    vertical-align: -0.15em;
   }
   .btn-primary:hover {
-    background: #1426d9;
+    color: #fff;
+    background: #1f33ff;
+    border-color: #1f33ff;
+  }
+  .btn-primary:hover::before {
+    color: #fff;
+  }
+  .btn-primary:hover::after {
+    opacity: 1;
   }
   .btn-secondary {
     color: #0f1440;
-    background: #fffaf0;
-    border: 1px solid rgba(15, 20, 64, 0.25);
+    background: transparent;
+    border: 2px solid #0f1440;
+  }
+  .btn-secondary::before {
+    content: '[\00a0';
+  }
+  .btn-secondary::after {
+    content: '\00a0]';
   }
   .btn-secondary:hover {
-    border-color: rgba(15, 20, 64, 0.55);
+    color: #f7f0db;
+    background: #0f1440;
+  }
+
+  /* Чип (навык, инструмент): квадратная тонкая рамка без заливки */
+  .tag {
+    border: 1px solid rgba(15, 20, 64, 0.35);
+    background: transparent;
+    border-radius: 0;
+  }
+  /* Плашка статуса «$ ● Сейчас · …» — как строка в терминале */
+  .cli-badge {
+    border: 1px solid rgba(15, 20, 64, 0.45);
+    background: #fffaf0;
+    border-radius: 0;
+  }
+  .cli-badge::before {
+    content: '$';
+    color: #1f33ff;
+  }
+  /* Всплывающая подсказка у ссылок: квадратная, начинается со знака «>» */
+  .cli-tip {
+    border-radius: 0;
+  }
+  .cli-tip::before {
+    content: '>\00a0';
+    color: #8f9bff;
   }
 
   /* Карточка внутри листа: светлая бумага и тонкая рамка */
@@ -295,5 +351,17 @@ h3 {
       top: -33px;
       left: 0;
     }
+  }
+}
+
+/* Курсор главной кнопки мигает при наведении — только если в системе не включено «уменьшить движение» */
+@media (prefers-reduced-motion: no-preference) {
+  .btn-primary:hover::after {
+    animation: cli-blink 1s steps(1) infinite;
+  }
+}
+@keyframes cli-blink {
+  50% {
+    opacity: 0;
   }
 }

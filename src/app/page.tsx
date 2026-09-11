@@ -72,8 +72,8 @@ export default function Home() {
         <div className="grid md:grid-cols-[1.4fr_1fr] gap-7 md:gap-12 items-center">
           <div className="halo">
             {/* Моноширинный шрифт шире — на телефоне плашка мельче, чтобы остаться в одну строку */}
-            <span className="inline-flex items-center gap-2 text-[11px] md:text-[13px] whitespace-nowrap text-ink/75 border border-ink/15 bg-paper-card px-3.5 py-[7px] rounded-full">
-              <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" aria-hidden />
+            <span className="cli-badge inline-flex items-center gap-2 text-[11px] md:text-[13px] whitespace-nowrap text-ink/75 px-3.5 py-[7px]">
+              <span className="w-2 h-2 bg-green-500 shadow-[0_0_8px_#22c55e]" aria-hidden />
               Сейчас · Product Manager в Домклике
             </span>
             {/* Имя — тем же начертанием, что основной текст: та же жирность, без сжатия букв и пробела */}
@@ -212,7 +212,7 @@ export default function Home() {
                 className="font-semibold text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink relative group/link"
               >
                 GoPractice
-                <span className="absolute left-0 top-full mt-1 px-2.5 py-1.5 bg-ink text-paper text-sm rounded-md opacity-0 pointer-events-none transition-opacity duration-150 group-hover/link:opacity-100 whitespace-nowrap z-10">
+                <span className="absolute left-0 top-full mt-1 px-2.5 py-1.5 cli-tip bg-ink text-paper text-sm opacity-0 pointer-events-none transition-opacity duration-150 group-hover/link:opacity-100 whitespace-nowrap z-10">
                   Открыть сертификат
                 </span>
               </a>{' '}
@@ -238,7 +238,7 @@ export default function Home() {
           {skills.map((skill) => (
             <span
               key={skill.name}
-              className="px-4 py-2 rounded-full text-sm font-medium bg-paper-card border border-ink/15"
+              className="tag px-4 py-2 text-sm font-medium"
             >
               <span className={skill.ai ? 'text-gradient-hero' : 'text-ink/85'}>{skill.name}</span>
             </span>
@@ -266,7 +266,7 @@ export default function Home() {
                     >
                       {c.text}
                     </a>
-                    <span className="absolute left-0 top-full mt-1 px-2 py-1 bg-ink text-paper text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                    <span className="absolute left-0 top-full mt-1 px-2 py-1 cli-tip bg-ink text-paper text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                       {c.hint}
                     </span>
                   </div>
