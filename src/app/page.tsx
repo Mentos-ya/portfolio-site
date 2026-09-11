@@ -67,15 +67,17 @@ export default function Home() {
   return (
     <div>
       {/* Первый экран */}
-      <section id="home" className="sheet">
+      {/* Первый экран без общей подложки: отдельные ореолы у текста, фото и «Моего пути» */}
+      <section id="home" className="sheet sheet-split">
         <div className="grid md:grid-cols-[1.4fr_1fr] gap-7 md:gap-12 items-center">
-          <div>
+          <div className="halo">
             {/* Моноширинный шрифт шире — на телефоне плашка мельче, чтобы остаться в одну строку */}
             <span className="inline-flex items-center gap-2 text-[11px] md:text-[13px] whitespace-nowrap text-ink/75 border border-ink/15 bg-paper-card px-3.5 py-[7px] rounded-full">
               <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]" aria-hidden />
               Сейчас · Product Manager в Домклике
             </span>
-            <h1 className="text-[46px] md:text-[68px] leading-none tracking-[-0.035em] font-bold my-5 text-ink">
+            {/* Имя — тем же начертанием, что основной текст: та же жирность, без сжатия букв и пробела */}
+            <h1 className="text-[46px] md:text-[68px] leading-none font-normal [word-spacing:normal] my-5 text-ink">
               {homeData.hero.name}
             </h1>
             <p className="text-base md:text-lg leading-[1.55] text-ink/70">
@@ -110,7 +112,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="photo-ring order-first md:order-none justify-self-start md:justify-self-center w-[180px] h-[180px] md:w-[290px] md:h-[290px]">
+          <div className="photo-ring halo halo-round order-first md:order-none justify-self-start md:justify-self-center w-[180px] h-[180px] md:w-[290px] md:h-[290px]">
             <Image
               src="/images/profile.jpg"
               alt="Илья Якупов"
@@ -123,16 +125,16 @@ export default function Home() {
         </div>
 
         {/* Мой путь */}
-        <div className="mt-10 md:mt-14">
-          <p className="text-[13px] uppercase tracking-[0.1em] text-ink/60 mb-4">Мой путь</p>
+        <div className="halo mt-12 md:mt-16">
+          <p className="text-[15px] uppercase tracking-[0.1em] text-ink/60 mb-4">Мой путь</p>
           <ol className="path">
             {path.map((step) => {
               const body = (
                 <>
-                  <p className={`text-[13px] ${step.now ? 'text-green-700 font-semibold' : 'text-ink/60'}`}>
+                  <p className={`text-[15px] ${step.now ? 'text-green-700 font-semibold' : 'text-ink/60'}`}>
                     {step.years}
                   </p>
-                  <p className="text-[22px] font-bold tracking-[-0.01em] mt-1.5 text-ink">
+                  <p className="text-[24px] font-bold tracking-[-0.01em] mt-1.5 text-ink">
                     {step.title}
                     {step.href && (
                       <span className="inline-block ml-1.5 text-lg text-ink/40 group-hover:text-electric group-hover:translate-x-0.5 transition" aria-hidden>
@@ -140,7 +142,7 @@ export default function Home() {
                       </span>
                     )}
                   </p>
-                  <p className="text-sm text-ink/70 mt-2 leading-[1.45]">{step.text}</p>
+                  <p className="text-base text-ink/75 mt-2 leading-[1.45]">{step.text}</p>
                 </>
               )
               return (
@@ -159,37 +161,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Опыт */}
+      {/* Опыт: работа и продукты, собранные с ИИ, — в одном разделе, двумя группами */}
       <section id="projects" className="sheet scroll-mt-20">
         <h2 className="section-title">{projectsData.pageTitle}</h2>
-        <p className="section-lead">
-          {(() => {
-            const d = projectsData.pageDescription
-            const i = d.indexOf('Product Manager и Growth PM')
-            if (i === -1) return d
-            return (
-              <>
-                {d.slice(0, i)}
-                <br className="md:hidden" />
-                {d.slice(i)}
-              </>
-            )
-          })()}
-        </p>
+        <p className="section-lead">Где вёл продукт как Product Manager и Growth PM — и что собрал сам с помощью ИИ</p>
 
-        <div className="grid md:grid-cols-2 gap-5">
-          {/* Текущая работа — первой и на всю ширину; подробности пока не раскрываем, как в LinkedIn */}
-          <div className="md:col-span-2 flex flex-col">
-            <ProjectCard
-              id={2}
-              now
-              title="Домклик"
-              role="Product Manager | 04.2026 — По наст. время"
-              description="Продакт-менеджер в Домклике — сервисе недвижимости экосистемы Сбера. Москва, гибридный формат."
-            />
-          </div>
+        <h3 className="text-2xl md:text-[28px] font-bold text-ink mb-5">Работа</h3>
+        <div className="grid gap-5">
+          {/* Текущая работа — первой */}
+          <ProjectCard
+            id={2}
+            now
+            title="Домклик"
+            logo="/logos/domclick-logo.svg"
+            role="Product Manager | 04.2026 — По наст. время"
+            description="Продакт-менеджер отельного направления в Домклике — сервисе недвижимости экосистемы Сбера. После собственного бизнеса — масштаб задач и данных большой экосистемы. Москва, гибридный формат, полный день."
+          />
+          {/* LetoPlace — широкой карточкой: текст слева, превью видео справа */}
           <ProjectCard
             id={0}
+            wide
             href="/projects/letoplace"
             title="LetoPlace"
             role="Founder / Product Owner | 02.2018 – 09.2025"
@@ -198,21 +189,14 @@ export default function Home() {
             videoPoster="/videos/letoplace-poster.webp"
             description="С нуля создал digital-сервис для аренды имущества. Разработал двустороннюю платформу (B2C для путешественников и B2B для собственников недвижимости с управлением «под ключ»). В портфеле 50+ объектов в Санкт-Петербурге, 5M RUB revenue в месяц, 31% маржинальность."
           />
-          <ProjectCard
-            id={1}
-            href="/projects/ponyatno"
-            title="Понятно"
-            role="Indie Maker | 02.2026 — По наст. время"
-            logo="/logos/ponyatno-logo.png"
-            description="Запустил Telegram Mini App для сканирования меню иностранных ресторанов — с переводом текста, калорийностью, составом и ценами в одном экране. Весь продукт построен через вайбкодинг (AI-инструменты без классической разработки). Стадия MVP, приложение уже приносит первый revenue."
-            videoPoster="/videos/ponyatno-poster.png?v=2"
-          />
         </div>
 
+        {/* «+» — место под следующую работу: сразу под группой «Работа» */}
         <AddCaseBlock />
-      </section>
 
-      <AiProjects />
+        {/* Вторая группа: Mentask, Понятно и небольшие инструменты */}
+        <AiProjects />
+      </section>
 
       {/* Образование */}
       <section id="education" className="sheet scroll-mt-20">
@@ -298,13 +282,13 @@ export default function Home() {
             <div className="space-y-4">
               <div className="p-5 rounded-2xl bg-paper-card border border-ink/10">
                 <h4 className="font-bold mb-2 text-ink">Product Manager в команду</h4>
-                <p className="text-ink/60 text-sm">
+                <p className="text-ink/60 text-base">
                   Ищу позицию, где смогу применить свой опыт работы — от discovery до масштабирования
                 </p>
               </div>
               <div className="p-5 rounded-2xl bg-paper-card border border-ink/10">
                 <h4 className="font-bold mb-2 text-ink">Нетворкинг</h4>
-                <p className="text-ink/60 text-sm">
+                <p className="text-ink/60 text-base">
                   Открыт к общению. Пишите — обсудим идеи, обменяемся опытом или просто познакомимся
                 </p>
               </div>

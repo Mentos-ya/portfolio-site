@@ -108,6 +108,48 @@ h3 {
     border-radius: 32px;
     filter: blur(12px);
   }
+  /* Лист, разбитый на отдельные ореолы: у самого листа подложки нет,
+     своя размытая подложка — у каждого блока внутри (.halo), между ними виден растр */
+  .sheet-split::before {
+    display: none;
+  }
+  .halo {
+    position: relative;
+  }
+  /* Без своего слоя: подложка уходит под блок, но остаётся над растром — внутри слоя листа */
+  .halo::before {
+    content: '';
+    position: absolute;
+    inset: -16px -18px;
+    z-index: -1;
+    pointer-events: none;
+    background: rgba(247, 240, 219, 0.9);
+    border-radius: 32px;
+    filter: blur(12px);
+  }
+  /* Круглый ореол — вокруг фото */
+  /* Круглый ореол прижат к фото: небольшой вынос и короткое размытие */
+  .halo.halo-round::before {
+    inset: -12px;
+    border-radius: 50%;
+    background: rgba(247, 240, 219, 0.95);
+    filter: blur(9px);
+  }
+  @media (min-width: 768px) {
+    .halo::before {
+      inset: -24px -28px;
+      background: rgba(247, 240, 219, 0.86);
+      border-radius: 40px;
+      filter: blur(20px);
+    }
+    .halo.halo-round::before {
+      inset: -18px;
+      border-radius: 50%;
+      background: rgba(247, 240, 219, 0.95);
+      filter: blur(12px);
+    }
+  }
+
   /* Ореол: мягкое кремовое свечение у букв — на чистом фоне его не видно,
      а там, где под текст заползли пиксели растра, оно расчищает место вокруг букв */
   .sheet {

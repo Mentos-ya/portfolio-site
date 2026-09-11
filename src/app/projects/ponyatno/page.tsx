@@ -44,7 +44,7 @@ export default function PonyatnoPage() {
       {/* Discovery & CustDev */}
       <div className="mb-6">
         <p className="text-base font-semibold text-ink mb-2">Discovery & CustDev</p>
-        <ul className="space-y-2 text-ink/75 text-sm leading-relaxed">
+        <ul className="space-y-2 text-ink/75 text-base leading-relaxed">
           <li className="flex gap-3 items-start">
             <span className="text-electric font-bold mt-0.5 shrink-0">•</span>
             <span className="leading-relaxed">Определил ЦА: русскоязычные туристы 20–45 лет с языковым барьером при заказе еды за рубежом</span>
@@ -71,7 +71,7 @@ export default function PonyatnoPage() {
       {/* Приоритизация & Дизайн */}
       <div className="mb-6">
         <p className="text-base font-semibold text-ink mb-2">Приоритизация & Дизайн</p>
-        <ul className="space-y-2 text-ink/75 text-sm leading-relaxed">
+        <ul className="space-y-2 text-ink/75 text-base leading-relaxed">
           <li className="flex gap-3 items-start">
             <span className="text-electric font-bold mt-0.5 shrink-0">•</span>
             <span className="leading-relaxed">Собрал бэклог 20+ фич, приоритизировал по RICE: в MVP вошли сканирование, AI-перевод, расчёт КБЖУ, конвертация валют</span>
@@ -108,7 +108,7 @@ export default function PonyatnoPage() {
       <div className="w-full mt-0">
         <div className="mb-6">
           <p className="text-base font-semibold text-ink mb-2">Запуск & Итерации</p>
-          <ul className="space-y-2 text-ink/75 text-sm leading-relaxed">
+          <ul className="space-y-2 text-ink/75 text-base leading-relaxed">
             <li className="flex gap-3 items-start">
               <span className="text-electric font-bold mt-0.5 shrink-0">•</span>
               <span className="leading-relaxed">Запустил MVP как Telegram Mini App: распознавание фото меню, перевод, калорийность, конвертация цен</span>

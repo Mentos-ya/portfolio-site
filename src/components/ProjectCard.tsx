@@ -19,6 +19,8 @@ interface ProjectCardProps {
   videoPoster?: string
   /** Зелёная метка «● Сейчас» над заголовком — для текущего места работы */
   now?: boolean
+  /** Широкая карточка: на компьютере текст слева, превью видео справа */
+  wide?: boolean
 }
 
 export default function ProjectCard({
@@ -36,11 +38,13 @@ export default function ProjectCard({
   video: _video,
   videoPoster,
   now,
+  wide,
 }: ProjectCardProps) {
   const hasData = title || role || metrics.length > 0
   const clickable = Boolean(href || onClick)
 
-  const cardContent = (
+  // Текст карточки: метка, логотип, заголовок с ролью, описание, метрики
+  const info = (
     <>
       {now && (
         <span className="self-start inline-flex items-center gap-1.5 text-xs font-bold text-green-700 border border-green-700/25 bg-green-50 px-2.5 py-1 rounded-full mb-3">
@@ -81,7 +85,7 @@ export default function ProjectCard({
 
       {/* Description */}
       {description && (
-        <div className="mb-4 text-sm text-ink/75 leading-relaxed">
+        <div className="mb-4 text-base text-ink/75 leading-relaxed">
           <p>
             {descriptionNoWrapSuffix != null
               ? <>
@@ -103,24 +107,34 @@ export default function ProjectCard({
           ))}
         </div>
       )}
+    </>
+  )
 
-      {/* Video Thumbnail — прижат к низу карточки, чтобы превью были на одном уровне */}
-      {videoPoster && (
-        <div className="mt-auto pt-4 rounded-xl overflow-hidden relative aspect-video w-full bg-paper-card">
-          <img
-            src={videoPoster}
-            alt="Video preview"
-            className="absolute inset-0 w-full h-full object-cover rounded-xl"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center backdrop-blur-sm">
-              <svg className="w-6 h-6 text-[#fff] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
+  // Превью видео: в обычной карточке прижато к низу (превью соседних карточек на одном уровне),
+  // в широкой — справа от текста
+  const media = videoPoster && (
+    <div
+      className={`${wide ? 'mt-2 md:mt-0' : 'mt-auto pt-4'} rounded-xl overflow-hidden relative aspect-video w-full bg-paper-card`}
+    >
+      <img
+        src={videoPoster}
+        alt="Video preview"
+        className="absolute inset-0 w-full h-full object-cover rounded-xl"
+      />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-14 h-14 bg-black/60 rounded-full flex items-center justify-center backdrop-blur-sm">
+          <svg className="w-6 h-6 text-[#fff] ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
         </div>
-      )}
+      </div>
+    </div>
+  )
+
+  const cardContent = (
+    <>
+      {wide ? <div className="flex flex-col">{info}</div> : info}
+      {media}
 
       {/* Hover overlay for linked cards */}
       {href && hasData && (
@@ -138,7 +152,9 @@ export default function ProjectCard({
     </>
   )
 
-  const cardClassName = `group relative card-glow rounded-[18px] p-6 md:p-[26px] flex flex-col overflow-hidden transition-[transform,box-shadow] duration-300 ${
+  const cardClassName = `group relative card-glow rounded-[18px] p-6 md:p-[26px] flex flex-col ${
+    wide ? 'md:grid md:grid-cols-[1fr_minmax(0,420px)] md:gap-8 md:items-center' : ''
+  } overflow-hidden transition-[transform,box-shadow] duration-300 ${
     clickable ? 'cursor-pointer md:hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(31,51,255,0.15)]' : ''
   } ${isSelected ? 'ring-2 ring-electric' : ''}`
 
