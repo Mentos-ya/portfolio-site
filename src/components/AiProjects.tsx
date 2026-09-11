@@ -1,9 +1,8 @@
 import aiData from '@/data/ai.json'
-import ProjectCard from '@/components/ProjectCard'
 
 type AiProject = (typeof aiData.projects)[number]
 
-// Текст карточки ИИ-проекта: название, тип и период, описание, возможности, итог
+// Текст карточки ИИ-проекта: название, тип и период, описание, возможности, итог и, если есть, ссылка на кейс
 function ProjectText({ project }: { project: AiProject }) {
   const [kind, ...period] = project.kind.split(/\s*\|\s*/)
   return (
@@ -34,12 +33,21 @@ function ProjectText({ project }: { project: AiProject }) {
       <p className="mt-auto pt-4 text-base font-semibold">
         <span className="text-gradient-hero">{project.result}</span>
       </p>
+      {/* Подробный кейс — для тех, кому мало карточки; Метрика сама считает переход по адресу /projects/ */}
+      {project.case && (
+        <a
+          href={project.case}
+          className="mt-3 self-start text-[15px] text-ink/60 underline decoration-ink/30 underline-offset-4 hover:text-electric hover:decoration-electric transition-colors"
+        >
+          Подробный кейс →
+        </a>
+      )}
     </>
   )
 }
 
-// Группа «Собрал сам с ИИ» внутри раздела «Опыт»: сначала продукты с роликами — широкими карточками
-// (Mentask, Понятно), под ними небольшие инструменты по три в ряд
+// Группа «Собрал сам с ИИ» внутри раздела «Опыт»: сначала продукты с роликами — широкими карточками,
+// ролик играет прямо в карточке (Mentask, Понятно); под ними небольшие инструменты по три в ряд
 export default function AiProjects() {
   const withVideo = aiData.projects.filter((project) => project.video)
   const small = aiData.projects.filter((project) => !project.video)
@@ -55,35 +63,28 @@ export default function AiProjects() {
         {withVideo.map((project) => (
           <div
             key={project.title}
-            className="card-glow card-lift rounded-none p-6 md:p-[26px] grid md:grid-cols-[1fr_minmax(0,380px)] gap-6 md:gap-8"
+            className={`card-glow card-lift rounded-none p-6 md:p-[26px] grid gap-6 md:gap-8 ${
+              project.vertical ? 'md:grid-cols-[1fr_minmax(0,260px)]' : 'md:grid-cols-[1fr_minmax(0,380px)]'
+            }`}
           >
             <div className="flex flex-col">
               <ProjectText project={project} />
             </div>
-            {/* Ролик — как на странице LetoPlace: сам не запускается, по кнопке, со звуком */}
+            {/* Ролик прямо в карточке: сам не запускается, по кнопке, со звуком.
+                Вертикальный (Понятно, снят с телефона) — узким высоким столбцом */}
             <video
               controls
               preload="metadata"
               playsInline
               poster={project.poster}
-              className="w-full aspect-square self-center rounded-none bg-black border border-ink/10"
+              className={`w-full self-center rounded-none bg-black border border-ink/10 ${
+                project.vertical ? 'aspect-[590/1280] max-w-[260px] mx-auto md:mx-0' : 'aspect-square'
+              }`}
             >
               <source src={project.video} type="video/mp4" />
             </video>
           </div>
         ))}
-
-        {/* Понятно — Telegram-приложение, тоже собрано вайбкодингом; ведёт на страницу кейса */}
-        <ProjectCard
-          id={1}
-          wide
-          href="/projects/ponyatno"
-          title="Понятно"
-          role="Indie Maker | 02.2026 — По наст. время"
-          logo="/logos/ponyatno-logo.png"
-          description="Запустил Telegram Mini App для сканирования меню иностранных ресторанов — с переводом текста, калорийностью, составом и ценами в одном экране. Весь продукт построен через вайбкодинг (AI-инструменты без классической разработки). Стадия MVP, приложение уже приносит первый revenue."
-          videoPoster="/videos/ponyatno-poster.png?v=2"
-        />
 
         {/* Небольшие инструменты — по три в ряд на широком экране */}
         <div className="grid lg:grid-cols-3 gap-5">
