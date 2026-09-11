@@ -55,7 +55,7 @@ export default function ProjectCard({
       {/* Logo — на белой подложке, чтобы тёмные логотипы читались на тёмном фоне */}
       {logo && (
         <div className="mb-4">
-          <img src={logo} alt={title || 'Company logo'} className="h-10 w-auto object-contain rounded-md bg-white" />
+          <img src={logo} alt={title || 'Company logo'} className="h-10 w-auto object-contain rounded-none bg-white" />
         </div>
       )}
 
@@ -114,12 +114,12 @@ export default function ProjectCard({
   // в широкой — справа от текста
   const media = videoPoster && (
     <div
-      className={`${wide ? 'mt-2 md:mt-0' : 'mt-auto pt-4'} rounded-xl overflow-hidden relative aspect-video w-full bg-paper-card`}
+      className={`${wide ? 'mt-2 md:mt-0' : 'mt-auto pt-4'} rounded-none overflow-hidden relative aspect-video w-full bg-paper-card`}
     >
       <img
         src={videoPoster}
         alt="Video preview"
-        className="absolute inset-0 w-full h-full object-cover rounded-xl"
+        className="absolute inset-0 w-full h-full object-cover rounded-none"
       />
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-14 h-14 bg-black/60 rounded-none flex items-center justify-center backdrop-blur-sm">
@@ -138,7 +138,7 @@ export default function ProjectCard({
 
       {/* Hover overlay for linked cards */}
       {href && hasData && (
-        <div className="absolute inset-0 hidden md:flex bg-electric/90 rounded-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 hidden md:flex bg-electric/90 rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 items-center justify-center pointer-events-none">
           <span className="text-[#fff] text-lg font-semibold">Узнать подробнее →</span>
         </div>
       )}
@@ -152,7 +152,7 @@ export default function ProjectCard({
     </>
   )
 
-  const cardClassName = `group relative card-glow rounded-[18px] p-6 md:p-[26px] flex flex-col ${
+  const cardClassName = `group relative card-glow rounded-none p-6 md:p-[26px] flex flex-col ${
     wide ? 'md:grid md:grid-cols-[1fr_minmax(0,420px)] md:gap-8 md:items-center' : ''
   } overflow-hidden transition-[transform,box-shadow,border-color] duration-300 md:hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(31,51,255,0.15)] hover:border-electric/40 ${
     // Приподнимаются при наведении все карточки; рука-указатель — только у тех, что ведут на страницу кейса

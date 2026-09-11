@@ -27,8 +27,8 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
   return (
     <div className={`w-full max-w-full ${mdMaxWidthClass} flex flex-col shrink-0 mx-auto md:mx-0`}>
       <div style={{
-        borderTopLeftRadius: 12,
-        borderTopRightRadius: 12,
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
         border: '1px solid rgba(15,20,64,.15)',
         borderBottom: 'none',
         overflow: 'hidden',
@@ -66,8 +66,8 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
           justifyContent: 'center',
           gap: 16,
           padding: '12px 8px',
-          borderBottomLeftRadius: 12,
-          borderBottomRightRadius: 12,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0,
           border: '1px solid rgba(15,20,64,.15)',
           borderTop: 'none',
           background: '#fffaf0',
@@ -245,7 +245,7 @@ export default function ImageCarousel({ slides, maxWidth: maxWidthProp }: { slid
           <img
             src={slides[current].src}
             alt={slides[current].alt}
-            style={{ maxWidth: '100%', maxHeight: '90vh', width: 'auto', height: 'auto', objectFit: 'contain', borderRadius: 8, boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}
+            style={{ maxWidth: '100%', maxHeight: '90vh', width: 'auto', height: 'auto', objectFit: 'contain', borderRadius: 0, boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}
             onClick={(e) => e.stopPropagation()}
           />
         </div>

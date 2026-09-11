@@ -55,7 +55,7 @@ export default function AiProjects() {
         {withVideo.map((project) => (
           <div
             key={project.title}
-            className="card-glow rounded-[18px] p-6 md:p-[26px] grid md:grid-cols-[1fr_minmax(0,380px)] gap-6 md:gap-8"
+            className="card-glow rounded-none p-6 md:p-[26px] grid md:grid-cols-[1fr_minmax(0,380px)] gap-6 md:gap-8"
           >
             <div className="flex flex-col">
               <ProjectText project={project} />
@@ -66,7 +66,7 @@ export default function AiProjects() {
               preload="metadata"
               playsInline
               poster={project.poster}
-              className="w-full aspect-square self-center rounded-xl bg-black border border-ink/10"
+              className="w-full aspect-square self-center rounded-none bg-black border border-ink/10"
             >
               <source src={project.video} type="video/mp4" />
             </video>
@@ -88,7 +88,7 @@ export default function AiProjects() {
         {/* Небольшие инструменты — по три в ряд на широком экране */}
         <div className="grid lg:grid-cols-3 gap-5">
           {small.map((project) => (
-            <div key={project.title} className="card-glow rounded-[18px] p-6 md:p-[26px] flex flex-col">
+            <div key={project.title} className="card-glow rounded-none p-6 md:p-[26px] flex flex-col">
               <ProjectText project={project} />
             </div>
           ))}

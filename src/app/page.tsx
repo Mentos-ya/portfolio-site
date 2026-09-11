@@ -279,13 +279,13 @@ export default function Home() {
             <h3 className="text-2xl font-bold mb-6 text-ink">Чем я могу помочь</h3>
             <div className="flex-1 min-h-0" aria-hidden />
             <div className="space-y-4">
-              <div className="p-5 rounded-2xl bg-paper-card border border-ink/10">
+              <div className="p-5 rounded-none bg-paper-card border border-ink/10">
                 <h4 className="font-bold mb-2 text-ink">Product Manager в команду</h4>
                 <p className="text-ink/60 text-base">
                   Ищу позицию, где смогу применить свой опыт работы — от discovery до масштабирования
                 </p>
               </div>
-              <div className="p-5 rounded-2xl bg-paper-card border border-ink/10">
+              <div className="p-5 rounded-none bg-paper-card border border-ink/10">
                 <h4 className="font-bold mb-2 text-ink">Нетворкинг</h4>
                 <p className="text-ink/60 text-base">
                   Открыт к общению. Пишите — обсудим идеи, обменяемся опытом или просто познакомимся

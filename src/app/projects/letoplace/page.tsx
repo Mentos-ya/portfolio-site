@@ -63,7 +63,7 @@ export default function LetoPlacePage() {
         {project.metrics.map((metric, idx) => (
           <div
             key={idx}
-            className="card-glow rounded-2xl p-5 text-center"
+            className="card-glow rounded-none p-5 text-center"
           >
             <div className="text-3xl font-bold mb-1 text-gradient-hero">{metric.value}</div>
             <div className="text-sm text-ink/60">{metric.label}</div>
@@ -99,7 +99,7 @@ export default function LetoPlacePage() {
             <span className="text-ink font-medium">Работа с собственниками недвижимости</span>: долгосрочная аренда «под ключ», управление объектами, прозрачная отчётность по доходам и автоматизация процессов для масштабирования портфеля.
           </p>
         </div>
-        <div className="relative rounded-xl overflow-hidden shadow-lg mb-6">
+        <div className="relative rounded-none overflow-hidden shadow-lg mb-6">
           <video
             controls
             preload="metadata"
@@ -134,7 +134,7 @@ export default function LetoPlacePage() {
             data-goal="open_offer"
             target="_blank"
             rel="noopener noreferrer"
-            className="group shrink-0 relative flex w-full md:w-[190px] h-full min-h-0 rounded-xl border border-ink/15 hover:border-electric/60 overflow-hidden shadow-md hover:shadow-lg transition mx-auto md:mx-0"
+            className="group shrink-0 relative flex w-full md:w-[190px] h-full min-h-0 rounded-none border border-ink/15 hover:border-electric/60 overflow-hidden shadow-md hover:shadow-lg transition mx-auto md:mx-0"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -144,7 +144,7 @@ export default function LetoPlacePage() {
               height="auto"
               className="block w-full h-full object-cover object-top"
             />
-            <span className="absolute inset-0 hidden md:flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-[#fff] font-medium text-sm rounded-xl pointer-events-none">
+            <span className="absolute inset-0 hidden md:flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity text-[#fff] font-medium text-sm rounded-none pointer-events-none">
               Открыть оффер
             </span>
           </a>

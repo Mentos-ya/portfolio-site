@@ -105,7 +105,7 @@ h3 {
     z-index: -1;
     pointer-events: none;
     background: rgba(247, 240, 219, 0.9);
-    border-radius: 32px;
+    border-radius: 0;
     filter: blur(12px);
   }
   /* Лист, разбитый на отдельные ореолы: у самого листа подложки нет,
@@ -124,7 +124,7 @@ h3 {
     z-index: -1;
     pointer-events: none;
     background: rgba(247, 240, 219, 0.9);
-    border-radius: 32px;
+    border-radius: 0;
     filter: blur(12px);
   }
   /* Круглый ореол — вокруг фото */
@@ -139,7 +139,7 @@ h3 {
     .halo::before {
       inset: -24px -28px;
       background: rgba(247, 240, 219, 0.86);
-      border-radius: 40px;
+      border-radius: 0;
       filter: blur(20px);
     }
     .halo.halo-round::before {
@@ -167,7 +167,7 @@ h3 {
     .sheet::before {
       inset: 14px;
       background: rgba(247, 240, 219, 0.86);
-      border-radius: 40px;
+      border-radius: 0;
       filter: blur(20px);
     }
   }
@@ -184,6 +184,8 @@ h3 {
   .section-lead {
     font-size: 18px;
     line-height: 1.5;
+    /* Моноширинный пробел широкий — поджимаем, чтобы подзаголовок помещался в строку */
+    word-spacing: -0.15em;
     color: rgba(15, 20, 64, 0.6);
     margin-bottom: 32px;
   }
@@ -263,15 +265,11 @@ h3 {
     background: transparent;
     border-radius: 0;
   }
-  /* Плашка статуса «$ ● Сейчас · …» — как строка в терминале */
+  /* Плашка статуса «● Сейчас · …» — квадратная, как строка в терминале */
   .cli-badge {
     border: 1px solid rgba(15, 20, 64, 0.45);
     background: #fffaf0;
     border-radius: 0;
-  }
-  .cli-badge::before {
-    content: '$';
-    color: #1f33ff;
   }
   /* Всплывающая подсказка у ссылок: квадратная, начинается со знака «>» */
   .cli-tip {

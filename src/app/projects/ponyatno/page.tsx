@@ -89,7 +89,7 @@ export default function PonyatnoPage() {
         </div>
 
         {/* Превью видео — на мобильной на всю ширину и по центру */}
-        <div className="relative w-full max-w-full md:max-w-[294px] mx-auto md:ml-auto md:mr-0 aspect-[9/16] min-h-[336px] rounded-lg border border-ink/15 shadow-md overflow-hidden bg-black order-first md:order-none">
+        <div className="relative w-full max-w-full md:max-w-[294px] mx-auto md:ml-auto md:mr-0 aspect-[9/16] min-h-[336px] rounded-none border border-ink/15 shadow-md overflow-hidden bg-black order-first md:order-none">
             <video
               controls
               className="w-full h-full object-contain"
