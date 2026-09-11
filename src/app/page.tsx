@@ -169,7 +169,7 @@ export default function Home() {
         <h2 className="section-title">{projectsData.pageTitle}</h2>
         <p className="section-lead">Где вёл продукт как Product Manager и Growth PM — и что собрал сам с помощью ИИ</p>
 
-        <h3 className="text-2xl md:text-[28px] font-bold text-ink mb-5">Работа</h3>
+        {/* Работа — сразу под подзаголовком раздела, без своего заголовка */}
         <div className="grid gap-5">
           {/* Текущая работа — первой */}
           <ProjectCard
