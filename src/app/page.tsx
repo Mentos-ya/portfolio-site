@@ -23,13 +23,13 @@ const path: { years: string; title: string; text: string; href?: string; now?: b
   {
     years: '2026',
     title: 'Понятно',
-    text: 'Сам собрал Telegram-приложение с помощью ИИ, первые продажи',
+    text: 'Собрал с помощью ИИ Telegram-приложение, первые продажи',
     href: '/projects/ponyatno',
   },
   {
     years: '2026',
     title: 'ИИ-проекты',
-    text: 'Сам собрал задачник Mentask, приложение для Mac и бота-дайджест новостей',
+    text: 'Задачник Mentask, приложение для Mac и бот-дайджест новостей',
     href: '#ai',
   },
   {
