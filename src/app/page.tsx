@@ -171,7 +171,6 @@ export default function Home() {
           {/* Текущая работа — первой */}
           <ProjectCard
             id={2}
-            now
             title="Домклик"
             logo="/logos/domclick-logo.svg"
             role="Product Manager | 04.2026 — По наст. время"
