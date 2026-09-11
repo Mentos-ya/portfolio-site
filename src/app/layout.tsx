@@ -54,7 +54,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className={mono.variable}>
-      <body className="relative bg-paper text-ink overflow-x-hidden md:overflow-x-visible">
+      <body className="relative bg-paper text-ink">
         {/* Фон всего сайта: пиксельный растр, стоит на месте, страница прокручивается поверх */}
         <DitherBackground />
         <Header />

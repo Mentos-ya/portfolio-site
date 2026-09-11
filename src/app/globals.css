@@ -10,9 +10,12 @@
   box-sizing: border-box;
 }
 
+/* Лишнее по ширине обрезаем через clip: в отличие от hidden он не ломает прилипание шапки при прокрутке.
+   hidden — запасной вариант для старых браузеров, которые clip не знают */
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  overflow-x: clip;
   color-scheme: light;
 }
 
@@ -31,6 +34,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #f7f0db;
   color: #0f1440;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+@media (min-width: 768px) {
+  body {
+    overflow-x: visible;
+  }
 }
 
 ::selection {
@@ -337,11 +347,28 @@ h3 {
     border-radius: 50%;
     background: #fffaf0;
     border: 3px solid #1f33ff;
+    transition: transform 0.2s ease-out, background-color 0.2s, border-radius 0.2s, box-shadow 0.2s;
   }
   .path-step.is-now::before {
     border-color: #16a34a;
     background: #16a34a;
     box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.18);
+  }
+  /* Точка отзывается на наведение: заливается синим, становится квадратной, как курсор, и чуть растёт */
+  .path-step:hover::before {
+    background: #1f33ff;
+    border-radius: 0;
+    transform: scale(1.25);
+    box-shadow: 0 0 0 5px rgba(31, 51, 255, 0.18);
+  }
+  .path-step.is-now:hover::before {
+    background: #16a34a;
+    box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.22);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .path-step::before {
+      transition: none;
+    }
   }
   @media (min-width: 1024px) {
     .path {
