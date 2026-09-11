@@ -21,7 +21,7 @@ export default function Skills() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-20">
       <h1 className="text-5xl font-bold mb-4">Навыки & Экспертиза</h1>
-      <p className="text-xl text-ink/60 mb-12">
+      <p className="text-xl text-ink mb-12">
         Всесторонний обзор моих основных компетенций как Product Manager
       </p>
 
@@ -33,7 +33,7 @@ export default function Skills() {
               {category.skills.map((skill) => (
                 <div key={skill} className="flex items-start">
                   <span className="text-ink mr-3 mt-1">▪</span>
-                  <span className="text-ink/75">{skill}</span>
+                  <span className="text-ink">{skill}</span>
                 </div>
               ))}
             </div>
@@ -47,25 +47,25 @@ export default function Skills() {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="p-4 bg-paper-card rounded">
             <p className="font-bold text-ink mb-2">HotelTech</p>
-            <p className="text-ink/60 text-sm">
+            <p className="text-ink text-sm">
               Marketplace dynamics, property management системы, оптимизация guest experience
             </p>
           </div>
           <div className="p-4 bg-paper-card rounded">
             <p className="font-bold text-ink mb-2">TravelTech</p>
-            <p className="text-ink/60 text-sm">
+            <p className="text-ink text-sm">
               Booking платформы, планирование маршрутов, travel distribution каналы
             </p>
           </div>
           <div className="p-4 bg-paper-card rounded">
             <p className="font-bold text-ink mb-2">Marketplace Платформы</p>
-            <p className="text-ink/60 text-sm">
+            <p className="text-ink text-sm">
               Two-sided сети, баланс supply & demand, привлечение merchants
             </p>
           </div>
           <div className="p-4 bg-paper-card rounded">
             <p className="font-bold text-ink mb-2">Growth & Scaling</p>
-            <p className="text-ink/60 text-sm">
+            <p className="text-ink text-sm">
               От разработки 0-1 до операций с выручкой в миллионы
             </p>
           </div>
@@ -80,28 +80,28 @@ export default function Skills() {
             <span className="text-ink mr-3 mt-1">✓</span>
             <div>
               <p className="font-bold text-ink">Lean Startup</p>
-              <p className="text-ink/60 text-sm">Hypothesis-driven разработка продукта и rapid experimentation</p>
+              <p className="text-ink text-sm">Hypothesis-driven разработка продукта и rapid experimentation</p>
             </div>
           </div>
           <div className="flex items-start">
             <span className="text-ink mr-3 mt-1">✓</span>
             <div>
               <p className="font-bold text-ink">Jobs to be Done (JTBD)</p>
-              <p className="text-ink/60 text-sm">Понимание customer motivations и pain points</p>
+              <p className="text-ink text-sm">Понимание customer motivations и pain points</p>
             </div>
           </div>
           <div className="flex items-start">
             <span className="text-ink mr-3 mt-1">✓</span>
             <div>
               <p className="font-bold text-ink">User-Centered Design</p>
-              <p className="text-ink/60 text-sm">Continuous user research и iterative совершенствование продукта</p>
+              <p className="text-ink text-sm">Continuous user research и iterative совершенствование продукта</p>
             </div>
           </div>
           <div className="flex items-start">
             <span className="text-ink mr-3 mt-1">✓</span>
             <div>
               <p className="font-bold text-ink">Data-Driven Decision Making</p>
-              <p className="text-ink/60 text-sm">Metrics-driven стратегия и A/B testing культура</p>
+              <p className="text-ink text-sm">Metrics-driven стратегия и A/B testing культура</p>
             </div>
           </div>
         </div>

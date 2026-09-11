@@ -66,7 +66,7 @@ export default function ProjectCard({
       <div className="mb-3">
         {title && <h3 className="text-2xl font-bold tracking-[-0.01em] text-ink">{title}</h3>}
         {role && (
-          <p className="text-[13px] text-ink/60 mt-1">
+          <p className="text-[13px] text-ink mt-1">
             {role.includes('|') ? (() => {
               const parts = role.split(/\s*\|\s*/).map((s) => s.trim()).filter(Boolean)
               const [first, ...rest] = parts
@@ -88,7 +88,7 @@ export default function ProjectCard({
 
       {/* Description */}
       {description && (
-        <div className="mb-4 text-base text-ink/75 leading-relaxed">
+        <div className="mb-4 text-base text-ink leading-relaxed">
           <p>
             {descriptionNoWrapSuffix != null
               ? <>
@@ -104,7 +104,7 @@ export default function ProjectCard({
       {metrics.length > 0 && (
         <div className="space-y-2">
           {metrics.map((metric, idx) => (
-            <div key={idx} className="text-xs text-ink/75 leading-relaxed">
+            <div key={idx} className="text-xs text-ink leading-relaxed">
               • {metric}
             </div>
           ))}
@@ -142,7 +142,7 @@ export default function ProjectCard({
       {/* Город и формат — подписью в правом нижнем углу: в широкой карточке под превью на всю ширину, в обычной — прижата к низу */}
       {place && (
         <p
-          className={`self-end text-right text-[13px] text-ink/60 ${
+          className={`self-end text-right text-[13px] text-ink ${
             wide ? 'mt-3 md:-mt-4 md:col-span-2 md:justify-self-end' : 'mt-auto'
           }`}
         >
@@ -159,7 +159,7 @@ export default function ProjectCard({
 
       {/* Empty state */}
       {!hasData && (
-        <div className="text-center text-ink/60 flex items-center justify-center h-full">
+        <div className="text-center text-ink flex items-center justify-center h-full">
           <p>Нажмите чтобы узнать больше</p>
         </div>
       )}

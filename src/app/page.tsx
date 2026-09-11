@@ -69,7 +69,7 @@ export default function Home() {
         <div className="grid md:grid-cols-[1.4fr_1fr] gap-7 md:gap-12 items-center">
           <div className="halo">
             {/* Моноширинный шрифт шире — на телефоне плашка мельче, чтобы остаться в одну строку даже на экране 360px */}
-            <span className="cli-badge inline-flex items-center gap-2 text-[10px] md:text-[13px] whitespace-nowrap text-ink/75 px-3 md:px-3.5 py-[7px]">
+            <span className="cli-badge inline-flex items-center gap-2 text-[10px] md:text-[13px] whitespace-nowrap text-ink px-3 md:px-3.5 py-[7px]">
               <span className="w-2 h-2 bg-green-500 shadow-[0_0_8px_#22c55e]" aria-hidden />
               Сейчас · Product Manager в Домклике, Сбер
             </span>
@@ -77,7 +77,7 @@ export default function Home() {
             <h1 className="text-[46px] md:text-[68px] leading-none font-normal [word-spacing:normal] my-5 text-ink">
               {homeData.hero.name}
             </h1>
-            <p className="text-base md:text-lg leading-[1.55] text-ink/70">
+            <p className="text-base md:text-lg leading-[1.55] text-ink">
               <strong className="text-ink font-semibold">Product Manager с предпринимательским бэкграундом</strong> с&nbsp;7&nbsp;годами опыта в HotelTech и TravelTech. С нуля создал{' '}
               {/* Сайт letoplace.ru больше не работает — ведём на кейс внутри портфолио */}
               <a
@@ -126,24 +126,24 @@ export default function Home() {
 
         {/* Мой путь */}
         <div className="halo mt-12 md:mt-16">
-          <p className="text-[15px] uppercase tracking-[0.1em] text-ink/60 mb-4">Мой путь</p>
+          <p className="text-[15px] uppercase tracking-[0.1em] text-ink mb-4">Мой путь</p>
           <ol className="path">
             {path.map((step) => {
               const body = (
                 <>
-                  <p className={`text-[15px] ${step.now ? 'text-green-700 font-semibold' : 'text-ink/60'}`}>
+                  <p className={`text-[15px] ${step.now ? 'text-green-700 font-semibold' : 'text-ink'}`}>
                     {step.years}
                   </p>
                   <p className="text-[24px] font-bold tracking-[-0.01em] mt-1.5 text-ink">
                     {step.title}
-                    {step.note && <span className="text-lg text-ink/60">, {step.note}</span>}
+                    {step.note && <span className="text-lg text-ink">, {step.note}</span>}
                     {step.href && (
                       <span className="inline-block ml-1.5 text-lg text-ink/40 group-hover:text-electric group-hover:translate-x-0.5 transition" aria-hidden>
                         →
                       </span>
                     )}
                   </p>
-                  <p className="text-base text-ink/75 mt-2 leading-[1.45]">{step.text}</p>
+                  <p className="text-base text-ink mt-2 leading-[1.45]">{step.text}</p>
                 </>
               )
               return (
@@ -204,7 +204,7 @@ export default function Home() {
       <section id="education" className="sheet scroll-mt-20">
         <h2 className="section-title">Образование</h2>
         <p className="section-lead">Учебные заведения и курсы</p>
-        <ul className="space-y-4 text-ink/75">
+        <ul className="space-y-4 text-ink">
           <li className="flex gap-3 items-start">
             <span className="text-electric shrink-0">•</span>
             <span>
@@ -243,7 +243,7 @@ export default function Home() {
               key={skill.name}
               className="tag px-4 py-2 text-sm font-medium"
             >
-              <span className={skill.ai ? 'text-gradient-hero' : 'text-ink/85'}>{skill.name}</span>
+              <span className={skill.ai ? 'text-gradient-hero' : 'text-ink'}>{skill.name}</span>
             </span>
           ))}
         </div>
@@ -265,7 +265,7 @@ export default function Home() {
                     <a
                       href={c.href}
                       {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      className="text-ink/85 underline decoration-ink/30 underline-offset-4 hover:decoration-ink hover:text-electric text-lg transition-colors"
+                      className="text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink hover:text-electric text-lg transition-colors"
                     >
                       {c.text}
                     </a>
@@ -284,13 +284,13 @@ export default function Home() {
             <div className="space-y-4">
               <div className="p-5 rounded-none bg-paper-card border border-ink/10">
                 <h4 className="font-bold mb-2 text-ink">Product Manager в команду</h4>
-                <p className="text-ink/60 text-base">
+                <p className="text-ink text-base">
                   Ищу позицию, где смогу применить свой опыт работы — от discovery до масштабирования
                 </p>
               </div>
               <div className="p-5 rounded-none bg-paper-card border border-ink/10">
                 <h4 className="font-bold mb-2 text-ink">Нетворкинг</h4>
-                <p className="text-ink/60 text-base">
+                <p className="text-ink text-base">
                   Открыт к общению. Пишите — обсудим идеи, обменяемся опытом или просто познакомимся
                 </p>
               </div>

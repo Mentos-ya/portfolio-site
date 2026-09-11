@@ -8,7 +8,7 @@ function ProjectText({ project }: { project: AiProject }) {
   return (
     <>
       <h3 className="text-2xl font-bold tracking-[-0.01em] text-ink">{project.title}</h3>
-      <p className="text-[13px] text-ink/60 mt-1">
+      <p className="text-[13px] text-ink mt-1">
         <span className="block md:inline">{kind}</span>
         {period.length > 0 && (
           <>
@@ -17,9 +17,9 @@ function ProjectText({ project }: { project: AiProject }) {
           </>
         )}
       </p>
-      <p className="mt-3 text-base text-ink/75 leading-relaxed">{project.description}</p>
+      <p className="mt-3 text-base text-ink leading-relaxed">{project.description}</p>
       {project.features && (
-        <ul className="mt-3 space-y-1.5 text-base text-ink/75 leading-relaxed">
+        <ul className="mt-3 space-y-1.5 text-base text-ink leading-relaxed">
           {project.features.map((feature) => (
             <li key={feature} className="flex gap-2.5">
               <span className="text-electric shrink-0" aria-hidden>
@@ -37,7 +37,7 @@ function ProjectText({ project }: { project: AiProject }) {
       {project.case && (
         <a
           href={project.case}
-          className="mt-3 self-start text-[15px] text-ink/60 underline decoration-ink/30 underline-offset-4 hover:text-electric hover:decoration-electric transition-colors"
+          className="mt-3 self-start text-[15px] text-ink underline decoration-ink/30 underline-offset-4 hover:text-electric hover:decoration-electric transition-colors"
         >
           Подробный кейс →
         </a>
@@ -57,7 +57,7 @@ export default function AiProjects() {
       <h3 className="text-2xl md:text-[28px] font-bold text-ink">
         {aiData.pageTitle} <span className="text-gradient-hero">{aiData.pageTitleAccent}</span>
       </h3>
-      <p className="text-base text-ink/60 mt-2 mb-5">{aiData.pageDescription}</p>
+      <p className="text-base text-ink mt-2 mb-5">{aiData.pageDescription}</p>
 
       <div className="grid gap-5">
         {withVideo.map((project) => (

@@ -2,7 +2,7 @@ export default function Contact() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-20">
       <h1 className="text-5xl font-bold mb-4">Связаться<br className="md:hidden" /> со мной</h1>
-      <p className="text-xl text-ink/60 mb-12">
+      <p className="text-xl text-ink mb-12">
         Я всегда заинтересован в обсуждении новых идей продукта, возможностях сотрудничества или инсайтах по product management.
       </p>
 
@@ -69,14 +69,14 @@ export default function Contact() {
           <div className="space-y-4">
             <div className="p-4 bg-paper-card rounded">
               <h3 className="font-bold mb-2">Product Manager в команду</h3>
-              <p className="text-ink/60 text-sm">
+              <p className="text-ink text-sm">
                 Ищу позицию, где смогу применить свой опыт работы — от discovery до масштабирования
               </p>
             </div>
 
             <div className="p-4 bg-paper-card rounded">
               <h3 className="font-bold mb-2">Нетворкинг</h3>
-              <p className="text-ink/60 text-sm">
+              <p className="text-ink text-sm">
                 Открыт к общению. Пишите — обсудим идеи, обменяемся опытом или просто познакомимся
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function Contact() {
 
       {/* Response Time */}
       <div className="mt-12 pt-12 border-t border-ink/15">
-        <p className="text-ink/60">
+        <p className="text-ink">
           <strong>Время ответа:</strong> Обычно отвечаю на сообщения в течение 24-48 часов.
           По срочным вопросам можно написать в Telegram.
         </p>

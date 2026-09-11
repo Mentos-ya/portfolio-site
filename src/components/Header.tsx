@@ -42,7 +42,7 @@ export default function Header() {
         <ul className="hidden md:flex gap-7 text-[15px]">
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="text-ink/60 hover:text-electric transition">
+              <a href={link.href} className="text-ink hover:text-electric transition">
                 {link.label}
               </a>
             </li>

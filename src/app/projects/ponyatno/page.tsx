@@ -7,7 +7,7 @@ export default function PonyatnoPage() {
       {/* Кнопка назад */}
       <Link
         href="/#projects"
-        className="inline-flex items-center text-ink/60 hover:text-electric transition mb-10 group"
+        className="inline-flex items-center text-ink hover:text-electric transition mb-10 group"
       >
         <span className="mr-2 group-hover:-translate-x-1 transition-transform">←</span>
         Назад к проектам
@@ -26,14 +26,14 @@ export default function PonyatnoPage() {
           <h1 className="text-4xl md:text-5xl font-bold">Понятно</h1>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row md:flex-nowrap items-start md:items-center justify-between gap-y-0 gap-x-4 w-full mb-10 text-lg text-ink/60">
+      <div className="flex flex-col md:flex-row md:flex-nowrap items-start md:items-center justify-between gap-y-0 gap-x-4 w-full mb-10 text-lg text-ink">
         <span className="shrink-0">Indie Maker</span>
         <span className="shrink-0">Февраль 2026 — По наст. время</span>
       </div>
 
       {/* Описание из превью карточки */}
       <div className="mb-12">
-        <p className="text-lg text-ink/75 leading-relaxed">
+        <p className="text-lg text-ink leading-relaxed">
           Запустил Telegram Mini App для сканирования меню иностранных ресторанов — с переводом текста, калорийностью, составом и ценами в одном экране. Весь продукт построен через вайбкодинг (AI-инструменты без классической разработки). Стадия MVP, приложение уже приносит первый revenue.
         </p>
       </div>
@@ -44,7 +44,7 @@ export default function PonyatnoPage() {
       {/* Discovery & CustDev */}
       <div className="mb-6">
         <p className="text-base font-semibold text-ink mb-2">Discovery & CustDev</p>
-        <ul className="space-y-2 text-ink/75 text-base leading-relaxed">
+        <ul className="space-y-2 text-ink text-base leading-relaxed">
           <li className="flex gap-3 items-start">
             <span className="text-electric font-bold mt-0.5 shrink-0">•</span>
             <span className="leading-relaxed">Определил ЦА: русскоязычные туристы 20–45 лет с языковым барьером при заказе еды за рубежом</span>
@@ -71,7 +71,7 @@ export default function PonyatnoPage() {
       {/* Приоритизация & Дизайн */}
       <div className="mb-6">
         <p className="text-base font-semibold text-ink mb-2">Приоритизация & Дизайн</p>
-        <ul className="space-y-2 text-ink/75 text-base leading-relaxed">
+        <ul className="space-y-2 text-ink text-base leading-relaxed">
           <li className="flex gap-3 items-start">
             <span className="text-electric font-bold mt-0.5 shrink-0">•</span>
             <span className="leading-relaxed">Собрал бэклог 20+ фич, приоритизировал по RICE: в MVP вошли сканирование, AI-перевод, расчёт КБЖУ, конвертация валют</span>
@@ -108,7 +108,7 @@ export default function PonyatnoPage() {
       <div className="w-full mt-0">
         <div className="mb-6">
           <p className="text-base font-semibold text-ink mb-2">Запуск & Итерации</p>
-          <ul className="space-y-2 text-ink/75 text-base leading-relaxed">
+          <ul className="space-y-2 text-ink text-base leading-relaxed">
             <li className="flex gap-3 items-start">
               <span className="text-electric font-bold mt-0.5 shrink-0">•</span>
               <span className="leading-relaxed">Запустил MVP как Telegram Mini App: распознавание фото меню, перевод, калорийность, конвертация цен</span>
@@ -145,7 +145,7 @@ export default function PonyatnoPage() {
             ].map((item) => (
               <span
                 key={item}
-                className="tag px-3 py-1.5 text-ink/75 text-xs font-medium"
+                className="tag px-3 py-1.5 text-ink text-xs font-medium"
               >
                 {item}
               </span>
