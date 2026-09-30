@@ -1,10 +1,10 @@
 #!/bin/bash
-# Копия сайта в Яндекс Облаке (бакет iakupov-portfolio) — открывается из России без VPN.
+# Копия сайта в Яндекс Облаке (бакет iakupov) — открывается из России без VPN.
 # Собирает статику в out/ и заливает каждый файл со своим типом:
 # у yc фильтры --include/--exclude не работают как в aws, поэтому по одному файлу.
 cd "$(dirname "$0")/.." || exit 1
 YC=~/yandex-cloud/bin/yc
-BUCKET=iakupov-portfolio
+BUCKET=iakupov
 
 rm -rf out
 if ! STATIC_EXPORT=1 npx next build; then echo "Сборка упала"; exit 1; fi

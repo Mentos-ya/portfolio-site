@@ -5,7 +5,7 @@ import sys
 from playwright.sync_api import sync_playwright
 
 HOSTS = {"vercel": "https://iakupov-portfolio.vercel.app",
-         "yandex": "https://iakupov-portfolio.website.yandexcloud.net"}
+         "yandex": "https://iakupov.website.yandexcloud.net"}
 arg = sys.argv[1] if len(sys.argv) > 1 else "http://localhost:3456"
 base = HOSTS.get(arg, arg).rstrip("/")
 PAGES = ["/", "/projects/letoplace/", "/projects/ponyatno/"]
