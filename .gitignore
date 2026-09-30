@@ -19,3 +19,5 @@ _variants*.html
 # Служебная метка хука настройки Claude Code — только для этого компьютера
 .claude/setup-checked
 out/
+ПЛАН.md
+.claude/yandex-sync.log
