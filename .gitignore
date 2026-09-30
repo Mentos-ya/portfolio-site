@@ -18,3 +18,4 @@ PRD.md
 _variants*.html
 # Служебная метка хука настройки Claude Code — только для этого компьютера
 .claude/setup-checked
+out/
