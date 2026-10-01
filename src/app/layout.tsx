@@ -3,7 +3,6 @@ import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import FloatingResumeButton from '@/components/FloatingResumeButton'
 import YandexMetrika from '@/components/YandexMetrika'
 import DitherBackground from '@/components/DitherBackground'
 
@@ -63,7 +62,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <FloatingResumeButton />
         <YandexMetrika />
       </body>
     </html>
