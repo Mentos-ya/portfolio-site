@@ -5,7 +5,7 @@ import ProjectCard from '@/components/ProjectCard'
 import AddCaseBlock from '@/components/AddCaseBlock'
 import AiProjects from '@/components/AiProjects'
 
-const RESUME_URL = 'https://drive.google.com/file/d/1V7jEQQH0xdIrrB1YcVwKtXHadfmwcY3g/view'
+const RESUME_URL = 'https://drive.google.com/file/d/1JmYTcH-ahW07STMiF-yhSu6Ne8eLwcQn/view'
 
 // «Мой путь»: по порядку; пункты с now — то, чем занимаюсь сейчас (зелёная точка и «— сейчас»)
 // note — уточнение после запятой («Домклик, Сбер»): мельче названия, чтобы пункт оставался в одну строку
