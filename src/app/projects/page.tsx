@@ -12,7 +12,7 @@ export default function Projects() {
         {/* LetoPlace */}
         <div className="border-b border-ink/15 pb-12 last:border-b-0">
           <h2 className="text-3xl font-bold mb-2">LetoPlace</h2>
-          <p className="text-ink mb-4">Product Manager & Growth PM | 2018 - Июнь 2025</p>
+          <p className="text-ink mb-4">Founder / Product Owner | 02.2018 – 11.2025</p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-6">
             <div>

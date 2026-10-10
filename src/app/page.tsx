@@ -11,7 +11,7 @@ const RESUME_URL = 'https://drive.google.com/file/d/1JmYTcH-ahW07STMiF-yhSu6Ne8e
 // note — уточнение после запятой («Домклик, Сбер»): мельче названия, чтобы пункт оставался в одну строку
 const path: { years: string; title: string; note?: string; text: string; href?: string; now?: boolean }[] = [
   {
-    years: '2018 – 2020',
+    years: '2016 – 2018',
     title: 'ЦУМ',
     text: 'Продажи корпоративным клиентам в премиум-сегменте',
   },
@@ -78,7 +78,7 @@ export default function Home() {
               {homeData.hero.name}
             </h1>
             <p className="text-base md:text-lg leading-[1.55] text-ink">
-              <strong className="text-ink font-semibold">Product Manager с предпринимательским бэкграундом</strong> с&nbsp;7&nbsp;годами опыта в HotelTech и TravelTech. С нуля создал{' '}
+              <strong className="text-ink font-semibold">Product Manager с предпринимательским бэкграундом</strong> с&nbsp;8&nbsp;годами опыта в HotelTech и TravelTech. С нуля создал{' '}
               {/* Сайт letoplace.ru больше не работает — ведём на кейс внутри портфолио */}
               <a
                 href="/projects/letoplace"
@@ -184,7 +184,7 @@ export default function Home() {
             wide
             href="/projects/letoplace"
             title="LetoPlace"
-            role="Founder / Product Owner | 02.2018 – 09.2025"
+            role="Founder / Product Owner | 02.2018 – 11.2025"
             emoji=""
             logo="/logos/letoplace-logo.png"
             videoPoster="/videos/letoplace-poster.webp"
@@ -219,12 +219,12 @@ export default function Home() {
                   Открыть сертификат
                 </span>
               </a>{' '}
-              — Симулятор управления продуктом на основе данных
+              — Симулятор управления продуктом на основе данных, 2025
             </span>
           </li>
           <li className="flex gap-3 items-start">
             <span className="text-electric shrink-0">•</span>
-            <span><strong className="text-ink">Томский государственный университет</strong> — Высшая школа бизнеса, 2015–2018</span>
+            <span><strong className="text-ink">Томский государственный университет</strong> — Высшая школа бизнеса, 2015–2016</span>
           </li>
           <li className="flex gap-3 items-start">
             <span className="text-electric shrink-0">•</span>
@@ -252,7 +252,7 @@ export default function Home() {
       {/* Контакты */}
       <section id="contact" className="sheet scroll-mt-20">
         <h2 className="section-title">Связаться<br className="md:hidden" /> со мной</h2>
-        <p className="section-lead">Ищу позицию продакта — пишите в Telegram.</p>
+        <p className="section-lead">Пишите в Telegram.</p>
 
         <div className="grid md:grid-cols-2 gap-10">
           <div>
@@ -280,14 +280,7 @@ export default function Home() {
 
           <div className="flex flex-col md:h-full">
             <h3 className="text-2xl font-bold mb-6 text-ink">Чем я могу помочь</h3>
-            <div className="flex-1 min-h-0" aria-hidden />
             <div className="space-y-4">
-              <div className="p-5 rounded-none bg-paper-card border border-ink/10">
-                <h4 className="font-bold mb-2 text-ink">Product Manager в команду</h4>
-                <p className="text-ink text-base">
-                  Ищу позицию, где смогу применить свой опыт работы — от discovery до масштабирования
-                </p>
-              </div>
               <div className="p-5 rounded-none bg-paper-card border border-ink/10">
                 <h4 className="font-bold mb-2 text-ink">Нетворкинг</h4>
                 <p className="text-ink text-base">

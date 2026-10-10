@@ -68,13 +68,6 @@ export default function Contact() {
           <h2 className="text-2xl font-bold mb-6">Чем я могу помочь</h2>
           <div className="space-y-4">
             <div className="p-4 bg-paper-card rounded">
-              <h3 className="font-bold mb-2">Product Manager в команду</h3>
-              <p className="text-ink text-sm">
-                Ищу позицию, где смогу применить свой опыт работы — от discovery до масштабирования
-              </p>
-            </div>
-
-            <div className="p-4 bg-paper-card rounded">
               <h3 className="font-bold mb-2">Нетворкинг</h3>
               <p className="text-ink text-sm">
                 Открыт к общению. Пишите — обсудим идеи, обменяемся опытом или просто познакомимся

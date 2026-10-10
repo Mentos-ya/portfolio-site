@@ -22,7 +22,7 @@ const mono = JetBrains_Mono({
 
 const title = 'Илья Якупов — Product Manager'
 const description =
-  'Продакт с 7 годами опыта в HotelTech и TravelTech, основатель LetoPlace. Сам собираю продукты с помощью ИИ.'
+  'Продакт с 8 годами опыта в HotelTech и TravelTech, основатель LetoPlace. Сам собираю продукты с помощью ИИ.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://iakupov-portfolio.vercel.app'),
