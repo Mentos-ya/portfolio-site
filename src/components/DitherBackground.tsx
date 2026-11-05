@@ -4,9 +4,10 @@ import { useEffect, useRef } from 'react'
 
 // Фон всего сайта: свечение, переведённое в два цвета крупным пиксельным растром.
 // Стоит на месте, страница прокручивается поверх. Пятно тянется к курсору, растр под курсором сгущается.
-// При «уменьшить движение» замирает только собственное движение фона — реакция на мышь остаётся.
-// Яркость зажата между 0.05 и 0.75: сплошных синих пятен и пустых мест нет, пиксели видны везде.
-// Синий растра разбавлен кремовым на треть — бледнее акцентного, чтобы не спорить с текстом.
+// Системное «уменьшить движение» не слушаем (правило Ильи): фон всегда живой.
+// Яркость сдвинута на −0.18 (густота точек) и зажата между 0.05 и 0.75: сплошных синих пятен нет.
+// Синий растра разбавлен кремовым на 71% (контраст 29%) — тихий фон, текст не спорит с ним.
+// Оба числа Илья подобрал ползунками 05.11.2026; раньше было: густота 0, синий разбавлен на 35%.
 // Комментарии держим снаружи шейдера: русские буквы внутри него ломают сборку на части видеокарт
 const VERT = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'
 const FRAG = `
@@ -29,8 +30,8 @@ void main(){
   v+=.18*sin(uv.x*6.+t*2.)*sin(uv.y*5.-t);
   vec2 dm=uv-u_mouse;
   v+=.3*u_hover*exp(-dot(dm,dm)*9.);
-  v=clamp(v,.05,.75);
-  vec3 cream=vec3(.969,.941,.859), blue=mix(vec3(.122,.2,1.),cream,.35);
+  v=clamp(v-.18,.05,.75);
+  vec3 cream=vec3(.969,.941,.859), blue=mix(vec3(.122,.2,1.),cream,.71);
   gl_FragColor=vec4(v>b8(px)?blue:cream,1.);
 }`
 
@@ -91,14 +92,13 @@ export default function DitherBackground() {
     window.addEventListener('pointerup', onUp)
     window.addEventListener('blur', onBlur)
 
-    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const start = performance.now()
     let raf = 0
     const draw = (now: number) => {
       m.x += (m.tx - m.x) * 0.09
       m.y += (m.ty - m.y) * 0.09
       m.h += (m.th - m.h) * 0.06
-      gl.uniform1f(uTime, still ? 2 : (now - start) / 1000)
+      gl.uniform1f(uTime, (now - start) / 1000)
       gl.uniform2f(uMouse, m.x, m.y)
       gl.uniform1f(uHover, m.h)
       gl.drawArrays(gl.TRIANGLES, 0, 3)
