@@ -97,7 +97,7 @@ export default function Home() {
               </a>{' '}
               в&nbsp;3&nbsp;городах.
             </p>
-            <p className="text-base md:text-lg leading-normal font-semibold mt-3 text-gradient-hero">
+            <p className="text-base md:text-lg leading-normal font-semibold mt-3 text-ink">
               Активно применяю LLM и AI-агентов. Этот сайт собран с помощью&nbsp;Claude&nbsp;Code.
             </p>
             <div className="flex flex-wrap gap-3 mt-8">
