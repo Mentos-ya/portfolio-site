@@ -350,42 +350,29 @@ h3 {
 }
 
 /* Подсветка блока после перехода по ссылке-якорю (AnchorHighlight.tsx, просьба Ильи 06.11.2026):
-   рамка и жёсткая тень листа на миг становятся синими и гаснут. Вне @layer — класс ставит скрипт,
-   и Tailwind не должен его выкинуть. Без prefers-reduced-motion: у Ильи «уменьшить движение» включено всегда */
-.sheet.anchor-hit::before {
-  animation: anchor-hit-sheet 1.6s ease-out;
+   сам блок — лист или карточка — на миг заливается синим, как маркером, и заливка гаснет. Рамку не трогаем
+   (Илья: «подсвечивай не рамку, а сам проект»). Вне @layer — класс ставит скрипт, и Tailwind не должен его
+   выкинуть. Без prefers-reduced-motion: у Ильи «уменьшить движение» включено всегда */
+.anchor-hit {
+  position: relative;
 }
-@keyframes anchor-hit-sheet {
+.anchor-hit::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: #1f33ff;
+  mix-blend-mode: multiply; /* бумага синеет, а тёмный текст остаётся читаемым */
+  opacity: 0;
+  animation: anchor-hit-fill 1.6s ease-out;
+}
+@keyframes anchor-hit-fill {
   0%,
   30% {
-    border-color: #1f33ff;
-    box-shadow: 6px 6px 0 #1f33ff;
-  }
-}
-@media (min-width: 768px) {
-  .sheet.anchor-hit::before {
-    animation-name: anchor-hit-sheet-md;
-  }
-  @keyframes anchor-hit-sheet-md {
-    0%,
-    30% {
-      border-color: #1f33ff;
-      box-shadow: 10px 10px 0 #1f33ff;
-    }
-  }
-}
-/* Цель — не лист, а блок внутри него (карточка Домклика, разделы кейса LetoPlace): синяя рамка вокруг */
-.anchor-hit:not(.sheet) {
-  outline: 3px solid transparent;
-  outline-offset: 6px;
-  animation: anchor-hit-outline 1.6s ease-out;
-}
-@keyframes anchor-hit-outline {
-  0%,
-  30% {
-    outline-color: #1f33ff;
+    opacity: 0.16;
   }
   100% {
-    outline-color: rgba(31, 51, 255, 0);
+    opacity: 0;
   }
 }
