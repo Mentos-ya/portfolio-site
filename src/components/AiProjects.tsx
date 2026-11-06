@@ -18,6 +18,18 @@ function ProjectText({ project }: { project: AiProject }) {
   return (
     <>
       <h3 className="text-2xl font-bold tracking-[-0.01em] text-ink">{project.title}</h3>
+      {/* Ссылка на сам продукт — сразу под названием (Илья 06.11.2026); метка utm — чтобы в Метрике продукта
+          было видно, что пришли с портфолио */}
+      {project.link && (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-1 self-start text-[15px] text-ink underline decoration-ink/30 underline-offset-4 hover:text-electric hover:decoration-electric transition-colors"
+        >
+          Открыть {new URL(project.link).host} →
+        </a>
+      )}
       <p className="text-[13px] text-ink mt-1">
         <span className="block md:inline">{kind}</span>
         {period.length > 0 && (
@@ -43,17 +55,6 @@ function ProjectText({ project }: { project: AiProject }) {
       <p className="mt-auto pt-4 text-base font-semibold">
         <span className="text-gradient-hero">{project.result}</span>
       </p>
-      {/* Ссылка на сам продукт (Илья 06.11.2026); метка utm — чтобы в Метрике продукта было видно, что пришли с портфолио */}
-      {project.link && (
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-3 self-start text-[15px] text-ink underline decoration-ink/30 underline-offset-4 hover:text-electric hover:decoration-electric transition-colors"
-        >
-          Открыть {new URL(project.link).host} →
-        </a>
-      )}
       {/* Подробный кейс — для тех, кому мало карточки; Метрика сама считает переход по адресу /projects/ */}
       {project.case && (
         <a
