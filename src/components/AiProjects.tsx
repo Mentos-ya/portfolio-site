@@ -12,7 +12,7 @@ function countLabel(n: number, [one, few, many]: string[]) {
   return `${n} ${word}`
 }
 
-// Текст карточки ИИ-проекта: название, тип и период, описание, возможности, итог и, если есть, ссылка на кейс
+// Текст карточки ИИ-проекта: название, тип и период, описание, возможности, итог и, если есть, ссылки на продукт и кейс
 function ProjectText({ project }: { project: AiProject }) {
   const [kind, ...period] = project.kind.split(/\s*\|\s*/)
   return (
@@ -43,6 +43,17 @@ function ProjectText({ project }: { project: AiProject }) {
       <p className="mt-auto pt-4 text-base font-semibold">
         <span className="text-gradient-hero">{project.result}</span>
       </p>
+      {/* Ссылка на сам продукт (Илья 06.11.2026); метка utm — чтобы в Метрике продукта было видно, что пришли с портфолио */}
+      {project.link && (
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 self-start text-[15px] text-ink underline decoration-ink/30 underline-offset-4 hover:text-electric hover:decoration-electric transition-colors"
+        >
+          Открыть {new URL(project.link).host} →
+        </a>
+      )}
       {/* Подробный кейс — для тех, кому мало карточки; Метрика сама считает переход по адресу /projects/ */}
       {project.case && (
         <a
