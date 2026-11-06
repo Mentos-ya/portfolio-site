@@ -277,8 +277,8 @@ h3 {
   .path-step {
     position: relative;
   }
-  .path-step::before {
-    content: '';
+  /* Точка на линии — внутри ссылки пункта, поэтому по ней можно кликнуть */
+  .path-dot {
     position: absolute;
     top: 2px;
     left: -30px;
@@ -287,28 +287,30 @@ h3 {
     border-radius: 50%;
     background: #fffaf0;
     border: 3px solid #1f33ff;
+    cursor: pointer;
     transition: transform 0.2s ease-out, background-color 0.2s, border-radius 0.2s, box-shadow 0.2s;
   }
-  .path-step.is-now::before {
+  /* Невидимая зона вокруг точки: попасть по ней пальцем или мышью легче, чем по 16 точкам */
+  .path-dot::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+  }
+  .path-step.is-now .path-dot {
     border-color: #16a34a;
     background: #16a34a;
     box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.18);
   }
   /* Точка отзывается на наведение: заливается синим, становится квадратной, как курсор, и чуть растёт */
-  .path-step:hover::before {
+  .path-step:hover .path-dot {
     background: #1f33ff;
     border-radius: 0;
     transform: scale(1.25);
     box-shadow: 0 0 0 5px rgba(31, 51, 255, 0.18);
   }
-  .path-step.is-now:hover::before {
+  .path-step.is-now:hover .path-dot {
     background: #16a34a;
     box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.22);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .path-step::before {
-      transition: none;
-    }
   }
   @media (min-width: 1024px) {
     .path {
@@ -326,7 +328,7 @@ h3 {
       height: 2px;
       background: linear-gradient(90deg, rgba(15, 20, 64, 0.2), #1f33ff 30%, #1f33ff 42%, #16a34a 50%);
     }
-    .path-step::before {
+    .path-dot {
       top: -33px;
       left: 0;
     }

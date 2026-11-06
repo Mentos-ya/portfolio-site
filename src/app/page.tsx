@@ -9,11 +9,14 @@ const RESUME_URL = 'https://drive.google.com/file/d/1JmYTcH-ahW07STMiF-yhSu6Ne8e
 
 // «Мой путь»: по порядку; пункты с now — то, чем занимаюсь сейчас (зелёная точка и «— сейчас»)
 // note — уточнение после запятой («Домклик, Сбер»): мельче названия, чтобы пункт оставался в одну строку
-const path: { years: string; title: string; note?: string; text: string; href?: string; now?: boolean }[] = [
+// href — куда ведёт пункт вместе с точкой; external — открыть в новой вкладке (про ЦУМ на сайте страницы нет, подробности — в резюме)
+const path: { years: string; title: string; note?: string; text: string; href: string; external?: boolean; now?: boolean }[] = [
   {
     years: '2016 – 2018',
     title: 'ЦУМ',
     text: 'Продажи корпоративным клиентам в премиум-сегменте',
+    href: RESUME_URL,
+    external: true,
   },
   {
     years: '2018 – 2025',
@@ -33,6 +36,7 @@ const path: { years: string; title: string; note?: string; text: string; href?: 
     title: 'Домклик',
     note: 'Сбер',
     text: 'Product Manager в сервисе недвижимости Сбера',
+    href: '#domclick',
     now: true,
   },
 ]
@@ -127,36 +131,29 @@ export default function Home() {
         <div className="mt-12 md:mt-16">
           <p className="text-[15px] uppercase tracking-[0.1em] text-ink mb-4">Мой путь</p>
           <ol className="path">
-            {path.map((step) => {
-              const body = (
-                <>
+            {path.map((step) => (
+              <li key={step.title} className={`path-step ${step.now ? 'is-now' : ''}`}>
+                {/* Ссылка — весь пункт вместе с точкой на линии: точка лежит внутри ссылки, поэтому клик по ней тоже ведёт */}
+                <a
+                  href={step.href}
+                  className="group block"
+                  {...(step.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  <span className="path-dot" aria-hidden />
                   <p className={`text-[15px] ${step.now ? 'text-green-700 font-semibold' : 'text-ink'}`}>
                     {step.years}
                   </p>
                   <p className="text-[24px] font-bold tracking-[-0.01em] mt-1.5 text-ink">
                     {step.title}
                     {step.note && <span className="text-lg text-ink">, {step.note}</span>}
-                    {step.href && (
-                      <span className="inline-block ml-1.5 text-lg text-ink/40 group-hover:text-electric group-hover:translate-x-0.5 transition" aria-hidden>
-                        →
-                      </span>
-                    )}
+                    <span className="inline-block ml-1.5 text-lg text-ink/40 group-hover:text-electric group-hover:translate-x-0.5 transition" aria-hidden>
+                      {step.external ? '↗' : '→'}
+                    </span>
                   </p>
                   <p className="text-base text-ink mt-2 leading-[1.45]">{step.text}</p>
-                </>
-              )
-              return (
-                <li key={step.title} className={`path-step ${step.now ? 'is-now' : ''}`}>
-                  {step.href ? (
-                    <a href={step.href} className="group block">
-                      {body}
-                    </a>
-                  ) : (
-                    body
-                  )}
-                </li>
-              )
-            })}
+                </a>
+              </li>
+            ))}
           </ol>
         </div>
       </section>
@@ -168,15 +165,17 @@ export default function Home() {
 
         {/* Работа — сразу под подзаголовком раздела, без своего заголовка */}
         <div className="grid gap-5">
-          {/* Текущая работа — первой */}
-          <ProjectCard
-            id={2}
-            title="Домклик, Сбер"
-            logo="/logos/domclick-logo.svg"
-            role="Product Manager | 04.2026 — По наст. время"
-            description="Продакт-менеджер отельного направления в Домклике — сервисе недвижимости экосистемы Сбера. После собственного бизнеса — масштаб задач и данных большой экосистемы."
-            place="Москва, гибридный формат, полный день"
-          />
+          {/* Текущая работа — первой; якорь #domclick — сюда ведёт пункт «Домклик» в «Моём пути» */}
+          <div id="domclick" className="scroll-mt-20">
+            <ProjectCard
+              id={2}
+              title="Домклик, Сбер"
+              logo="/logos/domclick-logo.svg"
+              role="Product Manager | 04.2026 — По наст. время"
+              description="Продакт-менеджер отельного направления в Домклике — сервисе недвижимости экосистемы Сбера. После собственного бизнеса — масштаб задач и данных большой экосистемы."
+              place="Москва, гибридный формат, полный день"
+            />
+          </div>
           {/* LetoPlace — широкой карточкой: текст слева, превью видео справа */}
           <ProjectCard
             id={0}
