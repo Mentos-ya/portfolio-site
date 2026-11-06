@@ -63,11 +63,10 @@ const contacts = [
 export default function Home() {
   return (
     <div>
-      {/* Первый экран */}
-      {/* Первый экран без общей подложки: отдельные ореолы у текста, фото и «Моего пути» */}
-      <section id="home" className="sheet sheet-split">
+      {/* Первый экран — один лист: текст, фото и «Мой путь» */}
+      <section id="home" className="sheet">
         <div className="grid md:grid-cols-[1.4fr_1fr] gap-7 md:gap-12 items-center">
-          <div className="halo">
+          <div>
             {/* Моноширинный шрифт шире — на телефоне плашка мельче, чтобы остаться в одну строку даже на экране 360px */}
             <span className="cli-badge inline-flex items-center gap-2 text-[10px] md:text-[13px] whitespace-nowrap text-ink px-3 md:px-3.5 py-[7px]">
               <span className="w-2 h-2 bg-green-500 shadow-[0_0_8px_#22c55e]" aria-hidden />
@@ -112,7 +111,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="photo-ring halo halo-round order-first md:order-none justify-self-start md:justify-self-center w-[180px] h-[180px] md:w-[290px] md:h-[290px]">
+          <div className="photo-ring order-first md:order-none justify-self-start md:justify-self-center w-[180px] h-[180px] md:w-[290px] md:h-[290px]">
             <Image
               src="/images/profile.jpg"
               alt="Илья Якупов"
@@ -124,8 +123,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Мой путь */}
-        <div className="halo mt-12 md:mt-16">
+        {/* Мой путь — в том же листе, под текстом и фото */}
+        <div className="mt-12 md:mt-16">
           <p className="text-[15px] uppercase tracking-[0.1em] text-ink mb-4">Мой путь</p>
           <ol className="path">
             {path.map((step) => {
@@ -162,7 +161,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Опыт: работа и продукты, собранные с ИИ, — в одном разделе, двумя группами */}
+      {/* Опыт: работа — Домклик, LetoPlace и «+» под следующую */}
       <section id="projects" className="sheet scroll-mt-20">
         <h2 className="section-title">{projectsData.pageTitle}</h2>
         <p className="section-lead">Где вёл продукт как Product Manager и Growth PM — и что собрал сам с помощью ИИ</p>
@@ -196,11 +195,13 @@ export default function Home() {
         {/* «+» — место под следующую работу: сразу под группой «Работа» */}
         <AddCaseBlock />
 
-        {/* Вторая группа: Mentask, Понятно и небольшие инструменты */}
-        <AiProjects />
       </section>
 
-      {/* Образование */}
+      {/* Собрал сам с ИИ — два своих листа: «в паблике» и «для себя» */}
+      <AiProjects />
+
+      {/* Образование и Навыки — два листа в ряд */}
+      <div className="sheet-row">
       <section id="education" className="sheet scroll-mt-20">
         <h2 className="section-title">Образование</h2>
         <p className="section-lead">Учебные заведения и курсы</p>
@@ -248,6 +249,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      </div>
 
       {/* Контакты */}
       <section id="contact" className="sheet scroll-mt-20">

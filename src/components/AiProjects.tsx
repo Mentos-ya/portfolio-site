@@ -3,12 +3,6 @@ import aiData from '@/data/ai.json'
 type AiProject = (typeof aiData.projects)[number]
 type AiGroup = (typeof aiData.groups)[number]
 
-// Рамка блока без заливки: «в паблике» — сплошная, «для себя» — пунктир, оба приглушённые
-const FRAME: Record<string, string> = {
-  public: 'border-2 border-ink/40',
-  personal: 'border-2 border-dashed border-ink/30',
-}
-
 // Число со словом в нужной форме: 1 продукт, 2 продукта, 5 продуктов
 function countLabel(n: number, [one, few, many]: string[]) {
   const mod10 = n % 10
@@ -62,7 +56,7 @@ function ProjectText({ project }: { project: AiProject }) {
   )
 }
 
-// Блок группы в рамке: заголовок, плашка с числом, подпись; продукты с роликом — широкими карточками,
+// Группа проектов: заголовок, плашка с числом, подпись; продукты с роликом — широкими карточками,
 // ролик играет прямо в карточке; остальные — небольшими карточками по три в ряд
 function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[] }) {
   const withVideo = projects.filter((project) => project.video)
@@ -70,9 +64,9 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
   const count = countLabel(projects.length, group.units)
 
   return (
-    <div className={`mt-6 md:mt-8 p-3 md:p-8 ${FRAME[group.id] ?? FRAME.personal}`}>
-      <div className="px-2 pt-2 md:p-0 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-        <h4 className="text-xl md:text-2xl font-bold text-ink [word-spacing:-0.25em]">
+    <div>
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+        <h3 className="text-2xl md:text-[28px] font-bold text-ink">
           {group.title}
           {/* Акцент не рвём: на телефоне «в паблике» целиком уходит на вторую строку */}
           {group.titleAccent && (
@@ -81,7 +75,7 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
               <span className="text-gradient-hero whitespace-nowrap">{group.titleAccent}</span>
             </>
           )}
-        </h4>
+        </h3>
         {group.badge ? (
           <span className="cli-badge text-[13px] text-ink px-2 py-1">
             <span className="text-[#16a34a]">●</span> {count} · {group.badge}
@@ -90,7 +84,7 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
           <span className="text-[13px] text-ink/70">{count}</span>
         )}
       </div>
-      <p className="px-2 md:px-0 text-[15px] text-ink mt-2 mb-4 md:mb-6">{group.lead}</p>
+      <p className="text-[15px] md:text-base text-ink mt-2 mb-5 md:mb-6">{group.lead}</p>
 
       <div className="grid gap-5">
         {withVideo.map((project) => (
@@ -133,23 +127,27 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
   )
 }
 
-// Группа «Собрал сам с ИИ» внутри раздела «Опыт»: два блока в рамках —
-// «Сделал и тестирую в паблике» (продуктами пользуются другие люди) и «Сделал для себя»
+// Раздел «Собрал сам с ИИ» — два листа подряд: в первом заголовок раздела и «Сделал и тестирую в паблике»
+// (продуктами пользуются другие люди), во втором — «Сделал для себя»
 export default function AiProjects() {
-  return (
-    <div id="ai" className="scroll-mt-20 mt-12 md:mt-14">
-      <h3 className="text-2xl md:text-[28px] font-bold text-ink">
-        {aiData.pageTitle} <span className="text-gradient-hero">{aiData.pageTitleAccent}</span>
-      </h3>
-      <p className="text-base text-ink mt-2">{aiData.pageDescription}</p>
+  const [first, ...rest] = aiData.groups
+  const projectsOf = (id: string) => aiData.projects.filter((project) => project.group === id)
 
-      {aiData.groups.map((group) => (
-        <GroupBlock
-          key={group.id}
-          group={group}
-          projects={aiData.projects.filter((project) => project.group === group.id)}
-        />
+  return (
+    <>
+      <section id="ai" className="sheet scroll-mt-20">
+        <h2 className="section-title">
+          {aiData.pageTitle} <span className="text-gradient-hero">{aiData.pageTitleAccent}</span>
+        </h2>
+        <p className="section-lead">{aiData.pageDescription}</p>
+        <GroupBlock group={first} projects={projectsOf(first.id)} />
+      </section>
+
+      {rest.map((group) => (
+        <section key={group.id} className="sheet" aria-label={group.title}>
+          <GroupBlock group={group} projects={projectsOf(group.id)} />
+        </section>
       ))}
-    </div>
+    </>
   )
 }

@@ -69,87 +69,55 @@ h3 {
 }
 
 @layer components {
-  /* Лист: кремовая подложка без рамки — края размыты и растворяются в растре,
-     сквозь середину узор чуть проступает. Между листами растр виден — блоки остаются отдельными */
+  /* Лист — «оттиск»: кремовая бумага, чёткая рамка чернилами и жёсткая тень со сдвигом (выбрал Илья 06.11.2026).
+     Растр виден только между листами, поэтому страница читается отдельными блоками, а не одним полотном */
   .sheet {
     position: relative;
     isolation: isolate;
     max-width: 64rem;
-    margin: 2rem 0.75rem;
+    margin: 2.25rem 0.75rem;
     padding: 2.5rem 1.5rem;
   }
   .sheet::before {
     content: '';
     position: absolute;
-    /* На телефоне полей мало — размытие короткое, чтобы уходило в поля, а не под текст */
-    inset: 4px;
+    inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: rgba(247, 240, 219, 0.9);
-    border-radius: 0;
-    filter: blur(12px);
-  }
-  /* Лист, разбитый на отдельные ореолы: у самого листа подложки нет,
-     своя размытая подложка — у каждого блока внутри (.halo), между ними виден растр */
-  .sheet-split::before {
-    display: none;
-  }
-  .halo {
-    position: relative;
-  }
-  /* Без своего слоя: подложка уходит под блок, но остаётся над растром — внутри слоя листа */
-  .halo::before {
-    content: '';
-    position: absolute;
-    inset: -16px -18px;
-    z-index: -1;
-    pointer-events: none;
-    background: rgba(247, 240, 219, 0.9);
-    border-radius: 0;
-    filter: blur(12px);
-  }
-  /* Круглый ореол — вокруг фото */
-  /* Круглый ореол прижат к фото: небольшой вынос и короткое размытие */
-  .halo.halo-round::before {
-    inset: -12px;
-    border-radius: 50%;
-    background: rgba(247, 240, 219, 0.95);
-    filter: blur(9px);
-  }
-  @media (min-width: 768px) {
-    .halo::before {
-      inset: -24px -28px;
-      background: rgba(247, 240, 219, 0.86);
-      border-radius: 0;
-      filter: blur(20px);
-    }
-    .halo.halo-round::before {
-      inset: -18px;
-      border-radius: 50%;
-      background: rgba(247, 240, 219, 0.95);
-      filter: blur(12px);
-    }
-  }
-
-  /* Ореол: мягкое кремовое свечение у букв — на чистом фоне его не видно,
-     а там, где под текст заползли пиксели растра, оно расчищает место вокруг букв */
-  .sheet {
-    text-shadow: 0 0 1px #f7f0db, 0 0 3px #f7f0db, 0 0 6px #f7f0db, 0 0 12px rgba(247, 240, 219, 0.85);
-  }
-  /* На кнопках, карточках и тёмных подсказках свечение лишнее */
-  .sheet :is(.btn, button, .card-glow, .bg-ink, [role='dialog']) {
-    text-shadow: none;
+    background: #f7f0db;
+    border: 2px solid #0f1440;
+    box-shadow: 6px 6px 0 #0f1440;
   }
   @media (min-width: 768px) {
     .sheet {
-      margin: 2.5rem auto;
+      margin: 3.5rem auto;
       padding: 3rem 2.5rem;
     }
     .sheet::before {
-      inset: 14px;
-      background: rgba(247, 240, 219, 0.86);
-      border-radius: 0;
-      filter: blur(20px);
+      box-shadow: 10px 10px 0 #0f1440;
+    }
+  }
+
+  /* Два листа в ряд (Образование и Навыки): на широком экране рядом и одной высоты, на узком — друг под другом */
+  .sheet-row {
+    display: grid;
+    gap: 2.25rem;
+    max-width: 64rem;
+    margin: 2.25rem 0.75rem;
+  }
+  .sheet-row > .sheet {
+    margin: 0;
+    max-width: none;
+  }
+  @media (min-width: 768px) {
+    .sheet-row {
+      gap: 2.5rem;
+      margin: 3.5rem auto;
+    }
+  }
+  @media (min-width: 1024px) {
+    .sheet-row {
+      grid-template-columns: 1fr 1fr;
     }
   }
 
