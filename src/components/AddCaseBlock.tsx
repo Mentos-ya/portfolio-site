@@ -22,7 +22,7 @@ export default function AddCaseBlock() {
         type="button"
         onClick={() => setModalOpen(true)}
         aria-label="Здесь может быть ваша компания"
-        className="group relative w-full border-2 border-dashed border-ink/25 rounded-none flex items-center justify-center py-8 mt-5 mb-6 bg-transparent transition-colors duration-150 md:hover:bg-electric md:hover:border-solid md:hover:border-electric cursor-pointer text-left"
+        className="group relative w-full border-2 border-dashed border-ink/25 rounded-none flex items-center justify-center py-8 mb-5 bg-transparent transition-colors duration-150 md:hover:bg-electric md:hover:border-solid md:hover:border-electric cursor-pointer text-left"
       >
         <span className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-none border-2 border-ink/30 text-ink/50 transition-opacity duration-150 md:group-hover:opacity-0 text-2xl font-light min-w-[3rem] min-h-[3rem]" style={{ lineHeight: 1 }}>
           <span className="inline-flex items-center justify-center w-full h-full" style={{ paddingBottom: '0.08em' }}>+</span>
