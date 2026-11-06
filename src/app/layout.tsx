@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import YandexMetrika from '@/components/YandexMetrika'
 import DitherBackground from '@/components/DitherBackground'
+import AnchorHighlight from '@/components/AnchorHighlight'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -56,6 +57,8 @@ export default function RootLayout({
       <body className="relative bg-paper text-ink">
         {/* Фон всего сайта: пиксельный растр, стоит на месте, страница прокручивается поверх */}
         <DitherBackground />
+        {/* Подсветка блока, к которому перешли по ссылке-якорю */}
+        <AnchorHighlight />
         <Header />
         {/* relative — чтобы содержимое лежало поверх растра */}
         <main className="relative min-h-screen">
