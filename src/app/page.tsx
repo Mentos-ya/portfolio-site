@@ -282,7 +282,8 @@ export default function Home() {
           <div className="flex flex-col md:h-full">
             <h3 className="text-2xl font-bold mb-6 text-ink">Чем я могу помочь</h3>
             <div className="space-y-4">
-              <div className="p-5 rounded-none bg-paper-card border border-ink/10">
+              {/* Без рамки и подложки — текст прямо на листе (Илья 06.11.2026) */}
+              <div>
                 <h4 className="font-bold mb-2 text-ink">Нетворкинг</h4>
                 <p className="text-ink text-base">
                   Открыт к общению. Пишите — обсудим идеи, обменяемся опытом или просто познакомимся
