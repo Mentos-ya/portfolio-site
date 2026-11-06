@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import YandexMetrika from '@/components/YandexMetrika'
 import DitherBackground from '@/components/DitherBackground'
 import AnchorHighlight from '@/components/AnchorHighlight'
+import ScrollToTop from '@/components/ScrollToTop'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -59,6 +60,8 @@ export default function RootLayout({
         <DitherBackground />
         {/* Подсветка блока, к которому перешли по ссылке-якорю */}
         <AnchorHighlight />
+        {/* Кнопка «наверх», когда страница прокручена вниз */}
+        <ScrollToTop />
         <Header />
         {/* relative — чтобы содержимое лежало поверх растра */}
         <main className="relative min-h-screen">

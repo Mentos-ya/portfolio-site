@@ -335,13 +335,11 @@ h3 {
   }
 }
 
-/* Курсоры «командной строки» (главная кнопка при наведении, строка на кнопке «+») мигают —
-   только если в системе не включено «уменьшить движение» */
-@media (prefers-reduced-motion: no-preference) {
-  .btn-primary:hover::after,
-  .cli-cursor {
-    animation: cli-blink 1s steps(1) infinite;
-  }
+/* Курсоры «командной строки» (главная кнопка при наведении, строка на кнопке «+») мигают у всех:
+   системное «уменьшить движение» не слушаем — у Ильи оно включено всегда, и курсор у него стоял */
+.btn-primary:hover::after,
+.cli-cursor {
+  animation: cli-blink 1s steps(1) infinite;
 }
 @keyframes cli-blink {
   50% {

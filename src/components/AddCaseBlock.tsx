@@ -16,23 +16,23 @@ export default function AddCaseBlock() {
 
   return (
     <>
-      {/* Пасхалка для рекрутеров. При наведении рамка заливается тёмно-синим, «+» прячется,
+      {/* Пасхалка для рекрутеров. При наведении рамка заливается синим, как карточка LetoPlace (Илья 06.11.2026), «+» прячется,
           вместо него строка командной строки с мигающим курсором. На телефоне наведения нет — там остаётся «+» */}
       <button
         type="button"
         onClick={() => setModalOpen(true)}
         aria-label="Здесь может быть ваша компания"
-        className="group relative w-full border-2 border-dashed border-ink/25 rounded-none flex items-center justify-center py-8 mt-5 mb-6 bg-transparent transition-colors duration-150 motion-reduce:transition-none md:hover:bg-ink md:hover:border-solid md:hover:border-ink cursor-pointer text-left"
+        className="group relative w-full border-2 border-dashed border-ink/25 rounded-none flex items-center justify-center py-8 mt-5 mb-6 bg-transparent transition-colors duration-150 md:hover:bg-electric md:hover:border-solid md:hover:border-electric cursor-pointer text-left"
       >
-        <span className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-none border-2 border-ink/30 text-ink/50 transition-opacity duration-150 motion-reduce:transition-none md:group-hover:opacity-0 text-2xl font-light min-w-[3rem] min-h-[3rem]" style={{ lineHeight: 1 }}>
+        <span className="relative z-10 inline-flex items-center justify-center w-12 h-12 rounded-none border-2 border-ink/30 text-ink/50 transition-opacity duration-150 md:group-hover:opacity-0 text-2xl font-light min-w-[3rem] min-h-[3rem]" style={{ lineHeight: 1 }}>
           <span className="inline-flex items-center justify-center w-full h-full" style={{ paddingBottom: '0.08em' }}>+</span>
         </span>
         <span
           aria-hidden
-          className="absolute inset-0 z-10 hidden md:flex items-center justify-center text-[17px] text-paper opacity-0 transition-opacity duration-150 motion-reduce:transition-none group-hover:opacity-100 pointer-events-none"
+          className="absolute inset-0 z-10 hidden md:flex items-center justify-center text-[17px] text-paper opacity-0 transition-opacity duration-150 group-hover:opacity-100 pointer-events-none"
         >
           &gt;&nbsp;здесь может быть ваша компания
-          <span className="cli-cursor inline-block w-[0.6em] h-[1.1em] ml-[0.6em] bg-[#8f9bff]" />
+          <span className="cli-cursor inline-block w-[0.6em] h-[1.1em] ml-[0.6em] bg-paper" />
         </span>
       </button>
 
