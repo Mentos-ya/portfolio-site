@@ -27,7 +27,7 @@ const path: { years: string; title: string; note?: string; text: string; href: s
   {
     years: '2026 — сейчас',
     title: 'ИИ-проекты',
-    text: 'Задачник Mentask, приложение для Mac и бот-дайджест новостей',
+    text: 'Задачник Mentask, приложение для Mac и карта поиска квартиры',
     href: '#ai',
     now: true,
   },
