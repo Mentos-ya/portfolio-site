@@ -129,6 +129,19 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
           <div className="grid lg:grid-cols-3 gap-5">
             {small.map((project) => (
               <div key={project.title} className="card-glow card-lift rounded-none p-5 md:p-[26px] flex flex-col">
+                {/* Снимок экрана инструмента — сверху карточки, у всех одна рамка 16:10 (Илья 08.11.2026).
+                    Личных данных на снимках нет: письма в Gment и записи еды — для примера */}
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt ?? ''}
+                    width={960}
+                    height={600}
+                    loading="lazy"
+                    decoding="async"
+                    className="mb-4 w-full aspect-[16/10] object-cover object-top rounded-none border border-ink/15 bg-paper"
+                  />
+                )}
                 <ProjectText project={project} />
               </div>
             ))}
