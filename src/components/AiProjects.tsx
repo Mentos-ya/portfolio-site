@@ -1,4 +1,5 @@
 import aiData from '@/data/ai.json'
+import ToolCarousel from './ToolCarousel'
 
 type AiProject = (typeof aiData.projects)[number]
 type AiGroup = (typeof aiData.groups)[number]
@@ -69,7 +70,7 @@ function ProjectText({ project }: { project: AiProject }) {
 }
 
 // Группа проектов: заголовок, плашка с числом, подпись; продукты с роликом — широкими карточками,
-// ролик играет прямо в карточке; остальные — небольшими карточками по три в ряд
+// ролик играет прямо в карточке; остальные — лентой карточек со снимками экрана (ToolCarousel)
 function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[] }) {
   const withVideo = projects.filter((project) => project.video)
   const small = projects.filter((project) => !project.video)
@@ -125,11 +126,13 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
           </div>
         ))}
 
+        {/* Остальные — лентой: крупный снимок и полный текст, листают стрелками, точками или пальцем
+            (вариант «Лента», Илья 08.11.2026; раньше — сетка по три в ряд почти на два экрана) */}
         {small.length > 0 && (
-          <div className="grid lg:grid-cols-3 gap-5">
+          <ToolCarousel labels={small.map((project) => project.title)}>
             {small.map((project) => (
-              <div key={project.title} className="card-glow card-lift rounded-none p-5 md:p-[26px] flex flex-col">
-                {/* Снимок экрана инструмента — сверху карточки, у всех одна рамка 16:10 (Илья 08.11.2026).
+              <article key={project.title} className="card-glow rounded-none p-[18px] md:p-[22px] flex flex-col">
+                {/* Снимок экрана инструмента — сверху карточки, у всех одна рамка 16:10.
                     Личных данных на снимках нет: письма в Gment и записи еды — для примера */}
                 {project.image && (
                   <img
@@ -139,13 +142,14 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
                     height={600}
                     loading="lazy"
                     decoding="async"
+                    draggable={false}
                     className="mb-4 w-full aspect-[16/10] object-cover object-top rounded-none border border-ink/15 bg-paper"
                   />
                 )}
                 <ProjectText project={project} />
-              </div>
+              </article>
             ))}
-          </div>
+          </ToolCarousel>
         )}
       </div>
     </div>
