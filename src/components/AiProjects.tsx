@@ -1,5 +1,6 @@
 import aiData from '@/data/ai.json'
 import ToolCarousel from './ToolCarousel'
+import ToolClip from './ToolClip'
 
 type AiProject = (typeof aiData.projects)[number]
 type AiGroup = (typeof aiData.groups)[number]
@@ -133,8 +134,17 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
             {small.map((project) => (
               <article key={project.title} className="card-glow rounded-none p-[18px] md:p-[22px] flex flex-col">
                 {/* Снимок экрана инструмента — сверху карточки, у всех одна рамка 16:10.
-                    Личных данных на снимках нет: письма в Gment и записи еды — для примера */}
-                {project.image && (
+                    Личных данных на снимках нет: письма в Gment и записи еды — для примера.
+                    Есть ролик (поле clip) — на снимке кнопка «> ролик», ролик играет на его месте */}
+                {project.image && project.clip ? (
+                  <ToolClip
+                    title={project.title}
+                    image={project.image}
+                    imageAlt={project.imageAlt ?? ''}
+                    clip={project.clip}
+                    seconds={project.clipSeconds ?? 20}
+                  />
+                ) : project.image && (
                   <img
                     src={project.image}
                     alt={project.imageAlt ?? ''}
