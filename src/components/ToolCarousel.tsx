@@ -1,12 +1,14 @@
 'use client'
 
 import { Children, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { createWheelSwipe } from './wheelSwipe'
 
 // Лента карточек «Сделал для себя» (вариант «Лента», выбрал Илья 08.11.2026): карточки в один ряд
 // с прилипанием, листают стрелками, точками, пальцем или колесом; справа выглядывает край следующей.
 // Один жест — ровно одна карточка (Илья 09.11.2026): сильный свайп или рывок тачпада раньше
 // пролетал сразу несколько. CSS snap-always этого не гарантирует — Safari на рывке тачпада его
-// не слушает (проверено: улетало на 6-ю и 9-ю), поэтому жесты тачпада и колеса ведёт скрипт.
+// не слушает (проверено: улетало на 6-ю и 9-ю), поэтому жесты тачпада и колеса ведёт скрипт:
+// что считать одним жестом, решает wheelSwipe.ts (там же — почему лента раньше застревала).
 // Карточки рисует сервер (AiProjects), здесь — только прокрутка, счётчик и кнопки.
 // Подписи кнопок (aria-label) уходят в Метрику как название нажатой кнопки.
 export default function ToolCarousel({ labels, children }: { labels: string[]; children: ReactNode }) {
@@ -14,6 +16,11 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
   const [current, setCurrent] = useState(0)
   // Та же карточка, но для обработчиков жестов: им нужно свежее значение без пересоздания
   const currentRef = useRef(0)
+  // Карточка, к которой лента сейчас едет. Следующий шаг считаем от неё: пока лента плавно
+  // проезжает мимо карточек, «текущая» ещё старая, и быстрый второй свайп вёл туда же, куда первый
+  const targetRef = useRef(0)
+  // Таймер «лента остановилась»; go() его сбрасывает, чтобы он не затёр только что заданную цель
+  const idle = useRef<number | undefined>(undefined)
   const count = Children.count(children)
 
   // Шаг ленты — ширина карточки плюс зазор между карточками
@@ -40,6 +47,8 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
       const el = track.current
       if (!el) return
       const target = Math.max(0, Math.min(count - 1, i))
+      targetRef.current = target
+      window.clearTimeout(idle.current)
       el.scrollTo({ left: target === count - 1 ? el.scrollWidth : target * step(), behavior: 'smooth' })
     },
     [count, step],
@@ -49,50 +58,46 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
     const el = track.current
     if (!el) return
 
-    // Тачпад и колесо: первый толчок жеста сдвигает ленту на одну карточку, остальные события
-    // этого жеста (у тачпада после пальца ещё долго идёт инерция) гасим, пока не стихнут на 220 мс.
-    // Новый жест поверх затухающей инерции узнаём по резкому росту толчка
-    let locked = false
-    let lockedAt = 0
-    let lastPush = 0
-    let quiet: number | undefined
+    // Тачпад и колесо: один жест — одна карточка. Что считать одним жестом (инерция после пальца
+    // или уже новый свайп поверх неё), решает wheelSwipe. Все толчки горизонтального жеста гасим —
+    // иначе браузер сам сдвигает ленту на пару пикселей и сбивает её плавный ход к карточке
+    const swipe = createWheelSwipe()
     const onWheel = (e: WheelEvent) => {
-      const push = Math.abs(e.deltaX)
-      if (push <= Math.abs(e.deltaY)) return // вертикальная прокрутка — это страница, не лента
-      e.preventDefault()
-      window.clearTimeout(quiet)
-      quiet = window.setTimeout(() => (locked = false), 220)
-      const now = performance.now()
-      const freshGesture = locked && now - lockedAt > 350 && push > 20 && push > lastPush * 2
-      lastPush = push
-      if ((locked && !freshGesture) || push < 4) return
-      locked = true
-      lockedAt = now
-      go(currentRef.current + Math.sign(e.deltaX))
+      // Колесо мыши в Firefox считает строками или страницами — переводим в пиксели
+      const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? el.clientWidth : 1
+      const { prevent, step } = swipe(e.deltaX * unit, e.deltaY * unit, e.timeStamp)
+      if (prevent) e.preventDefault()
+      if (step) go(targetRef.current + step)
     }
 
     // Палец: прокрутку ведёт сам браузер (с прилипанием и snap-always), а если он всё же
     // пролетел дальше соседней карточки — когда лента остановилась, возвращаем на соседнюю
     let fromIndex: number | null = null
     let touching = false
-    let settle: number | undefined
     const onTouchStart = () => {
       touching = true
       fromIndex = currentRef.current
     }
+    // Лента остановилась на 140 мс: если палец пролетел дальше соседней — возвращаем на соседнюю,
+    // иначе запоминаем, что цель там, где лента стоит (её мог сдвинуть палец, клавиши или прилипание)
+    const settle = () => {
+      window.clearTimeout(idle.current)
+      idle.current = window.setTimeout(() => {
+        if (touching) return
+        const from = fromIndex
+        fromIndex = null
+        const moved = from === null ? 0 : currentRef.current - from
+        if (from !== null && Math.abs(moved) > 1) go(from + Math.sign(moved))
+        else targetRef.current = currentRef.current
+      }, 140)
+    }
     const onTouchEnd = () => {
       touching = false
+      settle()
     }
     const onScroll = () => {
       sync()
-      if (touching || fromIndex === null) return
-      window.clearTimeout(settle)
-      settle = window.setTimeout(() => {
-        if (fromIndex === null) return
-        const moved = currentRef.current - fromIndex
-        if (Math.abs(moved) > 1) go(fromIndex + Math.sign(moved))
-        fromIndex = null
-      }, 140)
+      settle()
     }
 
     el.addEventListener('wheel', onWheel, { passive: false })
@@ -102,8 +107,7 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
     el.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', sync)
     return () => {
-      window.clearTimeout(quiet)
-      window.clearTimeout(settle)
+      window.clearTimeout(idle.current)
       el.removeEventListener('wheel', onWheel)
       el.removeEventListener('touchstart', onTouchStart)
       el.removeEventListener('touchend', onTouchEnd)
@@ -125,10 +129,10 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
           <span className="text-electric">{pad(current + 1)}</span> / {pad(count)}
         </span>
         <div className="flex gap-2">
-          <button type="button" className={arrow} aria-label="Лента: назад" disabled={current === 0} onClick={() => go(current - 1)}>
+          <button type="button" className={arrow} aria-label="Лента: назад" disabled={current === 0} onClick={() => go(targetRef.current - 1)}>
             ←
           </button>
-          <button type="button" className={arrow} aria-label="Лента: дальше" disabled={current === count - 1} onClick={() => go(current + 1)}>
+          <button type="button" className={arrow} aria-label="Лента: дальше" disabled={current === count - 1} onClick={() => go(targetRef.current + 1)}>
             →
           </button>
         </div>
