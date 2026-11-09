@@ -44,7 +44,7 @@
         "Общий доступ для нескольких людей"
       ],
       "video": "/videos/mentask-promo.mp4",
-      "poster": "/videos/mentask-promo-poster.webp",
+      "poster": "/videos/mentask-promo-poster.webp?v=2",
       "link": "https://mentask.ru/?utm_source=portfolio&utm_medium=site"
     },
     {
@@ -60,7 +60,7 @@
       ],
       "result": "MVP · уже приносит первый revenue",
       "video": "/videos/korotkoe-kvadrat.mp4",
-      "poster": "/videos/korotkoe-kvadrat-poster.webp",
+      "poster": "/videos/korotkoe-kvadrat-poster.webp?v=2",
       "case": "/projects/ponyatno"
     },
     {
