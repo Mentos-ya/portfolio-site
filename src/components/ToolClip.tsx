@@ -1,78 +1,44 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
-// Снимок экрана инструмента с кнопкой «> ролик 0:18» (Илья 09.11.2026: ролик — «по кнопке, как у Mentask»).
-// До нажатия ролик не грузится; после — играет прямо в карточке, с плеером, без звука (его в роликах нет).
-// Пролистали карточку из ленты — ролик встаёт на паузу.
-// Подпись кнопки «Ролик: …» уходит в Метрику общей целью click_button — отдельные цели под ролики не нужны.
-export default function ToolClip({
-  title,
-  image,
-  imageAlt,
-  clip,
-  seconds,
-}: {
-  title: string
-  image: string
-  imageAlt: string
-  clip: string
-  seconds: number
-}) {
-  const [playing, setPlaying] = useState(false)
-  const box = useRef<HTMLDivElement>(null)
+// Ролик инструмента на месте снимка экрана (Илья 09.11.2026, вечер: «ролики должны быть вместо картинок»;
+// до этого ролик запускался кнопкой «> ролик 0:18»). Играет сам, без звука (его в роликах нет) и по кругу,
+// пока карточка видна в ленте хотя бы на 60%; уехала за край ленты больше чем наполовину — пауза.
+// Наблюдатель учитывает обрезку лентой, поэтому выглядывающая соседняя карточка стоит на паузе.
+// До первого показа ролик не грузится (preload="none"): виден снимок экрана, соседние карточки не тянут мегабайты.
+export default function ToolClip({ image, imageAlt, clip }: { image: string; imageAlt: string; clip: string }) {
   const video = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    const el = box.current
-    if (!playing || !el) return
-    // Наблюдатель учитывает обрезку лентой: карточка уехала за край ленты больше чем наполовину — пауза
+    const v = video.current
+    if (!v) return
+    v.muted = true // без этого браузеры не дают ролику запуститься самому
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry.intersectionRatio < 0.5) video.current?.pause()
+        // В режиме энергосбережения автозапуск запрещён — тогда так и остаётся снимок
+        if (entry.intersectionRatio >= 0.6) v.play().catch(() => {})
+        else if (entry.intersectionRatio < 0.5) v.pause()
       },
-      { threshold: [0, 0.5] },
+      { threshold: [0, 0.5, 0.6, 1] },
     )
-    io.observe(el)
+    io.observe(v)
     return () => io.disconnect()
-  }, [playing])
+  }, [])
 
   return (
-    <div ref={box} className="relative mb-4 aspect-[16/10] w-full overflow-hidden border border-ink/15 bg-paper">
-      {playing ? (
-        <video
-          ref={video}
-          src={clip}
-          poster={image}
-          autoPlay
-          controls
-          playsInline
-          muted
-          aria-label={imageAlt}
-          className="h-full w-full object-cover"
-        />
-      ) : (
-        <>
-          <img
-            src={image}
-            alt={imageAlt}
-            width={960}
-            height={600}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-            className="h-full w-full object-cover object-top"
-          />
-          <button
-            type="button"
-            aria-label={`Ролик: ${title}`}
-            onClick={() => setPlaying(true)}
-            className="btn btn-primary absolute bottom-2.5 left-2.5 min-h-[40px] px-3 text-[13px] md:bottom-3 md:left-3"
-          >
-            ролик 0:{String(seconds).padStart(2, '0')}
-          </button>
-        </>
-      )}
+    <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden border border-ink/15 bg-paper">
+      <video
+        ref={video}
+        src={clip}
+        poster={image}
+        muted
+        loop
+        playsInline
+        preload="none"
+        aria-label={imageAlt}
+        className="h-full w-full object-cover object-top"
+      />
     </div>
   )
 }

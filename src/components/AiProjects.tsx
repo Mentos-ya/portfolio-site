@@ -135,15 +135,9 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
               <article key={project.title} className="card-glow rounded-none p-[18px] md:p-[22px] flex flex-col">
                 {/* Снимок экрана инструмента — сверху карточки, у всех одна рамка 16:10.
                     Личных данных на снимках нет: письма в Gment и записи еды — для примера.
-                    Есть ролик (поле clip) — на снимке кнопка «> ролик», ролик играет на его месте */}
+                    Есть ролик (поле clip) — он стоит на месте снимка и играет сам, пока карточка видна */}
                 {project.image && project.clip ? (
-                  <ToolClip
-                    title={project.title}
-                    image={project.image}
-                    imageAlt={project.imageAlt ?? ''}
-                    clip={project.clip}
-                    seconds={project.clipSeconds ?? 20}
-                  />
+                  <ToolClip image={project.image} imageAlt={project.imageAlt ?? ''} clip={project.clip} />
                 ) : project.image && (
                   <img
                     src={project.image}

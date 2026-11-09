@@ -42,6 +42,42 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
     setCurrent(index)
   }, [count, step])
 
+  // Лента едет к карточке своей анимацией, а не scrollTo({ behavior: 'smooth' }): Safari обрывает плавную
+  // прокрутку из кода следующим толчком тачпада (даже погашенным), и прилипание к карточкам откатывает ленту
+  // назад. Запись тачпада Ильи 09.11.2026: лента проезжала 25–110 точек из 680 и возвращалась на старую карточку
+  // (известная беда WebKit со smooth-прокруткой и scroll-snap). Поэтому двигаем scrollLeft сами каждый кадр,
+  // а прилипание на время движения выключаем — обрывать нечего; доехали — прилипание обратно.
+  const anim = useRef(0)
+  const stopGlide = useCallback(() => {
+    if (!anim.current) return
+    cancelAnimationFrame(anim.current)
+    anim.current = 0
+    if (track.current) track.current.style.scrollSnapType = ''
+  }, [])
+  const glide = useCallback(
+    (el: HTMLDivElement, left: number) => {
+      stopGlide()
+      const from = el.scrollLeft
+      const to = Math.max(0, Math.min(left, el.scrollWidth - el.clientWidth))
+      if (Math.abs(to - from) < 1) return
+      // Одна карточка (680 точек) — около 0,34 с, через всю ленту — не дольше 0,52 с
+      const duration = Math.min(520, 260 + Math.abs(to - from) * 0.12)
+      const start = performance.now()
+      el.style.scrollSnapType = 'none'
+      const frame = (now: number) => {
+        const k = Math.min(1, (now - start) / duration)
+        el.scrollLeft = k < 1 ? from + (to - from) * (1 - (1 - k) ** 3) : to
+        if (k < 1) anim.current = requestAnimationFrame(frame)
+        else {
+          anim.current = 0
+          el.style.scrollSnapType = ''
+        }
+      }
+      anim.current = requestAnimationFrame(frame)
+    },
+    [stopGlide],
+  )
+
   const go = useCallback(
     (i: number) => {
       const el = track.current
@@ -49,9 +85,9 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
       const target = Math.max(0, Math.min(count - 1, i))
       targetRef.current = target
       window.clearTimeout(idle.current)
-      el.scrollTo({ left: target === count - 1 ? el.scrollWidth : target * step(), behavior: 'smooth' })
+      glide(el, target === count - 1 ? el.scrollWidth : target * step())
     },
-    [count, step],
+    [count, step, glide],
   )
 
   useEffect(() => {
@@ -75,6 +111,7 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
     let fromIndex: number | null = null
     let touching = false
     const onTouchStart = () => {
+      stopGlide() // палец лёг на ленту посреди её хода — ведёт палец
       touching = true
       fromIndex = currentRef.current
     }
@@ -108,6 +145,7 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
     window.addEventListener('resize', sync)
     return () => {
       window.clearTimeout(idle.current)
+      stopGlide()
       el.removeEventListener('wheel', onWheel)
       el.removeEventListener('touchstart', onTouchStart)
       el.removeEventListener('touchend', onTouchEnd)
@@ -115,7 +153,7 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
       el.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', sync)
     }
-  }, [sync, go])
+  }, [sync, go, stopGlide])
 
   const pad = (n: number) => String(n).padStart(2, '0')
   const arrow =
