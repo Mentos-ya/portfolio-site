@@ -59,9 +59,8 @@
         "Работает прямо в Telegram"
       ],
       "result": "MVP · уже приносит первый revenue",
-      "video": "/videos/korotkoe.mp4",
-      "poster": "/videos/ponyatno-video-poster.png?v=2",
-      "vertical": true,
+      "video": "/videos/korotkoe-kvadrat.mp4",
+      "poster": "/videos/korotkoe-kvadrat-poster.webp",
       "case": "/projects/ponyatno"
     },
     {

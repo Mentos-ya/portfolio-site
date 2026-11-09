@@ -104,23 +104,19 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
         {withVideo.map((project) => (
           <div
             key={project.title}
-            className={`card-glow card-lift rounded-none p-5 md:p-[26px] grid gap-6 md:gap-8 ${
-              project.vertical ? 'md:grid-cols-[1fr_minmax(0,260px)]' : 'md:grid-cols-[1fr_minmax(0,380px)]'
-            }`}
+            className="card-glow card-lift rounded-none p-5 md:p-[26px] grid gap-6 md:gap-8 md:grid-cols-[1fr_minmax(0,380px)]"
           >
             <div className="flex flex-col">
               <ProjectText project={project} />
             </div>
-            {/* Ролик прямо в карточке: сам не запускается, по кнопке, со звуком.
-                Вертикальный (Понятно, снят с телефона) — узким высоким столбцом */}
+            {/* Ролик прямо в карточке: сам не запускается, по кнопке, со звуком. Оба ролика квадратные
+                (у Понятно до 09.11.2026 был вертикальный, снятый с телефона) */}
             <video
               controls
               preload="metadata"
               playsInline
               poster={project.poster}
-              className={`w-full self-center rounded-none bg-black border border-ink/10 ${
-                project.vertical ? 'aspect-[590/1280] max-w-[260px] mx-auto md:mx-0' : 'aspect-square'
-              }`}
+              className="w-full self-center rounded-none bg-black border border-ink/10 aspect-square"
             >
               <source src={project.video} type="video/mp4" />
             </video>
