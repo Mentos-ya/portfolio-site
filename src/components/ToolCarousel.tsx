@@ -9,9 +9,23 @@ import { createWheelSwipe } from './wheelSwipe'
 // пролетал сразу несколько. CSS snap-always этого не гарантирует — Safari на рывке тачпада его
 // не слушает (проверено: улетало на 6-ю и 9-ю), поэтому жесты тачпада и колеса ведёт скрипт:
 // что считать одним жестом, решает wheelSwipe.ts (там же — почему лента раньше застревала).
-// Карточки рисует сервер (AiProjects), здесь — только прокрутка, счётчик и кнопки.
-// Подписи кнопок (aria-label) уходят в Метрику как название нажатой кнопки.
-export default function ToolCarousel({ labels, children }: { labels: string[]; children: ReactNode }) {
+// Карточки рисует сервер (AiProjects, page.tsx), здесь — только прокрутка, счётчик и кнопки.
+// Подписи кнопок (aria-label) уходят в Метрику как название нажатой кнопки: «<name>: дальше».
+// mobileOnly — лента только на телефоне, на компьютере карточки стоят столбиком, как раньше
+// (Илья 10.11.2026: «Опыт» и «в паблике» на телефоне листаются свайпом, чтобы страница была короче).
+export default function ToolCarousel({
+  labels,
+  children,
+  name = 'Лента',
+  label = 'Инструменты, которые я сделал для себя',
+  mobileOnly = false,
+}: {
+  labels: string[]
+  children: ReactNode
+  name?: string
+  label?: string
+  mobileOnly?: boolean
+}) {
   const track = useRef<HTMLDivElement>(null)
   const [current, setCurrent] = useState(0)
   // Та же карточка, но для обработчиков жестов: им нужно свежее значение без пересоздания
@@ -99,6 +113,8 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
     // иначе браузер сам сдвигает ленту на пару пикселей и сбивает её плавный ход к карточке
     const swipe = createWheelSwipe()
     const onWheel = (e: WheelEvent) => {
+      // Листать нечего (лента mobileOnly на компьютере стоит столбиком) — жест не трогаем
+      if (el.scrollWidth <= el.clientWidth + 1) return
       // Колесо мыши в Firefox считает строками или страницами — переводим в пиксели
       const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? el.clientWidth : 1
       const { prevent, step } = swipe(e.deltaX * unit, e.deltaY * unit, e.timeStamp)
@@ -155,22 +171,30 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
     }
   }, [sync, go, stopGlide])
 
+  // Одна карточка — листать нечего, показываем как есть
+  if (count < 2) return <div className="grid gap-5">{children}</div>
+
   const pad = (n: number) => String(n).padStart(2, '0')
+  // У ленты только для телефона счётчик, стрелки и точки на компьютере прячем
+  const phoneOnly = mobileOnly ? 'md:hidden' : ''
+  const trackClass = mobileOnly
+    ? 'grid grid-flow-col auto-cols-[86%] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory -mr-[22px] pr-[22px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&>*]:snap-start [&>*]:snap-always md:grid-flow-row md:auto-cols-auto md:gap-5 md:overflow-visible md:snap-none md:mr-0 md:pr-0'
+    : 'grid grid-flow-col auto-cols-[86%] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory -mr-[22px] pr-[22px] md:auto-cols-[min(72%,660px)] md:gap-5 md:-mr-[38px] md:pr-[38px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&>*]:snap-start [&>*]:snap-always focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric'
   const arrow =
     'grid h-11 w-11 place-items-center border-2 border-ink text-lg text-ink transition-colors hover:bg-ink hover:text-paper active:scale-95 disabled:pointer-events-none disabled:opacity-30'
 
   return (
     // min-w-0: лента лежит в сетке, и без него ячейка растягивается на всю длину ленты — страница становится шире экрана
     <div className="min-w-0">
-      <div className="mb-3.5 flex items-center justify-between">
+      <div className={`mb-3.5 flex items-center justify-between ${phoneOnly}`}>
         <span className="text-sm tracking-[0.04em] text-ink" aria-live="polite">
           <span className="text-electric">{pad(current + 1)}</span> / {pad(count)}
         </span>
         <div className="flex gap-2">
-          <button type="button" className={arrow} aria-label="Лента: назад" disabled={current === 0} onClick={() => go(targetRef.current - 1)}>
+          <button type="button" className={arrow} aria-label={`${name}: назад`} disabled={current === 0} onClick={() => go(targetRef.current - 1)}>
             ←
           </button>
-          <button type="button" className={arrow} aria-label="Лента: дальше" disabled={current === count - 1} onClick={() => go(targetRef.current + 1)}>
+          <button type="button" className={arrow} aria-label={`${name}: дальше`} disabled={current === count - 1} onClick={() => go(targetRef.current + 1)}>
             →
           </button>
         </div>
@@ -178,21 +202,16 @@ export default function ToolCarousel({ labels, children }: { labels: string[]; c
 
       {/* Лента доходит до правого края листа (за его внутренний отступ, но не на рамку), чтобы следующая
           карточка выглядывала из-под края. Полоса прокрутки скрыта: листают стрелками, точками и пальцем */}
-      <div
-        ref={track}
-        tabIndex={0}
-        aria-label="Инструменты, которые я сделал для себя"
-        className="grid grid-flow-col auto-cols-[86%] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory -mr-[22px] pr-[22px] md:auto-cols-[min(72%,660px)] md:gap-5 md:-mr-[38px] md:pr-[38px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&>*]:snap-start [&>*]:snap-always focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-electric"
-      >
+      <div ref={track} tabIndex={mobileOnly ? undefined : 0} aria-label={label} className={trackClass}>
         {children}
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-1.5">
-        {labels.map((label, i) => (
+      <div className={`mt-4 flex flex-wrap gap-1.5 ${phoneOnly}`}>
+        {labels.map((title, i) => (
           <button
-            key={label}
+            key={title}
             type="button"
-            aria-label={`Лента: ${label}`}
+            aria-label={`${name}: ${title}`}
             aria-current={i === current ? 'true' : undefined}
             onClick={() => go(i)}
             // Полоска тонкая, а зона нажатия — выше на 12 px сверху и снизу, чтобы попадать пальцем

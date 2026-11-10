@@ -101,10 +101,20 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
       <p className="text-[15px] md:text-base text-ink mt-2 mb-5 md:mb-6">{group.lead}</p>
 
       <div className="grid gap-5">
+        {/* Продукты с роликом: на компьютере столбиком, на телефоне — лентой, листают свайпом (Илья 10.11.2026,
+            чтобы не листать вниз два длинных ролика подряд). В ленте карточки одной высоты; ролик прижат к низу,
+            чтобы при листании ролики стояли на одном уровне */}
+        {withVideo.length > 0 && (
+        <ToolCarousel
+          mobileOnly
+          name={`${group.title} ${group.titleAccent}`.trim()}
+          label={`${group.title} ${group.titleAccent}`.trim()}
+          labels={withVideo.map((project) => project.title)}
+        >
         {withVideo.map((project) => (
           <div
             key={project.title}
-            className="card-glow card-lift rounded-none p-5 md:p-[26px] grid gap-6 md:gap-8 md:grid-cols-[1fr_minmax(0,380px)]"
+            className="card-glow card-lift rounded-none p-5 md:p-[26px] grid grid-rows-[1fr_auto] gap-6 md:grid-rows-none md:gap-8 md:grid-cols-[1fr_minmax(0,380px)]"
           >
             <div className="flex flex-col">
               <ProjectText project={project} />
@@ -122,6 +132,8 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
             </video>
           </div>
         ))}
+        </ToolCarousel>
+        )}
 
         {/* Остальные — лентой: крупный снимок и полный текст, листают стрелками, точками или пальцем
             (вариант «Лента», Илья 08.11.2026; раньше — сетка по три в ряд почти на два экрана) */}

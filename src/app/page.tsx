@@ -4,6 +4,7 @@ import projectsData from '@/data/projects.json'
 import ProjectCard from '@/components/ProjectCard'
 import AddCaseBlock from '@/components/AddCaseBlock'
 import AiProjects from '@/components/AiProjects'
+import ToolCarousel from '@/components/ToolCarousel'
 
 const RESUME_URL = 'https://drive.google.com/file/d/1JmYTcH-ahW07STMiF-yhSu6Ne8eLwcQn/view'
 
@@ -166,10 +167,12 @@ export default function Home() {
         {/* «+» — место под следующую работу: первым, над Домкликом — следующая работа будет самой свежей (Илья 06.11.2026) */}
         <AddCaseBlock />
 
-        {/* Работа — сразу под «+», без своего заголовка */}
-        <div className="grid gap-5">
-          {/* Текущая работа — первой; якорь #domclick — сюда ведёт пункт «Домклик» в «Моём пути» */}
-          <div id="domclick" className="scroll-mt-20">
+        {/* Работа — сразу под «+», без своего заголовка. На телефоне — лентой, листают свайпом
+            (Илья 10.11.2026, чтобы страница была короче), на компьютере — столбиком, как раньше */}
+        <ToolCarousel mobileOnly name="Опыт" label="Опыт работы" labels={['Домклик, Сбер', 'LetoPlace']}>
+          {/* Текущая работа — первой; якорь #domclick — сюда ведёт пункт «Домклик» в «Моём пути».
+              grid — чтобы карточка растягивалась на высоту соседней в ленте */}
+          <div id="domclick" className="scroll-mt-20 grid">
             <ProjectCard
               id={2}
               title="Домклик, Сбер"
@@ -192,7 +195,7 @@ export default function Home() {
             place="Санкт-Петербург, Новосибирск, Томск"
             description="С нуля создал digital-сервис для аренды имущества. Разработал двустороннюю платформу (B2C для путешественников и B2B для собственников недвижимости с управлением «под ключ»). В портфеле 50+ объектов в Санкт-Петербурге, 5M RUB revenue в месяц, 31% маржинальность."
           />
-        </div>
+        </ToolCarousel>
       </section>
 
       {/* Собрал сам с ИИ — два своих листа: «в паблике» и «для себя» */}
