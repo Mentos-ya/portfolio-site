@@ -102,8 +102,8 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
 
       <div className="grid gap-5">
         {/* Продукты с роликом: на компьютере столбиком, на телефоне — лентой, листают свайпом (Илья 10.11.2026,
-            чтобы не листать вниз два длинных ролика подряд). В ленте карточки одной высоты; ролик прижат к низу,
-            чтобы при листании ролики стояли на одном уровне */}
+            чтобы не листать вниз два длинных ролика подряд). На телефоне ролик наверху карточки (Илья 10.11.2026),
+            как снимки в «Сделал для себя»; на компьютере — справа от текста */}
         {withVideo.length > 0 && (
         <ToolCarousel
           mobileOnly
@@ -114,7 +114,7 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
         {withVideo.map((project) => (
           <div
             key={project.title}
-            className="card-glow card-lift rounded-none p-5 md:p-[26px] grid grid-rows-[1fr_auto] gap-6 md:grid-rows-none md:gap-8 md:grid-cols-[1fr_minmax(0,380px)]"
+            className="card-glow card-lift rounded-none p-5 md:p-[26px] grid grid-rows-[auto_1fr] gap-5 md:grid-rows-none md:gap-8 md:grid-cols-[1fr_minmax(0,380px)]"
           >
             <div className="flex flex-col">
               <ProjectText project={project} />
@@ -126,7 +126,7 @@ function GroupBlock({ group, projects }: { group: AiGroup; projects: AiProject[]
               preload="metadata"
               playsInline
               poster={project.poster}
-              className="w-full self-center rounded-none bg-black border border-ink/10 aspect-square"
+              className="order-first md:order-none w-full self-center rounded-none bg-black border border-ink/10 aspect-square"
             >
               <source src={project.video} type="video/mp4" />
             </video>
